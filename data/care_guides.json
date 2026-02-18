@@ -1,0 +1,24 @@
+[
+  {
+    "id": "guide_dog_general",
+    "species": "dog",
+    "title": "General daily care for adult dogs",
+    "content": "Adult dogs typically need 2 meals per day, 1–2 hours of total activity, mental enrichment, and consistent potty breaks...",
+    "tags": ["dog", "adult", "daily"]
+  },
+  {
+    "id": "guide_dachshund_back",
+    "species": "dog",
+    "breed": "dachshund",
+    "title": "Dachshund back safety",
+    "content": "Dachshunds are prone to back issues. Avoid stairs, jumping on/off furniture, and rough play. Use ramps where possible...",
+    "tags": ["dog", "dachshund", "health"]
+  },
+  {
+    "id": "guide_anxious_dog",
+    "species": "dog",
+    "title": "Care tips for anxious dogs",
+    "content": "Anxious dogs benefit from predictable routines, gradual departures, calming enrichment, and a quiet, safe space...",
+    "tags": ["dog", "anxious", "behavior"]
+  }
+]
