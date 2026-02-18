@@ -158,203 +158,195 @@ nav a:hover::after {
   border: 1px solid #fff;
 }
 
-/* QUESTIONNAIRE SECTION — GREEN → TEAL GRADIENT */
-#pet-concierge {
-  padding: 2rem;
-  margin-top: 2rem;
-  background: linear-gradient(to bottom, var(--green), var(--teal));
-  color: white;
-  border-radius: 1rem;
+/* LAYOUT + CARDS */
+main {
+  padding: 2.5rem 8vw;
 }
 
-#pet-concierge h2 {
-  color: white;
+section {
+  margin-bottom: 2.5rem;
+}
+
+h2 {
+  font-size: 1.6rem;
   margin-bottom: 1rem;
-}
-
-#pet-concierge form label {
-  display: block;
-  margin: 0.7rem 0;
-}
-
-#pet-concierge input,
-#pet-concierge select,
-#pet-concierge textarea {
-  width: 100%;
-  padding: 0.6rem;
-  border-radius: 0.4rem;
-  border: none;
-  margin-top: 0.3rem;
-}
-
-#pet-concierge button {
-  background: var(--yellow);
   color: var(--brown);
-  padding: 0.8rem 1.4rem;
-  border-radius: 0.5rem;
-  border: none;
-  cursor: pointer;
+}
+
+.section-card {
+  background: #fff;
+  border-radius: 1rem;
+  padding: 1.5rem 1.7rem;
+  box-shadow: 0 10px 26px rgba(0,0,0,0.12);
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 1.5rem;
+}
+
+/* PRICING */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  background: #faf5ec;
+  border-radius: 0.8rem;
+  padding: 1rem;
+}
+
+.price {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--green);
+  margin: 0.25rem 0;
+}
+
+.muted {
+  font-size: 0.9rem;
+  color: #6b625a;
+}
+
+/* TESTIMONIALS */
+.testimonials {
+  background: linear-gradient(135deg, var(--green), var(--teal));
+  padding: 2.5rem 8vw;
+  color: #fff;
+}
+
+.testimonials-inner {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.2rem;
   margin-top: 1rem;
 }
 
-#results {
-  background: white;
-  color: var(--text);
+.testimonial {
+  background: rgba(0,0,0,0.12);
+  border-radius: 0.8rem;
   padding: 1rem;
-  border-radius: 0.7rem;
-  margin-top: 1.5rem;
-}
-  <style>
-:root {
-  --brown: #5b3b2a;
-  --yellow: #f7d87c;
-  --green: #3f6b4a;
-  --teal: #1fa7a1;
-  --cream: #faf5ec;
-  --text: #2b241f;
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  color: var(--text);
-  background: var(--cream);
-  line-height: 1.6;
-}
-
-/* HEADER */
-header {
-  background: linear-gradient(90deg, var(--brown), var(--green));
-  color: #fff;
-  padding: 0.6rem 6vw;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: sticky;
-  top: 0;
-  z-index: 20;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.logo-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 999px;
-  background: var(--yellow);
-  position: relative;
-  overflow: hidden;
-}
-
-.logo-text-main {
-  font-weight: 700;
-  letter-spacing: 0.03em;
-  font-size: 1.1rem;
-}
-
-nav a {
-  color: #fff;
-  text-decoration: none;
-  margin-left: 1.2rem;
   font-size: 0.95rem;
-  position: relative;
 }
 
-nav a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -4px;
-  width: 0;
-  height: 2px;
-  background: var(--yellow);
-  transition: width 0.2s ease;
+/* CALENDAR */
+.calendar-container {
+  display: grid;
+  grid-template-columns: minmax(0, 220px) minmax(0, 1fr);
+  gap: 1rem;
+  align-items: flex-start;
 }
 
-nav a:hover::after {
-  width: 100%;
+.availability-results {
+  background: #faf5ec;
+  border-radius: 0.8rem;
+  padding: 1rem;
+  min-height: 80px;
 }
 
-/* HERO */
-.hero {
-  position: relative;
-  height: 70vh;
-  min-height: 420px;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-}
-
-.hero video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(0.7);
-}
-
-.hero-overlay {
-  position: relative;
-  z-index: 2;
+/* FOOTER */
+footer {
+  padding: 1rem 8vw;
+  font-size: 0.85rem;
+  color: #777;
   text-align: center;
-  padding: 0 8vw;
+  border-top: 1px solid #e2d7c7;
 }
 
-.hero-title {
-  font-size: clamp(2.4rem, 4vw, 3.4rem);
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-bottom: 0.6rem;
-}
-
-.hero-subtitle {
-  font-size: 1.05rem;
-  max-width: 32rem;
-  margin: 0 auto 1.5rem;
-}
-
-.hero-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-}
-
-.btn {
-  display: inline-block;
-  padding: 0.7rem 1.4rem;
-  border-radius: 999px;
+/* CHATBOT */
+.chatbot-toggle {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  background: var(--teal);
+  color: #fff;
   border: none;
+  border-radius: 999px;
+  padding: 0.7rem 1.2rem;
   cursor: pointer;
-  font-size: 0.95rem;
-  text-decoration: none;
-  transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.2s ease;
-  white-space: nowrap;
-}
-
-.btn-primary {
-  background: var(--yellow);
-  color: var(--brown);
+  font-size: 0.9rem;
   box-shadow: 0 8px 18px rgba(0,0,0,0.25);
 }
 
-.btn-outline {
-  background: transparent;
+.chatbot-window {
+  position: fixed;
+  bottom: 4.5rem;
+  right: 1.5rem;
+  width: 280px;
+  max-height: 380px;
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 10px 26px rgba(0,0,0,0.25);
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.chatbot-header {
+  background: var(--green);
   color: #fff;
-  border: 1px solid #fff;
+  padding: 0.5rem 0.75rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chatbot-body {
+  padding: 0.5rem 0.75rem;
+  flex: 1;
+  overflow-y: auto;
+  font-size: 0.9rem;
+}
+
+.chatbot-input {
+  display: flex;
+  gap: 0.4rem;
+  padding: 0.5rem 0.75rem;
+  border-top: 1px solid #eee;
+}
+
+.chatbot-input input {
+  flex: 1;
+  padding: 0.4rem 0.5rem;
+  border-radius: 999px;
+  border: 1px solid #ddd;
+  font-size: 0.9rem;
+}
+
+.chatbot-input button {
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  border: none;
+  background: var(--teal);
+  color: #fff;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.msg {
+  margin-bottom: 0.4rem;
+}
+
+.msg span {
+  display: inline-block;
+  padding: 0.35rem 0.6rem;
+  border-radius: 0.8rem;
+  max-width: 90%;
+}
+
+.msg.bot span {
+  background: #f0f8ff;
+}
+
+.msg.user {
+  text-align: right;
+}
+
+.msg.user span {
+  background: #e0f7f4;
 }
 
 /* QUESTIONNAIRE SECTION — GREEN → TEAL GRADIENT */
@@ -413,14 +405,13 @@ nav a:hover::after {
     <div class="logo-icon"></div>
     <div class="logo-text-main">Snuggle & Stroll</div>
   </div>
- <nav>
-  <a href="#contact">Contact</a>
-  <a href="#about">About</a>
-  <a href="schedule.html">Scheduling</a>
-  <a href="#pricing">Pricing</a>
-  <a href="mypet.html" id="myPetNav" style="display:none;">My Pet</a>
-</nav>
-  
+  <nav>
+    <a href="#contact">Contact</a>
+    <a href="#about">About</a>
+    <a href="schedule.html">Scheduling</a>
+    <a href="#pricing">Pricing</a>
+    <a href="mypet.html" id="myPetNav" style="display:none;">My Pet</a>
+  </nav>
 </header>
 
 <section class="hero">
@@ -438,22 +429,22 @@ nav a:hover::after {
   </div>
 </section>
 
-<!-- ⭐ QUESTIONNAIRE SECTION (B1 placement) -->
+<main>
+
+<!-- QUESTIONNAIRE -->
 <section id="pet-concierge">
   <h2>Pet Care Questionnaire</h2>
-    <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:0.75rem;">
+
+  <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:0.75rem;">
     <div style="font-size:1.4rem;">🐶 🐱 🐾</div>
     <p style="margin:0; font-size:0.9rem;">
       Answer a few quick questions to build your pet’s profile and get sitter recommendations.
     </p>
   </div>
 
-  <!-- Progress bar -->
   <div id="pet-progress" style="width:100%; background:rgba(255,255,255,0.25); border-radius:999px; overflow:hidden; height:10px; margin-bottom:1rem;">
     <div id="pet-progress-bar" style="width:0%; height:100%; background:#f7d87c; transition:width 0.3s ease;"></div>
   </div>
-
-  <p>Not sure what your pet needs? Fill this out and we'll suggest a daily routine and sitter match.</p>
 
   <form id="pet-form">
 
@@ -561,7 +552,8 @@ nav a:hover::after {
     <div id="sitter-match"></div>
   </div>
 </section>
-<!-- ⭐ PRICING SECTION -->
+
+<!-- PRICING -->
 <section id="pricing">
   <h2>Pricing</h2>
   <div class="section-card">
@@ -595,7 +587,6 @@ nav a:hover::after {
   </div>
 </section>
 
-<!-- ⭐ BUTTON UNDER PRICING -->
 <div style="text-align:center; margin-top: 1.5rem;">
   <a href="#pet-concierge"
      style="background:#1fa7a1; padding:0.8rem 1.5rem; color:white;
@@ -604,7 +595,7 @@ nav a:hover::after {
   </a>
 </div>
 
-<!-- ⭐ SCHEDULING SECTION -->
+<!-- SCHEDULING -->
 <section id="schedule">
   <h2>Scheduling</h2>
 
@@ -629,7 +620,6 @@ nav a:hover::after {
   </div>
 </section>
 
-<!-- ⭐ BUTTON UNDER SCHEDULING -->
 <div style="text-align:center; margin-top: 1.5rem;">
   <a href="#pet-concierge"
      style="background:#3f6b4a; padding:0.8rem 1.5rem; color:white;
@@ -637,7 +627,8 @@ nav a:hover::after {
     Not sure what your pet needs? Try our Pet Care Questionnaire!
   </a>
 </div>
-<!-- ⭐ ABOUT SECTION -->
+
+<!-- ABOUT -->
 <section id="about">
   <h2>About Snuggle & Stroll</h2>
   <div class="section-card two-col">
@@ -667,7 +658,7 @@ nav a:hover::after {
   </div>
 </section>
 
-<!-- ⭐ TESTIMONIALS -->
+<!-- TESTIMONIALS -->
 <section class="testimonials">
   <div class="section-card" style="background: transparent; box-shadow: none; color: #fff;">
     <h2 style="color:#fff;">What our clients say</h2>
@@ -694,7 +685,7 @@ nav a:hover::after {
   </div>
 </section>
 
-<!-- ⭐ AVAILABILITY CALENDAR -->
+<!-- AVAILABILITY -->
 <section id="availability">
   <h2>Check Availability</h2>
   <div class="section-card">
@@ -716,7 +707,7 @@ nav a:hover::after {
   </p>
 </section>
 
-<!-- ⭐ QUICK SCHEDULING FORM -->
+<!-- QUICK SCHEDULING -->
 <section id="quick-schedule">
   <h2>Quick Scheduling Form</h2>
   <div class="section-card">
@@ -763,7 +754,7 @@ nav a:hover::after {
   </div>
 </section>
 
-<!-- ⭐ CONTACT SECTION -->
+<!-- CONTACT -->
 <section id="contact">
   <h2>Contact</h2>
   <div class="section-card two-col">
@@ -795,12 +786,10 @@ nav a:hover::after {
 
 </main>
 
-<!-- ⭐ FOOTER -->
 <footer>
   &copy; <span id="year"></span> Snuggle & Stroll. All rights reserved.
 </footer>
 
-<!-- ⭐ CHATBOT -->
 <button class="chatbot-toggle" id="chatbotToggle">Chat with us</button>
 
 <div class="chatbot-window" id="chatbotWindow">
@@ -819,13 +808,12 @@ nav a:hover::after {
     <button id="chatbotSend">Send</button>
   </div>
 </div>
+
 <script>
-// YEAR IN FOOTER
+// YEAR
 document.getElementById('year').textContent = new Date().getFullYear();
 
-/* ------------------------------
-   AVAILABILITY CALENDAR LOGIC
------------------------------- */
+/* AVAILABILITY CALENDAR */
 const sitterData = {
   "2026-02-16": [
     { name: "Maya Thompson", times: "8 AM, 11 AM, 3 PM" },
@@ -863,9 +851,7 @@ calendarInput.addEventListener("change", () => {
   resultsBox.innerHTML = sitters;
 });
 
-/* ------------------------------
-   CHATBOT LOGIC
------------------------------- */
+/* CHATBOT */
 const toggle = document.getElementById('chatbotToggle');
 const windowEl = document.getElementById('chatbotWindow');
 const closeBtn = document.getElementById('chatbotClose');
@@ -931,17 +917,13 @@ inputEl.addEventListener('keydown', (e) => {
   }
 });
 
-/* ------------------------------
-   QUICK SCHEDULING FORM
------------------------------- */
+/* QUICK SCHEDULING FORM */
 document.getElementById("quickScheduleForm").addEventListener("submit", function(e) {
   e.preventDefault();
   document.getElementById("qs-confirm").style.display = "block";
 });
 
-/* ------------------------------
-   QUESTIONNAIRE LOGIC
------------------------------- */
+/* QUESTIONNAIRE LOGIC */
 async function loadCareGuides() {
   try {
     const response = await fetch('data/care_guides.json');
@@ -996,7 +978,7 @@ function buildCarePlanHtml(pet, guides) {
   return html;
 }
 
-// Simple sitter matching based on energy, temperament, and service
+// sitter matching
 function buildSitterMatchHtml(pet) {
   const energy = (pet.energy || "").toLowerCase();
   const temperament = (pet.temperament || "").toLowerCase();
@@ -1006,27 +988,26 @@ function buildSitterMatchHtml(pet) {
   let sitterBio = "Calm, experienced sitter comfortable with a wide range of dogs and cats.";
   let specialties = "General pet care, routine walks, and in-home visits.";
 
- if (energy === "high") {
-  sitterName = "Maya Thompson";
-  sitterBio = "High-energy dog walker who loves long, structured walks and enrichment games.";
-  specialties = "High-energy dogs, structured walks, and mental enrichment.";
+  if (energy === "high") {
+    sitterName = "Maya Thompson";
+    sitterBio = "High-energy dog walker who loves long, structured walks and enrichment games.";
+    specialties = "High-energy dogs, structured walks, and mental enrichment.";
 
-} else if (temperament.includes("anxious")) {
-  sitterName = "Samira Patel";
-  sitterBio = "Gentle, patient sitter who specializes in anxious and sensitive pets.";
-  specialties = "Anxious dogs, slow introductions, and predictable routines.";
+  } else if (temperament.includes("anxious")) {
+    sitterName = "Samira Patel";
+    sitterBio = "Gentle, patient sitter who specializes in anxious and sensitive pets.";
+    specialties = "Anxious dogs, slow introductions, and predictable routines.";
 
-} else if (temperament.includes("shy")) {
-  sitterName = "Jordan Lee";
-  sitterBio = "Soft-spoken sitter who takes things at your pet’s pace.";
-  specialties = "Shy dogs, slow warm-ups, and low-stress visits.";
+  } else if (temperament.includes("shy")) {
+    sitterName = "Jordan Lee";
+    sitterBio = "Soft-spoken sitter who takes things at your pet’s pace.";
+    specialties = "Shy dogs, slow warm-ups, and low-stress visits.";
 
-} else if (service.includes("overnight")) {
-  sitterName = "Riley Chen";
-  sitterBio = "Overnight specialist who keeps your pet’s routine consistent while you’re away.";
-  specialties = "Overnight stays, medication reminders, and detailed updates.";
-}
-
+  } else if (service.includes("overnight")) {
+    sitterName = "Riley Chen";
+    sitterBio = "Overnight specialist who keeps your pet’s routine consistent while you’re away.";
+    specialties = "Overnight stays, medication reminders, and detailed updates.";
+  }
 
   return `
     <div style="background:#f0f8ff; padding:1rem; border-radius:6px; display:flex; gap:0.75rem; align-items:flex-start;">
@@ -1040,7 +1021,7 @@ function buildSitterMatchHtml(pet) {
   `;
 }
 
-// Progress bar logic
+// Progress bar
 const petForm = document.getElementById('pet-form');
 const progressBar = document.getElementById('pet-progress-bar');
 const myPetNav = document.getElementById('myPetNav');
@@ -1075,7 +1056,6 @@ document.getElementById('pet-form').addEventListener('submit', async function (e
   document.getElementById('sitter-match').innerHTML = sitterHtml;
   document.getElementById('results').style.display = 'block';
 
-  // Save to localStorage for My Pet page
   const profile = {
     pet,
     carePlanHtml,
@@ -1084,15 +1064,12 @@ document.getElementById('pet-form').addEventListener('submit', async function (e
   };
   localStorage.setItem('snugglePetProfile', JSON.stringify(profile));
 
-  // Reveal "My Pet" nav tab
   if (myPetNav) {
     myPetNav.style.display = 'inline-block';
   }
 
-  // Fill progress bar to 100%
   progressBar.style.width = '100%';
 });
-
 </script>
 </body>
 </html>
