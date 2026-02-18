@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Schedule a Visit – Snuggle & Stroll</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --brown: #5b3b2a;
+      --yellow: #f7d87c;
+      --green: #3f6b4a;
+      --teal: #1fa7a1;
+      --cream: #faf5ec;
+      --text: #2b241f;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(90deg, var(--brown), var(--green));
+      color: #fff;
+      padding: 0.7rem 6vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      background: var(--yellow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .logo-icon::before {
+      content: "";
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--brown);
+      left: 9px;
+      bottom: 8px;
+    }
+
+    .logo-icon::after {
+      content: "";
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--green);
+      right: 7px;
+      bottom: 10px;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 1.2rem;
+      font-size: 0.95rem;
+    }
+
+    main {
+      padding: 3rem 8vw;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--brown);
+    }
+
+    .section-card {
+      background: #fff;
+      padding: 1.7rem;
+      border-radius: 1rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+      margin-bottom: 2rem;
+    }
+
+    label {
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+      display: block;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 0.7rem;
+      border-radius: 0.5rem;
+      border: 1px solid #ccc;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+
+    button {
+      background: var(--teal);
+      color: #fff;
+      border: none;
+      padding: 0.8rem 1.4rem;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    button:hover {
+      background: #178c88;
+    }
+
+    .confirmation {
+      display: none;
+      background: #e8f7f6;
+      border-left: 4px solid var(--teal);
+      padding: 1rem;
+      border-radius: 0.5rem;
+      margin-top: 1rem;
+      color: var(--green);
+      font-weight: 600;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      color: #777;
+      margin-top: 3rem;
+    }
+
+    /* Chatbot */
+    .chatbot-toggle {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 50;
+      background: var(--teal);
+      color: #fff;
+      border-radius: 999px;
+      padding: 0.7rem 1rem;
+      border: none;
+      cursor: pointer;
+      font-size: 0.9rem;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+    }
+
+    .chatbot-window {
+      position: fixed;
+      bottom: 4.5rem;
+      right: 1.5rem;
+      width: 280px;
+      max-height: 360px;
+      background: #fff;
+      border-radius: 1rem;
+      box-shadow: 0 10px 26px rgba(0,0,0,0.3);
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      z-index: 50;
+    }
+
+    .chatbot-header {
+      background: var(--green);
+      color: #fff;
+      padding: 0.6rem 0.8rem;
+      font-size: 0.9rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .chatbot-body {
+      padding: 0.6rem;
+      flex: 1;
+      overflow-y: auto;
+      font-size: 0.85rem;
+      background: #f7f3ea;
+    }
+
+    .chatbot-input {
+      display: flex;
+      border-top: 1px solid #ddd;
+    }
+
+    .chatbot-input input {
+      flex: 1;
+      border: none;
+      padding: 0.5rem 0.6rem;
+      font-size: 0.85rem;
+    }
+
+    .chatbot-input button {
+      border: none;
+      background: var(--teal);
+      color: #fff;
+      padding: 0.5rem 0.7rem;
+      font-size: 0.85rem;
+      cursor: pointer;
+    }
+
+    .msg {
+      margin-bottom: 0.4rem;
+      max-width: 90%;
+    }
+
+    .msg.user {
+      text-align: right;
+    }
+
+    .msg.user span {
+      background: var(--teal);
+      color: #fff;
+      border-radius: 12px 12px 0 12px;
+      padding: 0.3rem 0.6rem;
+      display: inline-block;
+    }
+
+    .msg.bot span {
+      background: #fff;
+      border-radius: 12px 12px 12px 0;
+      padding: 0.3rem 0.6rem;
+      display: inline-block;
+      border: 1px solid #e0d4c3;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">
+    <div class="logo-icon"></div>
+    <div class="logo-text-main">Snuggle & Stroll</div>
+  </div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="index.html#pricing">Pricing</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#contact">Contact</a>
+  </nav>
+</header>
+
+<main>
+  <h1>Schedule a Visit</h1>
+
+  <div class="section-card">
+    <label for="date">Choose a date</label>
+    <input type="date" id="date" />
+
+    <label for="time">Choose a time</label>
+    <select id="time">
+      <option value="">Select a time</option>
+      <option>7:00 AM</option>
+      <option>8:00 AM</option>
+      <option>10:00 AM</option>
+      <option>12:00 PM</option>
+      <option>2:00 PM</option>
+      <option>4:00 PM</option>
+      <option>6:00 PM</option>
+    </select>
+
+    <label for="sitter">Choose a sitter</label>
+    <select id="sitter">
+      <option value="">Select a sitter</option>
+      <option>Maya Thompson</option>
+      <option>Jordan Lee</option>
+      <option>Riley Chen</option>
+      <option>Samira Patel</option>
+      <option>Dylan Brooks</option>
+    </select>
+
+    <label for="notes">Additional notes</label>
+    <textarea id="notes" placeholder="Tell us anything important about your pet..."></textarea>
+
+    <button id="submit">Request Booking</button>
+
+    <div class="confirmation" id="confirmation">
+      Your request has been submitted! A Snuggle & Stroll team member will contact you shortly.
+    </div>
+  </div>
+</main>
+
+<footer>
+  &copy; <span id="year"></span> Snuggle & Stroll. All rights reserved.
+</footer>
+
+<button class="chatbot-toggle" id="chatbotToggle">Chat with us</button>
+
+<div class="chatbot-window" id="chatbotWindow">
+  <div class="chatbot-header">
+    <span>SnuggleBot</span>
+    <button style="background:none;border:none;color:#fff;font-size:1rem;cursor:pointer;" id="chatbotClose">×</button>
+  </div>
+  <div class="chatbot-body" id="chatbotBody">
+    <div class="msg bot"><span>Hi! Need help scheduling a visit?</span></div>
+  </div>
+  <div class="chatbot-input">
+    <input type="text" id="chatbotInput" placeholder="Type a message..." />
+    <button id="chatbotSend">Send</button>
+  </div>
+</div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  document.getElementById("submit").addEventListener("click", () => {
+    const date = document.getElementById("date").value;
+    const time = document.getElementById("time").value;
+    const sitter = document.getElementById("sitter").value;
+
+    if (!date || !time || !sitter) {
+      alert("Please select a date, time, and sitter.");
+      return;
+    }
+
+    document.getElementById("confirmation").style.display = "block";
+  });
+
+  const toggle = document.getElementById('chatbotToggle');
+  const windowEl = document.getElementById('chatbotWindow');
+  const closeBtn = document.getElementById('chatbotClose');
+  const bodyEl = document.getElementById('chatbotBody');
+  const inputEl = document.getElementById('chatbotInput');
+  const sendBtn = document.getElementById('chatbotSend');
+
+  function addMessage(text, from) {
+    const div = document.createElement('div');
+    div.className = 'msg ' + from;
+    const span = document.createElement('span');
+    span.textContent = text;
+    div.appendChild(span);
+    bodyEl.appendChild(div);
+    bodyEl.scrollTop = bodyEl.scrollHeight;
+  }
+
+  function botReply(userText) {
+    const t = userText.toLowerCase();
+    if (t.includes("schedule") || t.includes("book")) {
+      return "To schedule, choose a date, time, and sitter — then submit your request!";
+    }
+    if (t.includes("time") || t.includes("availability")) {
+      return "We offer visits from 7 AM to 6 PM. Pick any available slot!";
+    }
+    if (t.includes("sitter")) {
+      return "Our sitters include Maya, Jordan, Riley, Samira, and Dylan.";
+    }
+    return "I’m here to help with scheduling! Ask me anything.";
+  }
+
+  toggle.addEventListener('click', () => {
+    windowEl.style.display = windowEl.style.display === 'flex' ? 'none' : 'flex';
+  });
+
+  closeBtn.addEventListener('click', () => {
+    windowEl.style.display = 'none';
+  });
+
+  function handleSend() {
+    const text = inputEl.value.trim();
+    if (!text) return;
+    addMessage(text, 'user');
+    inputEl.value = '';
+    setTimeout(() => {
+      addMessage(botReply(text), 'bot');
+    }, 400);
+  }
+
+  sendBtn.addEventListener('click', handleSend);
+  inputEl.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      handleSend();
+    }
+  });
+</script>
+
+</body>
+</html>
