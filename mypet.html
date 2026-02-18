@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>My Pet – Snuggle & Stroll</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<style>
+  :root {
+    --brown: #5b3b2a;
+    --yellow: #f7d87c;
+    --green: #3f6b4a;
+    --teal: #1fa7a1;
+    --cream: #faf5ec;
+    --text: #2b241f;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  header {
+    background: linear-gradient(90deg, var(--brown), var(--green));
+    color: #fff;
+    padding: 0.6rem 6vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo-text-main {
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    font-size: 1.1rem;
+  }
+
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 1.2rem;
+    font-size: 0.95rem;
+  }
+
+  main {
+    flex: 1;
+    padding: 2.5rem 8vw;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    font-size: 1.9rem;
+    margin-bottom: 1rem;
+    color: var(--brown);
+  }
+
+  .pet-card {
+    background: #fff;
+    border-radius: 1.2rem;
+    padding: 1.5rem 1.7rem;
+    box-shadow: 0 10px 26px rgba(0,0,0,0.12);
+    display: grid;
+    grid-template-columns: minmax(0, 220px) minmax(0, 1fr);
+    gap: 1.5rem;
+    align-items: flex-start;
+    opacity: 0;
+    transform: translateY(12px);
+    animation: fadeUp 0.5s ease forwards;
+  }
+
+  @keyframes fadeUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .pet-illustration {
+    background: linear-gradient(135deg, var(--green), var(--teal));
+    border-radius: 1rem;
+    padding: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+  }
+
+  .pet-emoji {
+    font-size: 3.2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .pet-name {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+  }
+
+  .pet-tagline {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    text-align: center;
+  }
+
+  .pet-details {
+    font-size: 0.95rem;
+  }
+
+  .pet-details h2 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--green);
+  }
+
+  .pet-details ul {
+    list-style: none;
+    margin: 0 0 0.75rem 0;
+    padding: 0;
+  }
+
+  .pet-details li {
+    margin-bottom: 0.25rem;
+  }
+
+  .section-block {
+    margin-top: 1rem;
+  }
+
+  .section-block h3 {
+    font-size: 1.05rem;
+    margin-bottom: 0.3rem;
+    color: var(--brown);
+  }
+
+  .section-block p {
+    font-size: 0.95rem;
+  }
+
+  .empty-state {
+    text-align: center;
+    margin-top: 3rem;
+    font-size: 1rem;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+    text-decoration: none;
+    background: var(--teal);
+    color: #fff;
+    margin-top: 1rem;
+  }
+
+  footer {
+    padding: 1rem 8vw;
+    font-size: 0.85rem;
+    color: #777;
+    text-align: center;
+    border-top: 1px solid #e2d7c7;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo-text-main">Snuggle &amp; Stroll</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="schedule.html">Scheduling</a>
+    <a href="index.html#contact">Contact</a>
+  </nav>
+</header>
+
+<main>
+  <h1>My Pet Profile</h1>
+  <div id="petProfileContainer"></div>
+</main>
+
+<footer>
+  &copy; <span id="year"></span> Snuggle &amp; Stroll. All rights reserved.
+</footer>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+function getPetEmoji(species) {
+  const s = (species || "").toLowerCase();
+  if (s === "dog") return "🐶";
+  if (s === "cat") return "🐱";
+  return "🐾";
+}
+
+function getTagline(pet) {
+  const energy = (pet.energy || "").toLowerCase();
+  const temperament = (pet.temperament || "").toLowerCase();
+
+  if (energy === "high") return "High-energy buddy who thrives on adventure and structure.";
+  if (temperament.includes("anxious") || temperament.includes("shy")) return "Sensitive soul who shines with gentle, predictable care.";
+  return "Happy companion who loves a steady routine and kind humans.";
+}
+
+const container = document.getElementById('petProfileContainer');
+const raw = localStorage.getItem('snugglePetProfile');
+
+if (!raw) {
+  container.innerHTML = `
+    <div class="empty-state">
+      <p>No pet profile found yet.</p>
+      <p>Fill out the questionnaire on the home page to create your pet's profile.</p>
+      <a href="index.html#pet-concierge" class="btn">Go to questionnaire</a>
+    </div>
+  `;
+} else {
+  const profile = JSON.parse(raw);
+  const pet = profile.pet || {};
+  const carePlanHtml = profile.carePlanHtml || "";
+  const sitterHtml = profile.sitterHtml || "";
+
+  const emoji = getPetEmoji(pet.species);
+  const tagline = getTagline(pet);
+
+  container.innerHTML = `
+    <div class="pet-card">
+      <div class="pet-illustration">
+        <div class="pet-emoji">${emoji}</div>
+        <div class="pet-name">${pet.name || "Your pet"}</div>
+        <div class="pet-tagline">${tagline}</div>
+      </div>
+
+      <div class="pet-details">
+        <h2>Profile details</h2>
+        <ul>
+          <li><strong>Species:</strong> ${pet.species || "—"}</li>
+          <li><strong>Breed:</strong> ${pet.breed || "—"}</li>
+          <li><strong>Age:</strong> ${pet.age || "—"} years</li>
+          <li><strong>Weight:</strong> ${pet.weight || "—"} lbs</li>
+          <li><strong>Energy level:</strong> ${pet.energy || "—"}</li>
+          <li><strong>Temperament:</strong> ${pet.temperament || "—"}</li>
+          <li><strong>Home type:</strong> ${pet.home_type || "—"}</li>
+          <li><strong>Service needed:</strong> ${pet.service_type || "—"}</li>
+        </ul>
+
+        <div class="section-block">
+          <h3>Care plan</h3>
+          ${carePlanHtml}
+        </div>
+
+        <div class="section-block">
+          <h3>Sitter match</h3>
+          ${sitterHtml}
+        </div>
+
+        <button class="btn" onclick="clearProfile()">Clear profile</button>
+      </div>
+    </div>
+  `;
+}
+
+function clearProfile() {
+  localStorage.removeItem('snugglePetProfile');
+  location.reload();
+}
+</script>
+</body>
+</html>
