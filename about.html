@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>About – Snuggle & Stroll</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --brown: #5b3b2a;
+      --yellow: #f7d87c;
+      --green: #3f6b4a;
+      --teal: #1fa7a1;
+      --cream: #faf5ec;
+      --text: #2b241f;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(90deg, var(--brown), var(--green));
+      color: #fff;
+      padding: 0.7rem 6vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      background: var(--yellow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .logo-icon::before {
+      content: "";
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--brown);
+      left: 9px;
+      bottom: 8px;
+    }
+
+    .logo-icon::after {
+      content: "";
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--green);
+      right: 7px;
+      bottom: 10px;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 1.2rem;
+      font-size: 0.95rem;
+    }
+
+    main {
+      padding: 3rem 8vw;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--brown);
+    }
+
+    .section-card {
+      background: #fff;
+      padding: 1.7rem;
+      border-radius: 1rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+      margin-bottom: 2rem;
+    }
+
+    h2 {
+      color: var(--green);
+      margin-bottom: 0.8rem;
+      font-size: 1.4rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+    }
+
+    ul {
+      margin-left: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      color: #777;
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">
+    <div class="logo-icon"></div>
+    <div class="logo-text-main">Snuggle & Stroll</div>
+  </div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="schedule.html">Scheduling</a>
+    <a href="index.html#pricing">Pricing</a>
+    <a href="index.html#contact">Contact</a>
+  </nav>
+</header>
+
+<main>
+  <h1>Our Story</h1>
+
+  <div class="section-card">
+    <h2>Where it all began</h2>
+    <p>
+      Snuggle & Stroll started with one simple belief: pets deserve care that feels like home. 
+      No kennels. No stress. No cold, unfamiliar environments. Just warmth, routine, and genuine companionship.
+    </p>
+    <p>
+      As a lifelong dog owner, I always struggled to find care that felt personal and trustworthy. 
+      So I built the service I wished existed — one where pets stay in their own space, 
+      with sitters who treat them like family.
+    </p>
+  </div>
+
+  <div class="section-card">
+    <h2>Our mission</h2>
+    <p>
+      We’re here to make pet care feel effortless, safe, and heart‑centered. 
+      Every sitter in our network is vetted, trained, and chosen for their compassion 
+      as much as their experience.
+    </p>
+    <ul>
+      <li>In‑home visits that reduce stress</li>
+      <li>Walks tailored to your pet’s pace and personality</li>
+      <li>Real‑time updates and photos</li>
+      <li>Custom routines for feeding, meds, and comfort</li>
+    </ul>
+  </div>
+  <div class="section-card">
+    <h2>What makes us different</h2>
+    <p>
+      Snuggle & Stroll isn’t a gig app — it’s a curated network of real pet lovers who are trained,
+      background‑checked, and supported by a hands‑on team. We focus on quality, consistency, and
+      building long‑term relationships with families.
+    </p>
+    <ul>
+      <li>We prioritize emotional comfort and routine</li>
+      <li>We match pets with sitters based on personality and needs</li>
+      <li>We offer flexible scheduling and transparent communication</li>
+      <li>We treat every pet like a member of our own family</li>
+    </ul>
+  </div>
+
+  <div class="section-card">
+    <h2>Meet the founder</h2>
+    <p>
+      Hi, I’m Ashleigh — lifelong dog mom, animal‑behavior nerd, and the heart behind Snuggle & Stroll.
+      I created this service because I believe pets deserve care that feels personal, calm, and deeply
+      attentive. Every detail of Snuggle & Stroll is designed with that philosophy in mind.
+    </p>
+    <p>
+      When I’m not working with pets, you’ll find me studying animal behavior, exploring new trails,
+      or curled up with my own pup on the balcony.
+    </p>
+  </div>
+
+  <div class="section-card">
+    <h2>Our values</h2>
+    <ul>
+      <li><strong>Compassion:</strong> Every pet is treated with patience, warmth, and respect.</li>
+      <li><strong>Trust:</strong> We communicate clearly and consistently with pet parents.</li>
+      <li><strong>Safety:</strong> Sitters are trained, vetted, and supported by our team.</li>
+      <li><strong>Joy:</strong> We believe pet care should feel happy — for pets and humans alike.</li>
+    </ul>
+  </div>
+  <div class="section-card">
+    <h2>How we choose our sitters</h2>
+    <p>
+      Every sitter in our network goes through a careful selection process. We look for people who are not only
+      experienced with animals, but who genuinely love what they do.
+    </p>
+    <ul>
+      <li>Background checks and identity verification</li>
+      <li>Hands‑on experience with dogs, cats, or small animals</li>
+      <li>Training in safety, routines, and communication</li>
+      <li>Commitment to compassionate, respectful care</li>
+    </ul>
+  </div>
+
+  <div class="section-card">
+    <h2>Looking ahead</h2>
+    <p>
+      Snuggle & Stroll is growing — and so is our vision. We’re building tools that make scheduling easier,
+      communication smoother, and care more personalized than ever.
+    </p>
+    <p>
+      Whether you're booking a walk, planning a trip, or just need someone to check in on your furry friend,
+      we’re here to make the process seamless and stress‑free.
+    </p>
+  </div>
+
+</main>
+
+<footer>
+  &copy; <span id="year"></span> Snuggle &amp; Stroll. All rights reserved.
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
