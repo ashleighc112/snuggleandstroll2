@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pricing – Snuggle & Stroll</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --brown: #5b3b2a;
+      --yellow: #f7d87c;
+      --green: #3f6b4a;
+      --teal: #1fa7a1;
+      --cream: #faf5ec;
+      --text: #2b241f;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(90deg, var(--brown), var(--green));
+      color: #fff;
+      padding: 0.7rem 6vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      background: var(--yellow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .logo-icon::before {
+      content: "";
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--brown);
+      left: 9px;
+      bottom: 8px;
+    }
+
+    .logo-icon::after {
+      content: "";
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--green);
+      right: 7px;
+      bottom: 10px;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 1.2rem;
+      font-size: 0.95rem;
+    }
+
+    main {
+      padding: 3rem 8vw;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--brown);
+    }
+
+    .section-card {
+      background: #fff;
+      padding: 1.7rem;
+      border-radius: 1rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+      margin-bottom: 2rem;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 1rem;
+      padding: 1.4rem 1.5rem;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.05);
+      border-top: 4px solid var(--teal);
+    }
+
+    .card h3 {
+      margin-bottom: 0.4rem;
+      color: var(--green);
+    }
+
+    .price {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      color: var(--brown);
+    }
+
+    .muted {
+      color: #777;
+      font-size: 0.9rem;
+      margin-bottom: 0.6rem;
+    }
+
+    ul {
+      margin-left: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      color: #777;
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">
+    <div class="logo-icon"></div>
+    <div class="logo-text-main">Snuggle & Stroll</div>
+  </div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="schedule.html">Scheduling</a>
+    <a href="about.html">About</a>
+    <a href="index.html#contact">Contact</a>
+  </nav>
+</header>
+
+<main>
+  <h1>Our Pricing</h1>
+
+  <div class="section-card">
+    <p>
+      We keep pricing simple, transparent, and flexible. No hidden fees — just high‑quality, heart‑led care for your pets.
+    </p>
+  </div>
+
+  <div class="section-card">
+    <h2 style="color:var(--green); margin-bottom:1rem;">Core Services</h2>
+
+    <div class="pricing-grid">
+      <div class="card">
+        <h3>Quick Walk</h3>
+        <p class="price">$22 / walk</p>
+        <p class="muted">30‑minute neighborhood walk</p>
+      </div>
+
+      <div class="card">
+        <h3>Standard Sit Visit</h3>
+        <p class="price">$38 / visit</p>
+        <p class="muted">45‑minute in‑home visit</p>
+      </div>
+
+      <div class="card">
+        <h3>Extended Stay</h3>
+        <p class="price">$95 / night</p>
+        <p class="muted">Overnight in‑home care</p>
+      </div>
+
+      <div class="card">
+        <h3>Multi‑Pet Add‑On</h3>
+        <p class="price">+ $8 / extra pet</p>
+        <p class="muted">Applied to any service</p>
+      </div>
+    </div>
+  </div>
+  <div class="section-card">
+    <h2 style="color:var(--green); margin-bottom:1rem;">Add‑Ons & Extras</h2>
+
+    <div class="pricing-grid">
+      <div class="card">
+        <h3>Medication Administration</h3>
+        <p class="price">$10</p>
+        <p class="muted">Per visit — oral or topical meds</p>
+      </div>
+
+      <div class="card">
+        <h3>Puppy Potty Break</h3>
+        <p class="price">$18</p>
+        <p class="muted">15‑minute quick check‑in</p>
+      </div>
+
+      <div class="card">
+        <h3>Holiday Surcharge</h3>
+        <p class="price">$12</p>
+        <p class="muted">Applies on major holidays</p>
+      </div>
+
+      <div class="card">
+        <h3>Key Pickup / Dropoff</h3>
+        <p class="price">$10</p>
+        <p class="muted">Optional convenience service</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <h2 style="color:var(--green); margin-bottom:1rem;">Bundles & Savings</h2>
+
+    <div class="pricing-grid">
+      <div class="card">
+        <h3>Weekly Walk Pack</h3>
+        <p class="price">$100</p>
+        <p class="muted">5 walks — save $10</p>
+      </div>
+
+      <div class="card">
+        <h3>Monthly Walk Pack</h3>
+        <p class="price">$380</p>
+        <p class="muted">20 walks — save $60</p>
+      </div>
+
+      <div class="card">
+        <h3>Travel Bundle</h3>
+        <p class="price">$160</p>
+        <p class="muted">2 visits/day for 2 days</p>
+      </div>
+
+      <div class="card">
+        <h3>Extended Overnight</h3>
+        <p class="price">$175</p>
+        <p class="muted">Two‑night discounted stay</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <h2 style="color:var(--green); margin-bottom:1rem;">What’s Included</h2>
+    <ul>
+      <li>Photo updates and visit summaries</li>
+      <li>Feeding, water refresh, and treats</li>
+      <li>Medication reminders (if applicable)</li>
+      <li>Light home care (mail, plants, lights)</li>
+      <li>Lots of love, snuggles, and attention</li>
+    </ul>
+  </div>
+  <div class="section-card">
+    <h2 style="color:var(--green); margin-bottom:1rem;">Policies & Notes</h2>
+    <ul>
+      <li>Cancellations within 24 hours may incur a small fee</li>
+      <li>Holiday rates apply on major U.S. holidays</li>
+      <li>Overnight stays include morning and evening routines</li>
+      <li>All services include photo updates and check‑ins</li>
+    </ul>
+  </div>
+
+  <div class="section-card">
+    <h2 style="color:var(--green); margin-bottom:1rem;">Ready to book?</h2>
+    <p>
+      You can schedule a walk, visit, or overnight stay directly through our booking page.
+      We’ll match you with a sitter who fits your pet’s needs and routine.
+    </p>
+    <a href="schedule.html" class="btn btn-primary" style="display:inline-block; margin-top:0.5rem;">
+      Go to Scheduling
+    </a>
+  </div>
+
+</main>
+
+<footer>
+  &copy; <span id="year"></span> Snuggle &amp; Stroll. All rights reserved.
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
