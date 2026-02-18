@@ -215,6 +215,7 @@ nav a:hover::after {
     <a href="#about">About</a>
     <a href="schedule.html">Scheduling</a>
     <a href="#pricing">Pricing</a>
+    <a href="mypet.html" id="myPetNav" style="display:none;">My Pet</a>
   </nav>
 </header>
 
@@ -236,6 +237,18 @@ nav a:hover::after {
 <!-- ⭐ QUESTIONNAIRE SECTION (B1 placement) -->
 <section id="pet-concierge">
   <h2>Pet Care Questionnaire</h2>
+    <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:0.75rem;">
+    <div style="font-size:1.4rem;">🐶 🐱 🐾</div>
+    <p style="margin:0; font-size:0.9rem;">
+      Answer a few quick questions to build your pet’s profile and get sitter recommendations.
+    </p>
+  </div>
+
+  <!-- Progress bar -->
+  <div id="pet-progress" style="width:100%; background:rgba(255,255,255,0.25); border-radius:999px; overflow:hidden; height:10px; margin-bottom:1rem;">
+    <div id="pet-progress-bar" style="width:0%; height:100%; background:#f7d87c; transition:width 0.3s ease;"></div>
+  </div>
+
   <p>Not sure what your pet needs? Fill this out and we'll suggest a daily routine and sitter match.</p>
 
   <form id="pet-form">
@@ -736,28 +749,28 @@ async function loadCareGuides() {
 }
 
 function pickRelevantGuides(careGuides, pet) {
-  const species = pet.species.toLowerCase();
+  const species = (pet.species || "").toLowerCase();
   const breed = (pet.breed || "").toLowerCase();
   const temperament = (pet.temperament || "").toLowerCase();
-  const energy = pet.energy.toLowerCase();
+  const energy = (pet.energy || "").toLowerCase();
 
   return careGuides.filter(g => {
-    if (g.species !== species) return false;
+    if (g.species && g.species !== species) return false;
     if (g.breed && breed.includes(g.breed)) return true;
-    if (energy === "high" && g.tags.includes("high_energy")) return true;
-    if (temperament.includes("anxious") && g.tags.includes("anxious")) return true;
-    return g.tags.includes("daily") || g.tags.includes("routine");
+    if (energy === "high" && g.tags && g.tags.includes("high_energy")) return true;
+    if (temperament.includes("anxious") && g.tags && g.tags.includes("anxious")) return true;
+    return g.tags && (g.tags.includes("daily") || g.tags.includes("routine"));
   });
 }
 
 function buildCarePlanHtml(pet, guides) {
   let html = `
-    <p><strong>Overview for ${pet.name}:</strong> Based on your answers, here is a suggested daily and weekly routine.</p>
+    <p><strong>Overview for ${pet.name || "your pet"}:</strong> Based on your answers, here is a suggested daily and weekly routine.</p>
 
     <h3>Daily Routine</h3>
     <ul>
       <li>Feed on a consistent schedule (morning & evening).</li>
-      <li>${pet.walks_per_day || 1} walk(s) per day, around ${pet.walk_length} each.</li>
+      <li>${pet.walks_per_day || 1} walk(s) per day, around ${pet.walk_length || "30 minutes"} each.</li>
       <li>At least one mental enrichment session daily (sniff walk, puzzle toy, training).</li>
     </ul>
 
@@ -779,15 +792,60 @@ function buildCarePlanHtml(pet, guides) {
   return html;
 }
 
+// Simple sitter matching based on energy, temperament, and service
 function buildSitterMatchHtml(pet) {
+  const energy = (pet.energy || "").toLowerCase();
+  const temperament = (pet.temperament || "").toLowerCase();
+  const service = (pet.service_type || "").toLowerCase();
+
+  let sitterName = "Jordan Lee";
+  let sitterBio = "Calm, experienced sitter comfortable with a wide range of dogs and cats.";
+  let specialties = "General pet care, routine walks, and in-home visits.";
+
+  if (energy === "high") {
+    sitterName = "Maya Thompson";
+    sitterBio = "High-energy dog walker who loves long, structured walks and enrichment games.";
+    specialties = "High-energy dogs, structured walks, and mental enrichment.";
+  } else if (temperament.includes("anxious") || temperament.includes("shy")) {
+    sitterName = "Samira Patel";
+    sitterBio = "Gentle, patient sitter who specializes in anxious and sensitive pets.";
+    specialties = "Anxious dogs, slow introductions, and predictable routines.";
+  } else if (service.includes("overnight")) {
+    sitterName = "Riley Chen";
+    sitterBio = "Overnight specialist who keeps your pet’s routine consistent while you’re away.";
+    specialties = "Overnight stays, medication reminders, and detailed updates.";
+  }
+
   return `
-    <div style="background:#f0f8ff; padding:1rem; border-radius:6px;">
-      <h4>Example Sitter Match</h4>
-      <p>For a ${pet.energy}-energy dog with temperament described as "${pet.temperament}", we recommend a sitter experienced with similar dogs.</p>
-      <p>In the full pilot, this section will show real sitter profiles from your RAG database.</p>
+    <div style="background:#f0f8ff; padding:1rem; border-radius:6px; display:flex; gap:0.75rem; align-items:flex-start;">
+      <div style="font-size:2rem;">🧑‍🦰</div>
+      <div>
+        <h4>${sitterName}</h4>
+        <p>${sitterBio}</p>
+        <p><strong>Specialties:</strong> ${specialties}</p>
+      </div>
     </div>
   `;
 }
+
+// Progress bar logic
+const petForm = document.getElementById('pet-form');
+const progressBar = document.getElementById('pet-progress-bar');
+const myPetNav = document.getElementById('myPetNav');
+
+const progressFields = Array.from(petForm.querySelectorAll('input, select, textarea'));
+
+function updateProgress() {
+  const filled = progressFields.filter(f => (f.value || "").trim() !== "").length;
+  const total = progressFields.length;
+  const percent = Math.round((filled / total) * 100);
+  progressBar.style.width = `${percent}%`;
+}
+
+progressFields.forEach(field => {
+  field.addEventListener('input', updateProgress);
+  field.addEventListener('change', updateProgress);
+});
 
 document.getElementById('pet-form').addEventListener('submit', async function (e) {
   e.preventDefault();
@@ -798,10 +856,31 @@ document.getElementById('pet-form').addEventListener('submit', async function (e
   const guides = await loadCareGuides();
   const relevant = pickRelevantGuides(guides, pet);
 
-  document.getElementById('care-plan').innerHTML = buildCarePlanHtml(pet, relevant);
-  document.getElementById('sitter-match').innerHTML = buildSitterMatchHtml(pet);
+  const carePlanHtml = buildCarePlanHtml(pet, relevant);
+  const sitterHtml = buildSitterMatchHtml(pet);
+
+  document.getElementById('care-plan').innerHTML = carePlanHtml;
+  document.getElementById('sitter-match').innerHTML = sitterHtml;
   document.getElementById('results').style.display = 'block';
+
+  // Save to localStorage for My Pet page
+  const profile = {
+    pet,
+    carePlanHtml,
+    sitterHtml,
+    createdAt: new Date().toISOString()
+  };
+  localStorage.setItem('snugglePetProfile', JSON.stringify(profile));
+
+  // Reveal "My Pet" nav tab
+  if (myPetNav) {
+    myPetNav.style.display = 'inline-block';
+  }
+
+  // Fill progress bar to 100%
+  progressBar.style.width = '100%';
 });
+
 </script>
 </body>
 </html>
