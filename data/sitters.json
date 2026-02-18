@@ -1,0 +1,36 @@
+[
+  {
+    "id": "sitter_001",
+    "name": "Sara",
+    "bio": "Specializes in senior dogs and medication administration. Calm, patient, and experienced with anxious pups.",
+    "location": "Dallas, TX",
+    "zip_codes": ["75201", "75202", "75204"],
+    "services": ["walks", "drop_ins", "overnights"],
+    "experience": {
+      "species": ["dog"],
+      "breeds": ["dachshund", "chihuahua", "mixed"],
+      "temperaments": ["anxious", "shy", "senior", "low_energy"]
+    },
+    "skills": ["medication", "senior_care"],
+    "price_tier": "medium",
+    "availability_notes": "Weeknights and weekends",
+    "max_weight_lbs": 60
+  },
+  {
+    "id": "sitter_002",
+    "name": "Jordan",
+    "bio": "High-energy walker, great with active and reactive dogs. Loves long walks and structured routines.",
+    "location": "Dallas, TX",
+    "zip_codes": ["75206", "75214"],
+    "services": ["walks", "daycare"],
+    "experience": {
+      "species": ["dog"],
+      "breeds": ["border collie", "husky", "shepherd"],
+      "temperaments": ["high_energy", "reactive", "working_breed"]
+    },
+    "skills": ["reactive_dogs", "training_support"],
+    "price_tier": "high",
+    "availability_notes": "Weekdays, early mornings and evenings",
+    "max_weight_lbs": 90
+  }
+]
