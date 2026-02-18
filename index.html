@@ -1,99 +1,291 @@
-<! DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<title>Snuggle & Stroll - Pet Sitting & Dog Walking</title>
+<title>Snuggle & Stroll – Pet Sitting & Dog Walking</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
 <style>
 :root {
--- brown: #5b3b2a;
--- yellow: #f7d87c;
--- green: #3f6b4a;
--- teal: #1fa7a1;
--- cream: #faf5ec;
--- text: #2b241f;
+--brown: #5b3b2a;
+--yellow: #f7d87c;
+--green: #3f6b4a;
+--teal: #1fa7a1;
+--cream: #faf5ec;
+--text: #2b241f;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+/* ===========================
+BASE STYLES
+=========================== */
+* { box-sizing: border-box; margin:0; padding:0; }
 body {
-font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-color: var(-- text);
-background: var(-- cream);
-line-height: 1.6;
+font-family: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+background: var(--cream);
+color: var(--text);
+line-height:1.6;
 }
 
-header {
-background: linear-gradient(90deg, var(-- brown), var(-- green));
-color: #fff;
-padding: 0.6rem 6vw;
-display: flex;
-align-items: center;
-justify-content: space-between;
-position: sticky;
-top: 0;
-z-index: 20;
+/* ===========================
+HEADER
+=========================== */
+header{
+background: linear-gradient(90deg,var(--brown),var(--green));
+color:#fff;
+padding:0.6rem 6vw;
+display:flex;
+justify-content:space-between;
+align-items:center;
+position:sticky;
+top:0;
+z-index:100;
 }
 
-.logo {
-display: flex;
-align-items: center;
-gap: 0.5rem;
-}
-.logo-icon {
-width: 40px;
-height: 40px;
-border-radius: 999px;
-background: var(-- yellow);
-position: relative;
-overflow: hidden;
-}
-.logo-icon :: before {
-content: "";
-position: absolute;
-width: 18px;
-height: 18px;
-border-radius: 50%;
-background: var(-- brown);
-left: 9px;
-bottom: 8px;
-}
-.logo-icon :: after {
-content: "";
-position: absolute;
-width: 14px;
-height: 14px;
-border-radius: 50%;
-background: var(-- green);
-right: 7px;
-bottom: 10px;
+.logo{
+display:flex;
+align-items:center;
+gap:0.5rem;
 }
 
-.logo-text-main {
-font-weight: 700;
-letter-spacing: 0.03em;
-font-size: 1.1rem;
+.logo-icon{
+width:40px;
+height:40px;
+border-radius:999px;
+background:var(--yellow);
+position:relative;
+overflow:hidden;
 }
 
-nav a {
-color: #fff;
-text-decoration: none;
-margin-left: 1.2rem;
-font-size: 0.95rem;
-position: relative;
+.logo-icon::before{
+content:"";
+position:absolute;
+width:18px;
+height:18px;
+border-radius:50%;
+background:var(--brown);
+left:9px;
+bottom:8px;
 }
 
-nav a :: after {
-content: "";
-position: absolute;
-left: 0;
-bottom: -4px;
-width: 0;
-height: 2px;
-background: var(-- yellow);
-transition: width 0.2s ease;
+.logo-icon::after{
+content:"";
+position:absolute;
+width:14px;
+height:14px;
+border-radius:50%;
+background:var(--green);
+right:7px;
+bottom:10px;
 }
-nav a:hover :: after {
-width: 100%;
+
+nav a{
+color:#fff;
+text-decoration:none;
+margin-left:1.2rem;
+font-size:0.95rem;
+position:relative;
+}
+
+nav a::after{
+content:"";
+position:absolute;
+left:0;
+bottom:-4px;
+width:0;
+height:2px;
+background:var(--yellow);
+transition:width .2s ease;
+}
+
+nav a:hover::after{ width:100%; }
+
+/* My Pet Button */
+#myPetNav{
+background:var(--yellow);
+color:var(--brown);
+padding:0.45rem 0.9rem;
+border-radius:999px;
+font-weight:600;
+margin-left:1.2rem;
+display:none;
+}
+
+/* ===========================
+HERO
+=========================== */
+.hero{
+position:relative;
+height:70vh;
+min-height:420px;
+overflow:hidden;
+display:flex;
+align-items:center;
+justify-content:center;
+color:#fff;
+}
+
+.hero video{
+position:absolute;
+inset:0;
+width:100%;
+height:100%;
+object-fit:cover;
+filter:brightness(0.7);
+}
+
+.hero-overlay{
+position:relative;
+z-index:2;
+text-align:center;
+padding:0 8vw;
+}
+
+.hero-title{
+font-size:clamp(2.4rem,4vw,3.4rem);
+font-weight:800;
+letter-spacing:0.08em;
+text-transform:uppercase;
+margin-bottom:0.6rem;
+}
+
+.hero-buttons{
+display:flex;
+gap:0.75rem;
+flex-wrap:wrap;
+justify-content:center;
+}
+
+.btn{
+display:inline-block;
+padding:0.7rem 1.4rem;
+border-radius:999px;
+border:none;
+cursor:pointer;
+font-size:0.95rem;
+text-decoration:none;
+white-space:nowrap;
+}
+
+.btn-primary{
+background:var(--yellow);
+color:var(--brown);
+}
+
+.btn-outline{
+background:transparent;
+border:1px solid #fff;
+color:#fff;
+}
+
+/* ===========================
+CUSTOM TAG STYLES
+=========================== */
+section-card{
+display:block;
+background:#fff;
+border-radius:1rem;
+padding:1.5rem 1.7rem;
+box-shadow:0 8px 20px rgba(0,0,0,0.06);
+margin-bottom:2rem;
+}
+
+testimonials{
+display:block;
+background:linear-gradient(90deg,var(--green),var(--teal));
+color:#fff;
+padding:3rem 8vw;
+}
+
+testimonial{
+display:block;
+max-width:280px;
+font-size:0.9rem;
+margin:1rem;
+}
+
+availability-results{
+display:block;
+background:#fff;
+border-radius:0.7rem;
+padding:1rem;
+box-shadow:0 6px 16px rgba(0,0,0,0.06);
+}
+
+sitter{
+display:block;
+padding:0.6rem 0;
+border-bottom:1px solid #eee;
+}
+
+sitter:last-child{ border-bottom:none; }
+
+sitter-name{
+display:block;
+font-weight:600;
+color:var(--green);
+}
+
+time-slots{
+display:block;
+font-size:0.85rem;
+color:var(--brown);
+}
+
+/* ===========================
+PRICING
+=========================== */
+.pricing-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:1.5rem;
+}
+
+.card{
+background:#fff;
+border-radius:1rem;
+padding:1.4rem 1.5rem;
+box-shadow:0 6px 16px rgba(0,0,0,0.05);
+border-top:4px solid var(--teal);
+}
+
+.card h3{ color:var(--green); }
+.price{ color:var(--brown); font-weight:600; }
+
+/* ===========================
+QUESTIONNAIRE
+=========================== */
+#progressBarContainer{
+height:10px;
+background:#e6ded4;
+border-radius:999px;
+margin-bottom:1.5rem;
+overflow:hidden;
+}
+
+#progressBar{
+height:100%;
+width:0%;
+background:var(--teal);
+transition:width .3s ease;
+}
+
+input,select,textarea{
+padding:0.6rem;
+border-radius:0.5rem;
+border:1px solid #ccc;
+font:inherit;
+}
+
+/* ===========================
+FOOTER
+=========================== */
+footer{
+padding:1.5rem 8vw;
+font-size:0.85rem;
+color:#777;
+text-align:center;
+border-top:1px solid #e2d7c7;
+margin-top:2rem;
 }
 </style>
 </head>
@@ -103,621 +295,176 @@ width: 100%;
 <header>
 <div class="logo">
 <div class="logo-icon"></div>
-<div class="logo-text-main">Snuggle &amp; Stroll</div>
+<div>Snuggle & Stroll</div>
 </div>
-
 <nav>
 <a href="#contact">Contact</a>
 <a href="#about">About</a>
-<a href="schedule.html">Scheduling</a>
+<a href="#schedule">Scheduling</a>
 <a href="#pricing">Pricing</a>
-
-<!-- ⭐ NEW: My Pet button (MP2-A) -->
-<a href="mypet.html" id="myPetNav" style="
-  background: var(-- yellow);
-  color: var(-- brown);
-  padding: 0.45rem 0.9rem;
-  border-radius: 999px;
-  margin-left: 1.2rem;
-  display:none;
-  font-weight:600;
-">My Pet</a>
-
+<a href="mypet.html" id="myPetNav">My Pet</a>
 </nav>
 </header>
+
+<section class="hero">
+<video src="videoofdog.mp4" autoplay muted loop playsinline></video>
+<div class="hero-overlay">
+<div class="hero-title">Snuggle & Stroll</div>
+<p>In-home pet sitting and dog walking that feels like a trusted friend—not a kennel.</p>
+<div class="hero-buttons">
+<a href="#schedule" class="btn btn-primary">Book a visit</a>
+<a href="#pricing" class="btn btn-outline">View pricing</a>
+<a href="#about" class="btn btn-outline">Learn about the project</a>
+</div>
+</div>
+</section>
+
+<main style="padding:3rem 8vw; max-width:1100px; margin:auto;">
+
 <section id="pricing">
 <h2>Pricing</h2>
-<div class="section-card">
+<section-card>
 <div class="pricing-grid">
-<div class="card">
-<h3>Quick Walk</h3>
-<p class="price">$22 / walk</p>
-<p class="muted">30-minute neighborhood walk</p>
+<div class="card"><h3>Quick Walk</h3><p class="price">$22 / walk</p></div>
+<div class="card"><h3>Standard Sit Visit</h3><p class="price">$38 / visit</p></div>
+<div class="card"><h3>Extended Stay</h3><p class="price">$95 / night</p></div>
+<div class="card"><h3>Multi-Pet Add-On</h3><p class="price">+ $8 / extra pet</p></div>
 </div>
-<div class="card">
-<h3>Standard Sit Visit</h3>
-<p class="price">$38 / visit</p>
-<p class="muted">45-minute in-home visit</p>
-</div>
-<div class="card">
-<h3>Extended Stay</h3>
-<p class="price">$95 / night</p>
-<p class="muted">Overnight in-home care</p>
-</div>
-<div class="card">
-<h3>Multi-Pet Add-On</h3>
-<p class="price">+ $8 / extra pet</p>
-<p class="muted">Applied to any service</p>
-</div>
-</div>
-</div>
+</section-card>
 </section>
 
-<!-- ⭐ ORIGINAL BUTTON (kept exactly as-is) -->
-<div style="text-align:center; margin-top: 1.5rem;">
-<a href="#pet-concierge"
-style="background:#1fa7a1; padding:0.8rem 1.5rem; color:white;
-border-radius:6px; text-decoration:none; font-size:1rem;">
-Not sure what service to choose? Try our Pet Care Questionnaire!
-</a>
-</div>
+<button onclick="document.getElementById('pet-concierge').scrollIntoView({behavior:'smooth'})" class="btn btn-primary">
+Not sure what service to choose?
+</button>
 
-<!-- ⭐ INSERTED QUESTIONNAIRE (Q4-A) -->
-<section id="pet-concierge" style="padding: 2rem; background:#faf5ec; margin-top:2rem;">
-<h2>Pet Care Questionnaire</h2>
+<section id="pet-concierge">
+<h2>Pet Concierge Questionnaire</h2>
+<section-card>
 
-<!-- Progress bar -->
-<div id="pet-progress" style="width:100%; background:rgba(0,0,0,0.1); border-radius:999px; overflow:hidden; height:10px; margin-bottom:1rem;">
-  <div id="pet-progress-bar" style="width:0%; height:100%; background:#f7d87c; transition:width 0.3s ease;"></div>
-</div>
+<div id="progressBarContainer"><div id="progressBar"></div></div>
 
-<p>Not sure what your pet needs? Fill this out and we'll suggest a daily routine and sitter match.</p>
+<form id="petForm">
+<label>Pet Name</label>
+<input required name="petName">
 
-<form id="pet-form" style="margin-top:1rem;">
-
-<h3>Pet Basics</h3>
-<label>Pet name:
-<input type="text" name="name" required>
-</label>
-
-<label>Species:
-<select name="species">
-<option value="dog">Dog</option>
-<option value="cat">Cat</option>
-<option value="other">Other</option>
+<label>Species</label>
+<select required name="species">
+<option value="">Select</option>
+<option>Dog</option>
+<option>Cat</option>
 </select>
-</label>
 
-<label>Breed:
-<input type="text" name="breed" placeholder="e.g., Dachshund">
-</label>
+<label>Breed</label>
+<input required name="breed">
 
-<label>Age (years):
-<input type="number" name="age" min="0" step="0.5">
-</label>
+<label>Age</label>
+<input required name="age">
 
-<label>Weight (lbs):
-<input type="number" name="weight" min="0">
-</label>
-
-<h3>Temperament & Behavior</h3>
-<label>Energy level:
-<select name="energy">
-<option value="low">Low</option>
-<option value="medium">Medium</option>
-<option value="high">High</option>
+<label>Energy Level</label>
+<select required name="energy">
+<option value="">Select</option>
+<option>Low</option>
+<option>Moderate</option>
+<option>High</option>
 </select>
-</label>
 
-<label>Temperament (describe):
-<textarea name="temperament" rows="3" placeholder="Anxious, shy, friendly, reactive..."></textarea>
-</label>
+<label>Temperament</label>
+<textarea required name="temperament"></textarea>
 
-<h3>Health & Special Needs</h3>
-<label>Medical conditions:
-<textarea name="medical" rows="2"></textarea>
-</label>
-
-<label>Medications:
-<textarea name="medications" rows="2"></textarea>
-</label>
-
-<h3>Daily Routine</h3>
-<label>Number of walks per day:
-<input type="number" name="walks_per_day" min="0" max="6">
-</label>
-
-<label>Typical walk length:
-<select name="walk_length">
-<option>15 minutes</option>
-<option>30 minutes</option>
-<option>45 minutes</option>
-<option>60+ minutes</option>
+<label>Service Needed</label>
+<select required name="service">
+<option value="">Select</option>
+<option>Quick Walk</option>
+<option>Standard Sit Visit</option>
+<option>Extended Stay</option>
 </select>
-</label>
 
-<label>Alone time tolerance:
-<select name="alone_time">
-<option>0–1 hour</option>
-<option>1–3 hours</option>
-<option>3–6 hours</option>
-<option>6+ hours</option>
-</select>
-</label>
-
-<h3>Home & Preferences</h3>
-<label>Home type:
-<select name="home_type">
-<option>Apartment</option>
-<option>House (no yard)</option>
-<option>House with yard</option>
-</select>
-</label>
-
-<label>ZIP code:
-<input type="text" name="zip">
-</label>
-
-<label>Service needed:
-<select name="service_type">
-<option>Walks</option>
-<option>Drop-in visits</option>
-<option>Overnights</option>
-<option>Daycare</option>
-<option>Boarding</option>
-</select>
-</label>
-
-<button type="submit" style="margin-top:1rem;">Generate care plan & sitter match</button>
+<button type="submit" class="btn btn-primary">Generate Care Plan</button>
 </form>
 
-<!-- Results -->
-<div id="results" style="display:none; margin-top:2rem; background:white; padding: 1rem;
-border-radius:6px;">
-<h3>Your Personalized Care Plan</h3>
-<div id="care-plan"></div>
+<div id="careOutput" style="margin-top:2rem;"></div>
 
-<h3>Your Sitter Match</h3>
-<div id="sitter-match"></div>
-</div>
-</section>
-<section id="schedule">
-<h2>Scheduling</h2>
-<div class="section-card two-col">
-<div>
-<p>
-Ready to book? Choose a time that works for you and we'll match you with a trusted
-sitter from our
-network of 500+ experienced dog owners and pet lovers.
-</p>
-<a href="schedule.html" class="btn btn-primary">Open full scheduling page</a>
-</div>
-<div>
-<p><strong>Typical availability :</strong></p>
-<ul>
-<li>Morning walks: 7:00 AM - 10:00 AM</li>
-<li>Midday visits: 11:00 AM - 3:00 PM</li>
-<li>Evening walks: 5:00 PM - 8:00 PM</li>
-<li>Overnights: 7:00 PM - 7:00 AM</li>
-</ul>
-</div>
-</div>
+</section-card>
 </section>
 
-<section id="about">
-<h2>About Snuggle &amp; Stroll</h2>
-<div class="section-card two-col">
-<div>
-<p>
-I started Snuggle &amp; Stroll because I have a dog I absolutely adore-and I couldn't
-imagine leaving her
-in a kennel. The noise, the stress, the unfamiliar environment ... it just never felt right.
-</p>
+</main>
 
-<p>
-So I built the service I wished existed: in-home, heart-led pet care from people who treat
-your animals
-like their own. Today, Snuggle &amp; Stroll works with a vetted network of
-<strong>500+ skilled dog owners and pet sitters</strong> who understand routines,
-body language, and the
-little details that make your pet feel safe.
-</p>
-</div>
-<div>
-<ul>
-<li><strong>Fully insured sitters</strong></li>
-<li><strong>Background-checked</strong></li>
-<li><strong>Real-time updates</strong></li>
-<li><strong>Custom care plans</strong></li>
-</ul>
-</div>
-</div>
-</section>
+<footer>
+© <span id="year"></span> Snuggle & Stroll. All rights reserved.
+</footer>
 
-<section class="testimonials">
-<div class="section-card" style="background: transparent; box-shadow: none; color: #fff;">
-<h2 style="color:#fff;">What our clients say</h2>
-<div class="testimonials-inner">
-<div class="testimonial">
-"Snuggle &amp; Stroll is the first service where my dog actually runs to the door when
-the sitter arrives."
-<strong>- Jamie, Goldendoodle mom</strong>
-</div>
-
-<div class="testimonial">
-"Daily photos, detailed notes, and a calm, happy pup when we got home. It felt like
-leaving her with family."
-<strong>- Marcus, rescue owner</strong>
-</div>
-
-<div class="testimonial">
-"Our senior dog needs meds and a strict routine. They nailed every detail and kept us
-fully in the loop."
-<strong>- Priya, senior pup parent</strong>
-</div>
-</div>
-</div>
-</section>
-
-<section id="availability">
-<h2>Check Availability</h2>
-<div class="section-card">
-<p>Select a date to see available sitters and time slots.</p>
-
-<div class="calendar-container">
-<input type="date" id="calendarDate" />
-<div id="availabilityResults" class="availability-results">
-<p class="muted">Choose a date to view sitter availability.</p>
-</div>
-</div>
-</div>
-</section>
-
-<section id="xfactor" style="padding: 1.5rem 8vw; text-align:center; font-size:0.9rem; color:#555;">
-<p>
-This interactive calendar previews how a real booking system could work—showing sitter
-availability, time slots, and fictional staff to demonstrate future functionality.
-</p>
-</section>
-
-<section id="quick-schedule">
-<h2>Quick Scheduling Form</h2>
-<div class="section-card">
-<form id="quickScheduleForm">
-
-<label for="qs-date">Choose a date</label>
-<input type="date" id="qs-date" required />
-
-<label for="qs-time">Choose a time</label>
-<select id="qs-time" required>
-<option value="">Select a time</option>
-<option>7:00 AM</option>
-<option>8:00 AM</option>
-<option>10:00 AM</option>
-<option>12:00 PM</option>
-<option>2:00 PM</option>
-<option>4:00 PM</option>
-<option>6:00 PM</option>
-</select>
-
-<label for="qs-sitter">Choose a sitter</label>
-<select id="qs-sitter" required>
-<option value="">Select a sitter</option>
-<option>Maya Thompson</option>
-<option>Jordan Lee</option>
-<option>Riley Chen</option>
-<option>Samira Patel</option>
-<option>Dylan Brooks</option>
-</select>
-
-<label for="qs-notes">Notes</label>
-<textarea id="qs-notes" placeholder="Anything we should know?"></textarea>
-
-<button type="submit" class="btn btn-primary">Submit Request</button>
-
-<div id="qs-confirm" style="display:none; margin-top: 1rem; padding: 1rem;
-background:#e8f7f6; border-left:4px solid var(-- teal); border-radius:0.5rem; color:var(-- green);
-font-weight:600;">
-Your request has been submitted! We'll reach out shortly.
-</div>
-
-</form>
-</div>
-</section>
-
-<section id="contact">
-<h2>Contact</h2>
-<div class="section-card two-col">
-
-<form action="mailto:youremail@example.com" method="post" enctype="text/plain">
-<label for="name">Name</label>
-<input id="name" name="name" type="text" required />
-
-<label for="email">Email</label>
-<input id="email" name="email" type="email" required />
-
-<label for="message">How can we help?</label>
-<textarea id="message" name="message" required></textarea>
-
-<button type="submit" class="btn btn-primary">Send message</button>
-</form>
-
-<div>
-<p><strong>Email:</strong> youremail@example.com</p>
-<p><strong>Service area:</strong> Your city / neighborhoods</p>
-<p class="muted">
-We typically respond within one business day. For urgent same-day requests, please
-mention "urgent" in your subject line.
-</p>
-</div>
-
-</div>
-</section>
 <script>
 document.getElementById('year').textContent = new Date().getFullYear();
 
-const sitterData = {
-"2026-02-16": [
-{ name: "Maya Thompson", times: "8 AM, 11 AM, 3 PM" },
-{ name: "Jordan Lee", times: "10 AM, 1 PM, 6 PM" }
-],
-"2026-02-17": [
-{ name: "Riley Chen", times: "9 AM, 12 PM, 4 PM" },
-{ name: "Samira Patel", times: "7 AM, 2 PM, 5 PM" }
-],
-"2026-02-18": [
-{ name: "Dylan Brooks", times: "8 AM, 12 PM, 7 PM" }
-]
-};
+/* Progress Bar */
+const form = document.getElementById('petForm');
+const progress = document.getElementById('progressBar');
+const inputs = form.querySelectorAll('input,select,textarea');
 
-const calendarInput = document.getElementById("calendarDate");
-const resultsBox = document.getElementById("availabilityResults");
-
-calendarInput.addEventListener("change", () => {
-const date = calendarInput.value;
-
-if (!sitterData[date]) {
-resultsBox.innerHTML = '<p class="muted">No sitters available on this date.</p>';
-return;
-}
-
-const sitters = sitterData[date]
-.map(s => `
-<div class="sitter">
-<div class="sitter-name">${s.name}</div>
-<div class="time-slots">Available times: ${s.times}</div>
-</div>
-`)
-.join("");
-
-resultsBox.innerHTML = sitters;
+inputs.forEach(el=>{
+el.addEventListener('input',()=>{
+const filled = [...inputs].filter(i=>i.value.trim()!=="").length;
+progress.style.width = (filled/inputs.length)*100 + "%";
+});
 });
 
-/* CHATBOT */
-const toggle = document.getElementById('chatbotToggle');
-const windowEl = document.getElementById('chatbotWindow');
-const closeBtn = document.getElementById('chatbotClose');
-const bodyEl = document.getElementById('chatbotBody');
-const inputEl = document.getElementById('chatbotInput');
-const sendBtn = document.getElementById('chatbotSend');
-
-function addMessage(text, from) {
-const div = document.createElement('div');
-div.className = 'msg ' + from;
-const span = document.createElement('span');
-span.textContent = text;
-div.appendChild(span);
-bodyEl.appendChild(div);
-bodyEl.scrollTop = bodyEl.scrollHeight;
-}
-
-function botReply(userText) {
-const t = userText.toLowerCase();
-
-if (t.includes('price') || t.includes('cost')) {
-return 'Our walks start at $22, sit visits at $38, and overnights at $95 per night.';
-}
-if (t.includes('schedule') || t.includes('book')) {
-return 'You can schedule visits most days between 7 AM and 8 PM, plus overnight stays.';
-}
-if (t.includes('where') || t.includes('area') || t.includes('location')) {
-return 'We currently serve your local area—reach out via the contact form to confirm your neighborhood.';
-}
-if (t.includes('kennel') || t.includes('home')) {
-return 'We specialize in in-home care so your pet can stay relaxed in their own space.';
-}
-
-return 'Great question! A human from Snuggle & Stroll will follow up by email if you leave your details in the contact form.';
-}
-
-toggle.addEventListener('click', () => {
-windowEl.style.display = windowEl.style.display === 'flex' ? 'none' : 'flex';
-});
-
-closeBtn.addEventListener('click', () => {
-windowEl.style.display = 'none';
-});
-
-function handleSend() {
-const text = inputEl.value.trim();
-if (!text) return;
-
-addMessage(text, 'user');
-inputEl.value = "";
-
-setTimeout(() => {
-addMessage(botReply(text), 'bot');
-}, 400);
-}
-
-sendBtn.addEventListener('click', handleSend);
-
-inputEl.addEventListener('keydown', (e) => {
-if (e.key === 'Enter') {
+/* Generate Care Plan + Sitter */
+form.addEventListener('submit',function(e){
 e.preventDefault();
-handleSend();
-}
-});
 
-/* QUICK SCHEDULING */
-document.getElementById("quickScheduleForm").addEventListener("submit", function(e) {
-e.preventDefault();
-document.getElementById("qs-confirm").style.display = "block";
-});
+const data = Object.fromEntries(new FormData(form));
 
-/* ------------------------------
-   QUESTIONNAIRE LOGIC
------------------------------- */
-async function loadCareGuides() {
-try {
-const response = await fetch('data/care_guides.json');
-return await response.json();
-} catch (e) {
-console.error("Error loading care guides:", e);
-return [];
-}
-}
+let routine = `<ul>
+<li>Morning enrichment based on ${data.energy} energy level</li>
+<li>Midday check-in and hydration</li>
+<li>Evening calm-down routine</li>
+</ul>`;
 
-function pickRelevantGuides(careGuides, pet) {
-const species = (pet.species || "").toLowerCase();
-const breed = (pet.breed || "").toLowerCase();
-const temperament = (pet.temperament || "").toLowerCase();
-const energy = (pet.energy || "").toLowerCase();
+let weekly = `<ul>
+<li>Focus on ${data.temperament}</li>
+<li>Service scheduled: ${data.service}</li>
+</ul>`;
 
-return careGuides.filter(g => {
-if (g.species && g.species !== species) return false;
-if (g.breed && breed.includes(g.breed)) return true;
-if (energy === "high" && g.tags && g.tags.includes("high_energy")) return true;
-if (temperament.includes("anxious") && g.tags && g.tags.includes("anxious")) return true;
-return g.tags && (g.tags.includes("daily") || g.tags.includes("routine"));
-});
-}
+let sitter = {
+Low:"Maya Thompson",
+Moderate:"Jordan Lee",
+High:"Riley Chen"
+}[data.energy] || "Maya Thompson";
 
-function buildCarePlanHtml(pet, guides) {
-let html = `
-<p><strong>Overview for ${pet.name || "your pet"}:</strong> Based on your answers, here is a suggested daily and weekly routine.</p>
-
-<h3>Daily Routine</h3>
-<ul>
-<li>Feed on a consistent schedule (morning & evening).</li>
-<li>${pet.walks_per_day || 1} walk(s) per day, around ${pet.walk_length || "30 minutes"} each.</li>
-<li>At least one mental enrichment session daily (sniff walk, puzzle toy, training).</li>
-</ul>
-
-<h3>Weekly Focus</h3>
-<ul>
-<li>Grooming or brushing based on coat type.</li>
-<li>1–2 special enrichment activities (new walking route, scent game).</li>
-</ul>
+let sitterHtml = `
+<section-card>
+<h3>Your Matched Sitter</h3>
+<p><strong>${sitter}</strong></p>
+<p>Specializes in ${data.energy.toLowerCase()}-energy pets and ${data.service.toLowerCase()} services.</p>
+</section-card>
 `;
 
-if (guides.length > 0) {
-html += `<h3>Special Considerations</h3>`;
-guides.forEach(g => {
-html += `<h4>${g.title}</h4><p>${g.content}</p>`;
-});
-}
-
-html += `<p><em>This is general care guidance, not medical advice.</em></p>`;
-return html;
-}
-
-/* SITTER MATCHING */
-function buildSitterMatchHtml(pet) {
-const energy = (pet.energy || "").toLowerCase();
-const temperament = (pet.temperament || "").toLowerCase();
-const service = (pet.service_type || "").toLowerCase();
-
-let sitterName = "Jordan Lee";
-let sitterBio = "Calm, experienced sitter comfortable with a wide range of dogs and cats.";
-let specialties = "General pet care, routine walks, and in-home visits.";
-
-if (energy === "high") {
-sitterName = "Maya Thompson";
-sitterBio = "High-energy dog walker who loves long, structured walks and enrichment games.";
-specialties = "High-energy dogs, structured walks, and mental enrichment.";
-
-} else if (temperament.includes("anxious")) {
-sitterName = "Samira Patel";
-sitterBio = "Gentle, patient sitter who specializes in anxious and sensitive pets.";
-specialties = "Anxious dogs, slow introductions, and predictable routines.";
-
-} else if (temperament.includes("shy")) {
-sitterName = "Jordan Lee";
-sitterBio = "Soft-spoken sitter who takes things at your pet’s pace.";
-specialties = "Shy dogs, slow warm-ups, and low-stress visits.";
-
-} else if (service.includes("overnight")) {
-sitterName = "Riley Chen";
-sitterBio = "Overnight specialist who keeps your pet’s routine consistent while you’re away.";
-specialties = "Overnight stays, medication reminders, and detailed updates.";
-}
-
-return `
-<div style="background:#f0f8ff; padding:1rem; border-radius:6px; display:flex; gap:0.75rem; align-items:flex-start;">
-<div style="font-size:2rem;">🧑‍🦰</div>
-<div>
-<h4>${sitterName}</h4>
-<p>${sitterBio}</p>
-<p><strong>Specialties:</strong> ${specialties}</p>
-</div>
-</div>
+const fullHtml = `
+<section-card>
+<h3>Custom Care Plan for ${data.petName}</h3>
+<h4>Daily Routine</h4>${routine}
+<h4>Weekly Focus</h4>${weekly}
+</section-card>
+${sitterHtml}
 `;
-}
 
-/* PROGRESS BAR */
-const petForm = document.getElementById('pet-form');
-const progressBar = document.getElementById('pet-progress-bar');
-const myPetNav = document.getElementById('myPetNav');
+document.getElementById('careOutput').innerHTML = fullHtml;
 
-const progressFields = Array.from(petForm.querySelectorAll('input, select, textarea'));
+localStorage.setItem("snugglePetProfile",JSON.stringify({
+pet:data,
+carePlanHtml:fullHtml,
+sitterHtml:sitterHtml,
+createdAt:new Date().toISOString()
+}));
 
-function updateProgress() {
-const filled = progressFields.filter(f => (f.value || "").trim() !== "").length;
-const total = progressFields.length;
-const percent = Math.round((filled / total) * 100);
-progressBar.style.width = `${percent}%`;
-}
-
-progressFields.forEach(field => {
-field.addEventListener('input', updateProgress);
-field.addEventListener('change', updateProgress);
+document.getElementById('myPetNav').style.display="inline-block";
 });
 
-/* FORM SUBMIT */
-document.getElementById('pet-form').addEventListener('submit', async function (e) {
-e.preventDefault();
-
-const formData = new FormData(e.target);
-const pet = Object.fromEntries(formData.entries());
-
-const guides = await loadCareGuides();
-const relevant = pickRelevantGuides(guides, pet);
-
-const carePlanHtml = buildCarePlanHtml(pet, relevant);
-const sitterHtml = buildSitterMatchHtml(pet);
-
-document.getElementById('care-plan').innerHTML = carePlanHtml;
-document.getElementById('sitter-match').innerHTML = sitterHtml;
-document.getElementById('results').style.display = 'block';
-
-/* SAVE PROFILE */
-const profile = {
-pet,
-carePlanHtml,
-sitterHtml,
-createdAt: new Date().toISOString()
-};
-localStorage.setItem('snugglePetProfile', JSON.stringify(profile));
-
-/* REVEAL MY PET TAB */
-if (myPetNav) {
-myPetNav.style.display = 'inline-block';
+/* Show My Pet if exists */
+if(localStorage.getItem("snugglePetProfile")){
+document.getElementById('myPetNav').style.display="inline-block";
 }
-
-/* FILL PROGRESS BAR */
-progressBar.style.width = '100%';
-});
 </script>
+
 </body>
 </html>
