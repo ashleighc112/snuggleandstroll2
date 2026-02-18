@@ -1,4 +1,4 @@
-<! DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
@@ -7,208 +7,156 @@
 
 <style>
 :root {
--- brown: #5b3b2a;
--- yellow: #f7d87c;
--- green: #3f6b4a;
--- teal: #1fa7a1;
--- cream: #faf5ec;
--- text: #2b241f;
+--brown: #5b3b2a;
+--yellow: #f7d87c;
+--green: #3f6b4a;
+--teal: #1fa7a1;
+--cream: #faf5ec;
+--text: #2b241f;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* { box-sizing: border-box; margin:0; padding:0; }
 
-body {
-font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-background: var(-- cream);
-color: var(-- text);
-line-height: 1.6;
-min-height: 100vh;
-display: flex;
-flex-direction: column;
+body{
+font-family: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+background:var(--cream);
+color:var(--text);
+line-height:1.6;
 }
 
-/* HEADER */
-header {
-background: linear-gradient(90deg, var(-- brown), var(-- green));
-color: #fff;
-padding: 0.6rem 6vw;
-display: flex;
-align-items: center;
-justify-content: space-between;
+/* ================= HEADER ================= */
+header{
+background:linear-gradient(90deg,var(--brown),var(--green));
+color:#fff;
+padding:0.6rem 6vw;
+display:flex;
+justify-content:space-between;
+align-items:center;
+position:sticky;
+top:0;
+z-index:100;
 }
 
-.logo {
-display: flex;
-align-items: center;
-gap: 0.5rem;
+.logo{
+display:flex;
+align-items:center;
+gap:0.5rem;
 }
 
-.logo-icon {
-width: 40px;
-height: 40px;
-border-radius: 999px;
-background: var(-- yellow);
-position: relative;
-overflow: hidden;
+.logo-icon{
+width:40px;
+height:40px;
+border-radius:999px;
+background:var(--yellow);
+position:relative;
+overflow:hidden;
 }
 
-.logo-icon :: before {
-content: "";
-position: absolute;
-width: 18px;
-height: 18px;
-border-radius: 50%;
-background: var(-- brown);
-left: 9px;
-bottom: 8px;
+.logo-icon::before{
+content:"";
+position:absolute;
+width:18px;
+height:18px;
+border-radius:50%;
+background:var(--brown);
+left:9px;
+bottom:8px;
 }
 
-.logo-icon :: after {
-content: "";
-position: absolute;
-width: 14px;
-height: 14px;
-border-radius: 50%;
-background: var(-- green);
-right: 7px;
-bottom: 10px;
+.logo-icon::after{
+content:"";
+position:absolute;
+width:14px;
+height:14px;
+border-radius:50%;
+background:var(--green);
+right:7px;
+bottom:10px;
 }
 
-.logo-text-main {
-font-weight: 700;
-letter-spacing: 0.03em;
-font-size: 1.1rem;
+nav a{
+color:#fff;
+text-decoration:none;
+margin-left:1.2rem;
+font-size:0.95rem;
+position:relative;
 }
 
-nav a {
-color: #fff;
-text-decoration: none;
-margin-left: 1.2rem;
-font-size: 0.95rem;
-position: relative;
+nav a::after{
+content:"";
+position:absolute;
+left:0;
+bottom:-4px;
+width:0;
+height:2px;
+background:var(--yellow);
+transition:width .2s ease;
 }
 
-nav a :: after {
-content: "";
-position: absolute;
-left: 0;
-bottom: -4px;
-width: 0;
-height: 2px;
-background: var(-- yellow);
-transition: width 0.2s ease;
+nav a:hover::after{ width:100%; }
+
+#myPetNav{
+background:var(--yellow);
+color:var(--brown);
+padding:0.45rem 0.9rem;
+border-radius:999px;
+font-weight:600;
+margin-left:1.2rem;
 }
 
-nav a:hover :: after {
-width: 100%;
+/* ================= CUSTOM TAG ================= */
+section-card{
+display:block;
+background:#fff;
+border-radius:1rem;
+padding:1.5rem 1.7rem;
+box-shadow:0 8px 20px rgba(0,0,0,0.06);
+margin-bottom:2rem;
 }
 
-/* MAIN */
-main {
-flex: 1;
-padding: 2.5rem 8vw;
-max-width: 900px;
-margin: 0 auto;
+/* ================= LAYOUT ================= */
+main{
+padding:3rem 8vw;
+max-width:900px;
+margin:auto;
 }
 
-h1 {
-font-size: 1.9rem;
-margin-bottom: 1rem;
-color: var(-- brown);
+.pet-header{
+display:flex;
+align-items:center;
+gap:1rem;
+margin-bottom:1.5rem;
 }
 
-/* PET CARD */
-.pet-card {
-background: #fff;
-border-radius: 1.2rem;
-padding: 1.5rem 1.7rem;
-box-shadow: 0 10px 26px rgba(0,0,0,0.12);
-display: grid;
-grid-template-columns: minmax(0, 220px) minmax(0, 1fr);
-gap: 1.5rem;
-align-items: flex-start;
+.pet-emoji{
+font-size:3rem;
 }
 
-.pet-illustration {
-background: linear-gradient(135deg, var(-- green), var(-- teal));
-border-radius: 1rem;
-padding: 1.2rem;
-display: flex;
-flex-direction: column;
-align-items: center;
-color: #fff;
+.tagline{
+color:var(--green);
+font-weight:600;
+margin-top:0.5rem;
 }
 
-.pet-emoji {
-font-size: 3.2rem;
-margin-bottom: 0.5rem;
+.clear-btn{
+background:var(--yellow);
+color:var(--brown);
+border:none;
+padding:0.6rem 1rem;
+border-radius:999px;
+font-weight:600;
+cursor:pointer;
+margin-top:1rem;
 }
 
-.pet-name {
-font-size: 1.3rem;
-font-weight: 700;
-margin-bottom: 0.25rem;
-}
-
-.pet-tagline {
-font-size: 0.9rem;
-opacity: 0.9;
-text-align: center;
-}
-
-.pet-details h2 {
-font-size: 1.2rem;
-margin-bottom: 0.5rem;
-color: var(-- green);
-}
-
-.pet-details ul {
-list-style: none;
-margin: 0 0 0.75rem 0;
-padding: 0;
-}
-
-.pet-details li {
-margin-bottom: 0.25rem;
-}
-
-.section-block {
-margin-top: 1rem;
-}
-
-.section-block h3 {
-font-size: 1.05rem;
-margin-bottom: 0.3rem;
-color: var(-- brown);
-}
-
-.btn {
-display: inline-block;
-padding: 0.6rem 1.2rem;
-border-radius: 999px;
-border: none;
-cursor: pointer;
-font-size: 0.9rem;
-text-decoration: none;
-background: var(-- teal);
-color: #fff;
-margin-top: 1rem;
-}
-
-/* EMPTY STATE */
-.empty-state {
-text-align: center;
-margin-top: 3rem;
-font-size: 1rem;
-}
-
-/* FOOTER */
-footer {
-padding: 1.5rem 8vw;
-font-size: 0.85rem;
-color: #777;
-text-align: center;
-border-top: 1px solid #e2d7c7;
+/* ================= FOOTER ================= */
+footer{
+padding:1.5rem 8vw;
+font-size:0.85rem;
+color:#777;
+text-align:center;
+border-top:1px solid #e2d7c7;
+margin-top:2rem;
 }
 </style>
 </head>
@@ -218,116 +166,89 @@ border-top: 1px solid #e2d7c7;
 <header>
 <div class="logo">
 <div class="logo-icon"></div>
-<div class="logo-text-main">Snuggle &amp; Stroll</div>
+<div>Snuggle & Stroll</div>
 </div>
-
 <nav>
 <a href="index.html#contact">Contact</a>
 <a href="index.html#about">About</a>
-<a href="schedule.html">Scheduling</a>
+<a href="index.html#schedule">Scheduling</a>
 <a href="index.html#pricing">Pricing</a>
-
-<!-- My Pet button (always visible on this page) -->
-<a href="mypet.html" style="
-  background: var(-- yellow);
-  color: var(-- brown);
-  padding: 0.45rem 0.9rem;
-  border-radius: 999px;
-  margin-left: 1.2rem;
-  font-weight:600;
-">My Pet</a>
+<a href="mypet.html" id="myPetNav">My Pet</a>
 </nav>
 </header>
 
 <main>
-<h1>My Pet Profile</h1>
-<div id="petProfileContainer"></div>
+
+<div id="profileContainer"></div>
+
 </main>
 
 <footer>
-&copy; <span id="year"></span> Snuggle & Stroll. All rights reserved.
+© <span id="year"></span> Snuggle & Stroll. All rights reserved.
 </footer>
 
 <script>
 document.getElementById('year').textContent = new Date().getFullYear();
 
-function getPetEmoji(species) {
-const s = (species || "").toLowerCase();
-if (s === "dog") return "🐶";
-if (s === "cat") return "🐱";
-return "🐾";
-}
+const container = document.getElementById("profileContainer");
+const stored = localStorage.getItem("snugglePetProfile");
 
-function getTagline(pet) {
-const energy = (pet.energy || "").toLowerCase();
-const temperament = (pet.temperament || "").toLowerCase();
-
-if (energy === "high") return "High-energy buddy who thrives on adventure and structure.";
-if (temperament.includes("anxious")) return "Sensitive soul who shines with gentle, predictable care.";
-if (temperament.includes("shy")) return "A sweet, cautious friend who warms up slowly.";
-return "Happy companion who loves a steady routine and kind humans.";
-}
-
-const container = document.getElementById('petProfileContainer');
-const raw = localStorage.getItem('snugglePetProfile');
-
-if (!raw) {
+if(!stored){
 container.innerHTML = `
-<div class="empty-state">
-<p>No pet profile found yet.</p>
-<p>Fill out the questionnaire on the home page to create your pet's profile.</p>
-<a href="index.html#pet-concierge" class="btn">Go to questionnaire</a>
-</div>
+<section-card>
+<h2>No Pet Profile Found</h2>
+<p>Please complete the Pet Concierge questionnaire on the homepage.</p>
+<a href="index.html#pet-concierge" class="clear-btn">Create Pet Profile</a>
+</section-card>
 `;
 } else {
-const profile = JSON.parse(raw);
-const pet = profile.pet || {};
-const carePlanHtml = profile.carePlanHtml || "";
-const sitterHtml = profile.sitterHtml || "";
 
-const emoji = getPetEmoji(pet.species);
-const tagline = getTagline(pet);
+const data = JSON.parse(stored);
 
-container.innerHTML = `
-<div class="pet-card">
-<div class="pet-illustration">
-<div class="pet-emoji">${emoji}</div>
-<div class="pet-name">${pet.name || "Your pet"}</div>
-<div class="pet-tagline">${tagline}</div>
-</div>
+const pet = data.pet;
 
-<div class="pet-details">
-<h2>Profile details</h2>
-<ul>
-<li><strong>Species:</strong> ${pet.species || "—"}</li>
-<li><strong>Breed:</strong> ${pet.breed || "—"}</li>
-<li><strong>Age:</strong> ${pet.age || "—"} years</li>
-<li><strong>Weight:</strong> ${pet.weight || "—"} lbs</li>
-<li><strong>Energy level:</strong> ${pet.energy || "—"}</li>
-<li><strong>Temperament:</strong> ${pet.temperament || "—"}</li>
-<li><strong>Home type:</strong> ${pet.home_type || "—"}</li>
-<li><strong>Service needed:</strong> ${pet.service_type || "—"}</li>
-</ul>
+const emoji = pet.species === "Cat" ? "🐱" : "🐶";
 
-<div class="section-block">
-<h3>Care plan</h3>
-${carePlanHtml}
-</div>
+let tagline = "";
 
-<div class="section-block">
-<h3>Sitter match</h3>
-${sitterHtml}
-</div>
-
-<button class="btn" onclick="clearProfile()">Clear profile</button>
-</div>
-</div>
-`;
+if(pet.energy === "High"){
+tagline = "Full of zoomies and big adventures.";
+}
+else if(pet.energy === "Moderate"){
+tagline = "Balanced, playful, and easygoing.";
+}
+else{
+tagline = "Calm, cozy, and happiest at home.";
 }
 
-function clearProfile() {
-localStorage.removeItem('snugglePetProfile');
+container.innerHTML = `
+<section-card>
+<div class="pet-header">
+<div class="pet-emoji">${emoji}</div>
+<div>
+<h2>${pet.petName}</h2>
+<div class="tagline">${tagline}</div>
+</div>
+</div>
+
+<p><strong>Breed:</strong> ${pet.breed}</p>
+<p><strong>Age:</strong> ${pet.age}</p>
+<p><strong>Energy Level:</strong> ${pet.energy}</p>
+<p><strong>Temperament:</strong> ${pet.temperament}</p>
+<p><strong>Service Selected:</strong> ${pet.service}</p>
+
+</section-card>
+
+${data.carePlanHtml}
+
+<button class="clear-btn" id="clearProfile">Clear Profile</button>
+`;
+
+document.getElementById("clearProfile").addEventListener("click",()=>{
+localStorage.removeItem("snugglePetProfile");
 location.reload();
+});
+
 }
 </script>
 
