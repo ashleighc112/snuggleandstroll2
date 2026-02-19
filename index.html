@@ -5,116 +5,157 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Snuggle & Stroll | In-Home Pet Care</title>
 <style>
-:root{
-  --blue:#1fa7a1;
-  --green:#3f6b4a;
-  --white:#ffffff;
-  --text:#2b241f;
+:root {
+  --blue: #1fa7a1;
+  --green: #3f6b4a;
+  --white: #ffffff;
+  --text: #2b241f;
 }
 
-/* Global Styles */
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
-body{background:var(--white);color:var(--text);line-height:1.6;}
-a{text-decoration:none;color:inherit;}
+/* Global */
+* {margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI',sans-serif;}
+body {background:var(--white); color:var(--text); line-height:1.6;}
+a {text-decoration:none; color:inherit;}
 
 /* Header */
-header{
-  position:sticky; top:0; z-index:999;
-  background:linear-gradient(90deg,var(--blue),var(--green));
-  display:flex; align-items:center; justify-content:space-between;
-  padding:1rem 2rem; box-shadow:0 6px 24px rgba(0,0,0,0.18);
+header {
+  position: sticky;
+  top:0;
+  z-index:999;
+  background: linear-gradient(90deg,var(--blue),var(--green));
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:1rem 3rem;
+  box-shadow:0 4px 20px rgba(0,0,0,0.15);
 }
-.brand{display:flex; align-items:center; gap:1rem;}
-.logo{height:60px; width:auto;}
-.brand-text h2{color:white; font-size:1.3rem; margin:0;}
-.brand-text span{font-size:.8rem; color:white; opacity:0.85;}
-nav{display:flex; align-items:center;}
-nav a{color:white; margin-left:2rem; font-weight:500; font-size:.95rem; transition:.3s;}
-nav a:hover{opacity:.75;}
-.mypet-btn{
-  background:var(--blue); color:white; padding:0.45rem 0.9rem;
-  border-radius:999px; font-weight:600; margin-left:1.5rem; display:none;
+
+header .brand {display:flex; align-items:center; gap:1rem;}
+header .brand img {height:60px; width:auto;}
+header .brand-text h2 {color:white; font-size:1.3rem; margin:0; letter-spacing:.5px;}
+header .brand-text span {font-size:.8rem; color:var(--white); letter-spacing:.5px;}
+nav {display:flex; align-items:center;}
+nav a {color:white; margin-left:2rem; font-weight:500; transition:.3s;}
+nav a:hover {opacity:.75;}
+.mypet-btn {
+  background:var(--blue);
+  color:var(--white);
+  padding:0.45rem 0.9rem;
+  border-radius:999px;
+  font-weight:600;
+  margin-left:1.5rem;
+  display:none;
 }
 
 /* Hero */
-.hero{position:relative; height:80vh; overflow:hidden;}
-.hero video{width:100%; height:100%; object-fit:cover; filter:brightness(0.7);}
-.hero-content{
-  position:absolute; top:50%; left:50%;
-  transform:translate(-50%,-50%);
-  text-align:center; color:white; max-width:900px;
-}
-.hero-content h1{font-size:3rem; margin-bottom:1rem;}
-.hero-content p{font-size:1.2rem; margin-bottom:2rem;}
-.hero-buttons a{
-  display:inline-block; padding:.8rem 1.6rem; margin:.5rem;
-  border-radius:50px; font-weight:600; transition:.3s;
-}
-.btn-primary{background:var(--blue); color:white;}
-.btn-outline{border:2px solid white; color:white;}
-.btn-primary:hover{transform:translateY(-3px);}
-.btn-outline:hover{background:white;color:var(--blue);}
+.hero {position:relative; height:90vh; overflow:hidden;}
+.hero video {width:100%; height:100%; object-fit:cover; filter:brightness(0.7);}
+.hero-content {position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); text-align:center; color:var(--white); max-width:800px;}
+.hero-content h1 {font-size:3rem; margin-bottom:1rem;}
+.hero-content p {font-size:1.2rem; margin-bottom:2rem;}
+.hero-buttons a {display:inline-block; padding:.8rem 1.6rem; margin:.5rem; border-radius:50px; font-weight:600; transition:.3s;}
+.btn-primary {background:var(--blue); color:var(--white);}
+.btn-outline {border:2px solid white; color:white;}
+.btn-primary:hover {transform:translateY(-3px);}
+.btn-outline:hover {background:white; color:var(--blue);}
 
 /* Sections */
-section{padding:4rem 2rem; max-width:1200px; margin:auto;}
-section h2{font-size:2rem; margin-bottom:2rem; color:var(--blue);}
-.cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:2rem;}
-section-card{
-  background:white; padding:2rem; border-radius:15px; border-top:6px solid var(--green);
-  box-shadow:0 6px 18px rgba(0,0,0,.1); margin-bottom:2rem;
+section, section-card {padding:4rem 2rem; max-width:1200px; margin:auto;}
+section h2 {font-size:2rem; margin-bottom:2rem; text-align:center; color:var(--blue);}
+
+/* Pricing Cards */
+.cards {display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:2rem;}
+.card {
+  background:white;
+  padding:2rem;
+  border-radius:18px;
+  border-top:6px solid var(--green);
+  box-shadow:0 10px 25px rgba(0,0,0,.08);
+  transition:.3s;
 }
+.card:hover {transform:translateY(-5px);}
+.card h3{color:var(--blue); margin-bottom:1rem;}
+.card .price{font-size:1.5rem; font-weight:bold; color:var(--blue);}
+.card p{margin-top:0.5rem;}
 
 /* Questionnaire teaser */
-.questionnaire-teaser{text-align:center; margin:3rem 0;}
-.questionnaire-teaser button{
-  background:var(--blue); color:white; padding:.8rem 1.5rem; border:none; border-radius:50px;
-  font-weight:600; cursor:pointer;
+.questionnaire-teaser {text-align:center; margin:3rem auto; max-width:600px;}
+.questionnaire-teaser button {
+  background:var(--blue); color:white; padding:.7rem 1.4rem; border:none; border-radius:30px; cursor:pointer; font-weight:600;
 }
 
 /* Testimonials */
-.testimonials-container{position:relative; max-width:900px; margin:2rem auto; height:100px; overflow:hidden;}
-.testimonial{
-  position:absolute; width:100%; text-align:center; font-style:italic; font-size:1.1rem;
-  opacity:0; transition:opacity 0.8s ease-in-out;
+.testimonials-container {
+  position: relative;
+  max-width: 900px;
+  margin: 2rem auto;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 1rem;
+  text-align: center;
 }
-.testimonial.active{opacity:1;}
+.testimonial {
+  position: absolute;
+  width: 100%;
+  font-style: italic;
+  font-size: 1.1rem;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+}
+.testimonial.active {
+  opacity: 1;
+  position: relative;
+}
 
 /* Contact */
-.contact-container{display:flex; flex-wrap:wrap; gap:2rem;}
-.contact-form{flex:1; min-width:280px;}
-.contact-form input, .contact-form textarea{
-  width:100%; padding:.7rem; margin:.5rem 0; border-radius:8px; border:1px solid #ccc;
+.contact-container {
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  align-items:flex-start;
+  gap:2rem;
+  max-width:900px;
+  margin:auto;
 }
-.contact-form button{
-  background:var(--blue); color:white; padding:.7rem 1.2rem; border:none; border-radius:30px; font-weight:600;
+.contact-form {flex:1 1 300px; min-width:280px; display:flex; flex-direction:column;}
+.contact-form input, .contact-form textarea {
+  width:100%; padding:.7rem; margin:.5rem 0; border-radius:8px; border:1px solid #ccc; box-sizing:border-box;
+}
+.contact-form button {
+  background: var(--blue);
+  color: white;
+  padding:.7rem 1.2rem;
+  border:none;
+  border-radius:30px;
+  font-weight:600;
   cursor:pointer;
+  margin-top:0.5rem;
 }
-.contact-info{flex:1; min-width:200px; font-weight:500; line-height:1.8;}
+.contact-info {flex:1 1 200px; min-width:200px; font-weight:500; line-height:1.8; text-align:left;}
+@media (max-width:768px){
+  .contact-container{flex-direction:column; align-items:center;}
+  .contact-info{text-align:center;}
+}
 
 /* Footer */
-footer{background:var(--blue); color:white; text-align:center; padding:2rem; margin-top:4rem;}
-
-/* Chatbot */
-#chatbot{position:fixed; bottom:20px; right:20px; width:300px; max-width:90%;}
-#chatbotToggle{background:var(--green); color:white; padding:.6rem 1rem; border:none; border-radius:8px; cursor:pointer; font-weight:600;}
-#chatWindow{display:none; background:white; border:2px solid var(--green); border-radius:12px; margin-top:0.5rem; max-height:400px; overflow-y:auto; padding:1rem;}
-.chatMessage{margin:.5rem 0;}
-.chatUser{font-weight:600;}
+footer {background:var(--blue); color:white; text-align:center; padding:2rem; margin-top:4rem;}
 </style>
 </head>
-
 <body>
 
 <header>
   <div class="brand">
-    <img src="sas-logo.png" alt="Snuggle & Stroll Logo" class="logo">
+    <img src="sas-logo.png" alt="Snuggle & Stroll Logo">
     <div class="brand-text">
       <h2>Snuggle & Stroll</h2>
       <span>Premium In-Home Pet Care</span>
     </div>
   </div>
   <nav>
-    <a href="concierge.html">Contact</a>
+    <a href="contact.html">Contact</a>
     <a href="about.html">About</a>
     <a href="schedule.html">Scheduling</a>
     <a href="pricing.html">Pricing</a>
@@ -142,33 +183,17 @@ footer{background:var(--blue); color:white; text-align:center; padding:2rem; mar
 <section id="pricing">
   <h2>Pricing</h2>
   <div class="cards">
-    <section-card>
-      <h3>Quick Walk</h3>
-      <p class="price">$25</p>
-      <p>30-minute focused walk for exercise and enrichment.</p>
-    </section-card>
-    <section-card>
-      <h3>Standard Sit Visit</h3>
-      <p class="price">$40</p>
-      <p>Drop-in visit including feeding, playtime, and check-in update.</p>
-    </section-card>
-    <section-card>
-      <h3>Extended Stay</h3>
-      <p class="price">$95/night</p>
-      <p>Overnight in-home care with full routine support.</p>
-    </section-card>
-    <section-card>
-      <h3>Multi-Pet Add-On</h3>
-      <p class="price">$15</p>
-      <p>Additional pet added to any visit.</p>
-    </section-card>
+    <div class="card"><h3>Quick Walk</h3><p class="price">$25</p><p>30-minute focused walk for exercise and enrichment.</p></div>
+    <div class="card"><h3>Standard Sit Visit</h3><p class="price">$40</p><p>Drop-in visit including feeding, playtime, and check-in update.</p></div>
+    <div class="card"><h3>Extended Stay</h3><p class="price">$95/night</p><p>Overnight in-home care with full routine support.</p></div>
+    <div class="card"><h3>Multi-Pet Add-On</h3><p class="price">$15</p><p>Additional pet added to any visit.</p></div>
   </div>
 </section>
 
 <!-- Questionnaire teaser -->
 <section-card class="questionnaire-teaser">
   <h2>Not sure what your furry friend needs? Let us help!</h2>
-  <button onclick="window.location.href='questionnaire.html'">Start Pet Concierge</button>
+  <button onclick="window.location.href='questionnaire.html'">Go to Pet Concierge</button>
 </section-card>
 
 <!-- Testimonials -->
@@ -200,67 +225,33 @@ footer{background:var(--blue); color:white; text-align:center; padding:2rem; mar
   </div>
 </section-card>
 
+<!-- Footer -->
 <footer>
   © <span id="year"></span> Snuggle & Stroll. All rights reserved.
 </footer>
 
-<!-- Chatbot -->
-<div id="chatbot">
-  <button id="chatbotToggle">Chat with us</button>
-  <div id="chatWindow"></div>
-</div>
-
 <script>
-// Footer year
 document.getElementById("year").textContent = new Date().getFullYear();
-
-// My Pet button display
 if(localStorage.getItem("snugglePetProfile")){
   document.getElementById("mypetNav").style.display="inline-block";
 }
 
-// Testimonials rotation
-const testimonials=document.querySelectorAll(".testimonial");
-let tIndex=0;
-setInterval(()=>{
-  testimonials.forEach(t=>t.classList.remove("active"));
-  testimonials[tIndex].classList.add("active");
-  tIndex=(tIndex+1)%testimonials.length;
-},3000);
+/* Testimonials rotation */
+const testimonials = document.querySelectorAll(".testimonial");
+let tIndex = 0;
+setInterval(() => {
+  testimonials.forEach((t) => { t.classList.remove("active"); t.style.position="absolute"; });
+  testimonials[tIndex].classList.add("active"); testimonials[tIndex].style.position="relative";
+  tIndex = (tIndex+1)%testimonials.length;
+},4000);
 
-// Contact form
+/* Contact submit */
 function submitContact(){
   document.getElementById("contactName").value="";
   document.getElementById("contactEmail").value="";
   document.getElementById("contactPet").value="";
   document.getElementById("contactMessage").value="";
   document.getElementById("contactResponse").textContent="Message Sent! Happy Trails!";
-}
-
-// Chatbot
-const chatbotToggle=document.getElementById("chatbotToggle");
-const chatWindow=document.getElementById("chatWindow");
-
-chatbotToggle.addEventListener("click",()=>{
-  chatWindow.style.display=chatWindow.style.display==="block"?"none":"block";
-});
-
-function displayMessage(sender,msg){
-  const div=document.createElement("div");
-  div.classList.add("chatMessage");
-  div.innerHTML=`<span class="${sender==='User'?'chatUser':'chatBot'}">${sender}:</span> ${msg}`;
-  chatWindow.appendChild(div);
-  chatWindow.scrollTop=chatWindow.scrollHeight;
-}
-function respond(input){
-  input=input.toLowerCase();
-  let msg="";
-  if(input.includes("price")||input.includes("cost")) msg="Our services range from $25 to $95 depending on visit type.";
-  else if(input.includes("schedule")||input.includes("book")) msg="You can schedule via our Scheduling page or the Book a Visit button.";
-  else if(input.includes("where")||input.includes("area")||input.includes("location")) msg="We provide in-home pet care within your ZIP code area.";
-  else if(input.includes("kennel")||input.includes("home")) msg="All care is in-home, personalized, and stress-free.";
-  else msg="A human from Snuggle & Stroll will follow up shortly.";
-  displayMessage("Bot",msg);
 }
 </script>
 
