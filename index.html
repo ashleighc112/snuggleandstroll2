@@ -1,498 +1,234 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Snuggle & Stroll | In-Home Pet Care</title>
+  <meta charset="UTF-8">
+  <title>Paws & Play Pet Care</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-:root{
-  --blue:#1fa7a1;
-  --green:#3f6b4a;
-  --white:#ffffff;
-  --text:#2b241f;
-  --cream:#faf5ec;
-}
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+    }
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Segoe UI',sans-serif;
-}
+    section {
+      padding: 80px 20px;
+    }
 
-body{
-  background:var(--cream);
-  color:var(--text);
-  line-height:1.6;
-}
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      width: 100%;
+    }
 
-.container{
-  max-width:1100px;
-  margin:0 auto;
-  padding:0 20px;
-}
+    h1, h2, h3 {
+      margin-bottom: 20px;
+      color: #003f5c;
+    }
 
-/* HEADER */
-header{
-  position:sticky;
-  top:0;
-  z-index:999;
-  background:linear-gradient(90deg,var(--blue),var(--green));
-  padding:1rem 0;
-}
+    p {
+      margin-bottom: 20px;
+      color: #555;
+    }
 
-.header-inner{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
+    /* HERO */
+    .hero {
+      background: linear-gradient(to right, #008c99, #00b3a4);
+      color: white;
+      text-align: center;
+      padding: 120px 20px;
+    }
 
-.brand{
-  display:flex;
-  align-items:center;
-  gap:1rem;
-}
+    .hero h1 {
+      font-size: 48px;
+      color: white;
+    }
 
-.logo{
-  height:55px;
-}
+    .hero p {
+      font-size: 20px;
+      color: white;
+    }
 
-.brand-text h2{
-  color:white;
-  font-size:1.2rem;
-}
+    .hero a {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 14px 30px;
+      background-color: white;
+      color: #008c99;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 6px;
+      transition: 0.3s;
+    }
 
-.brand-text span{
-  color:white;
-  font-size:.8rem;
-}
+    .hero a:hover {
+      background-color: #f2f2f2;
+    }
 
-nav a{
-  color:white;
-  text-decoration:none;
-  margin-left:1.5rem;
-  font-size:.9rem;
-}
+    /* SERVICES */
+    .services {
+      background-color: #f8fbfc;
+      text-align: center;
+    }
 
-nav a:hover{
-  opacity:.75;
-}
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
 
-/* HERO */
-.hero{
-  position:relative;
-  height:85vh;
-  overflow:hidden;
-}
+    .service-card {
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
 
-.hero video{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  filter:brightness(.7);
-}
+    /* CONCIERGE CTA */
+    .concierge-cta {
+      text-align: center;
+      background-color: #ffffff;
+    }
 
-.hero-content{
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  text-align:center;
-  color:white;
-  width:90%;
-  max-width:800px;
-}
+    .cta-button {
+      display: inline-block;
+      padding: 14px 30px;
+      background-color: #008c99;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: 0.3s;
+    }
 
-.hero-content h1{
-  font-size:3rem;
-  margin-bottom:1rem;
-}
+    .cta-button:hover {
+      background-color: #006f7a;
+    }
 
-.hero-content p{
-  margin-bottom:2rem;
-}
+    /* TESTIMONIALS */
+    .testimonials {
+      background-color: #f8fbfc;
+      text-align: center;
+    }
 
-.hero-buttons{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:1rem;
-}
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
 
-.btn{
-  padding:.8rem 1.6rem;
-  border-radius:50px;
-  text-decoration:none;
-  font-weight:600;
-}
+    .testimonial-card {
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      font-style: italic;
+    }
 
-.btn-primary{
-  background:var(--blue);
-  color:white;
-}
+    .testimonial-card strong {
+      display: block;
+      margin-top: 15px;
+      font-style: normal;
+      color: #003f5c;
+    }
 
-.btn-outline{
-  border:2px solid white;
-  color:white;
-}
+    /* CONTACT */
+    .contact {
+      text-align: center;
+      background: #003f5c;
+      color: white;
+    }
 
-/* SECTIONS */
-section{
-  padding:5rem 0;
-}
+    .contact p {
+      color: white;
+    }
 
-section h2{
-  text-align:center;
-  margin-bottom:3rem;
-}
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #002c3e;
+      color: white;
+      font-size: 14px;
+    }
 
-/* PRICING */
-.cards{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:2rem;
-}
-
-.card{
-  background:white;
-  padding:2rem;
-  border-radius:20px;
-  box-shadow:0 10px 30px rgba(0,0,0,.08);
-  text-align:center;
-}
-
-.price{
-  color:var(--blue);
-  font-size:1.5rem;
-  font-weight:bold;
-  margin:1rem 0;
-}
-
-/* TESTIMONIALS */
-#testimonials{
-  background:white;
-}
-
-.testimonial-wrapper{
-  position:relative;
-  max-width:700px;
-  margin:0 auto;
-  min-height:180px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-.testimonial{
-  position:absolute;
-  width:100%;
-  opacity:0;
-  transition:opacity .6s ease;
-}
-
-.testimonial.active{
-  opacity:1;
-  position:relative;
-}
-
-.testimonial-card{
-  background:var(--blue);
-  color:white;
-  padding:2rem;
-  border-radius:20px;
-  text-align:center;
-  box-shadow:0 15px 35px rgba(0,0,0,.15);
-}
-
-/* QUESTIONNAIRE */
-#pet-concierge{
-  background:var(--cream);
-}
-
-.questionnaire-card{
-  max-width:600px;
-  margin:0 auto;
-  background:white;
-  padding:2.5rem;
-  border-radius:25px;
-  box-shadow:0 20px 45px rgba(0,0,0,.1);
-  text-align:center;
-}
-
-.progress-bar{
-  height:8px;
-  background:#eee;
-  border-radius:20px;
-  margin-bottom:2rem;
-  overflow:hidden;
-}
-
-#progress-fill{
-  height:100%;
-  width:0%;
-  background:var(--blue);
-  transition:width .4s ease;
-}
-
-#question-text{
-  font-weight:600;
-  margin-bottom:1rem;
-}
-
-#answer-container input,
-#answer-container select{
-  width:100%;
-  padding:.8rem;
-  border-radius:10px;
-  border:1px solid #ccc;
-  margin-bottom:1.5rem;
-}
-
-.nav-buttons{
-  display:flex;
-  justify-content:center;
-  gap:1rem;
-}
-
-.nav-buttons button{
-  padding:.7rem 1.5rem;
-  border-radius:30px;
-  border:none;
-  background:var(--blue);
-  color:white;
-  font-weight:600;
-  cursor:pointer;
-}
-
-/* CONTACT */
-.contact-container{
-  display:flex;
-  flex-wrap:wrap;
-  gap:2rem;
-  justify-content:center;
-}
-
-.contact-form,
-.contact-info{
-  flex:1 1 300px;
-}
-
-.contact-form input,
-.contact-form textarea{
-  width:100%;
-  padding:.8rem;
-  border-radius:8px;
-  border:1px solid #ccc;
-  margin-bottom:1rem;
-}
-
-.contact-form button{
-  padding:.7rem 1.5rem;
-  border-radius:30px;
-  border:none;
-  background:var(--blue);
-  color:white;
-  font-weight:600;
-}
-
-footer{
-  background:var(--green);
-  color:white;
-  text-align:center;
-  padding:1rem 0;
-  margin-top:3rem;
-}
-
-@media(max-width:768px){
-  .hero-content h1{font-size:2rem;}
-}
-</style>
+  </style>
 </head>
-
 <body>
 
-<header>
-  <div class="container header-inner">
-    <div class="brand">
-      <img src="sas-logo.png" class="logo">
-      <div class="brand-text">
-        <h2>Snuggle & Stroll</h2>
-        <span>Premium In-Home Pet Care</span>
-      </div>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <h1>Premium Pet Care You Can Trust</h1>
+      <p>Loving, reliable care for your furry family members.</p>
+      <a href="contact.html">Book Now</a>
     </div>
-    <nav>
-      <a href="#contact">Contact</a>
-      <a href="pricing.html">Pricing</a>
-      <a href="meetsitters.html">Sitters</a>
-    </nav>
-  </div>
-</header>
+  </section>
 
-<section class="hero">
-  <video src="videoofdog.mp4" autoplay muted loop></video>
-  <div class="hero-content">
-    <h1>Snuggle & Stroll</h1>
-    <p>In-home pet sitting and dog walking that feels like a trusted friend—not a kennel.</p>
-    <div class="hero-buttons">
-      <a href="#" class="btn btn-primary">Book a Visit</a>
-      <a href="#" class="btn btn-outline">View Pricing</a>
-    </div>
-  </div>
-</section>
-
-<section id="pricing">
-  <div class="container">
-    <h2>Pricing</h2>
-    <div class="cards">
-      <div class="card">
-        <h3>Quick Walk</h3>
-        <p class="price">$25</p>
-        <p>30-minute focused walk.</p>
-      </div>
-      <div class="card">
-        <h3>Standard Visit</h3>
-        <p class="price">$40</p>
-        <p>Drop-in visit and care.</p>
-      </div>
-      <div class="card">
-        <h3>Overnight</h3>
-        <p class="price">$95</p>
-        <p>Full overnight stay.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="testimonials">
-  <div class="container">
-    <h2>What Pet Parents Say</h2>
-    <div class="testimonial-wrapper">
-      <div class="testimonial active">
-        <div class="testimonial-card">
-          <p>"Amazing with our dog!"</p>
-          <strong>– Sarah L.</strong>
+  <!-- SERVICES -->
+  <section class="services">
+    <div class="container">
+      <h2>Our Services</h2>
+      <div class="service-grid">
+        <div class="service-card">
+          <h3>Dog Walking</h3>
+          <p>Safe and energizing walks tailored to your pet's needs.</p>
+        </div>
+        <div class="service-card">
+          <h3>Pet Sitting</h3>
+          <p>In-home care so your pet stays comfortable and stress-free.</p>
+        </div>
+        <div class="service-card">
+          <h3>Drop-In Visits</h3>
+          <p>Quick visits for feeding, potty breaks, and playtime.</p>
         </div>
       </div>
-      <div class="testimonial">
+    </div>
+  </section>
+
+  <!-- PET CONCIERGE BUTTON -->
+  <section class="concierge-cta">
+    <div class="container">
+      <h2>Not sure what your pet needs?</h2>
+      <p>Our Pet Concierge will guide you to the perfect service plan.</p>
+      <a href="questionnaire.html" class="cta-button">Start Pet Concierge</a>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="container">
+      <h2>What Our Clients Say</h2>
+      <div class="testimonial-grid">
         <div class="testimonial-card">
-          <p>"Professional and loving care."</p>
+          "Absolutely amazing care. My dog loves them!"
+          <strong>– Sarah M.</strong>
+        </div>
+        <div class="testimonial-card">
+          "Reliable, professional, and so kind to our pets."
           <strong>– James T.</strong>
         </div>
-      </div>
-      <div class="testimonial">
         <div class="testimonial-card">
-          <p>"We trust them completely."</p>
-          <strong>– Kelly M.</strong>
+          "The only pet service I trust in town."
+          <strong>– Emily R.</strong>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="pet-concierge">
-  <div class="container">
-    <h2>Pet Concierge</h2>
-    <div class="questionnaire-card">
-      <div class="progress-bar">
-        <div id="progress-fill"></div>
-      </div>
-      <p id="question-text"></p>
-      <div id="answer-container"></div>
-      <div class="nav-buttons">
-        <button id="prev-btn" onclick="prevQuestion()">Back</button>
-        <button onclick="nextQuestion()">Next</button>
-      </div>
+  <!-- CONTACT -->
+  <section class="contact">
+    <div class="container">
+      <h2>Ready to Book?</h2>
+      <p>Contact us today to schedule your pet's next visit.</p>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="contact">
-  <div class="container">
-    <h2>Contact Us</h2>
-    <div class="contact-container">
-      <div class="contact-form">
-        <input type="text" placeholder="Name">
-        <input type="email" placeholder="Email">
-        <textarea placeholder="How can we help?"></textarea>
-        <button>Send Message</button>
-      </div>
-      <div class="contact-info">
-        <p>ashleigh@SAS.com</p>
-        <p>706-551-7374</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer>
-  © <span id="year"></span> Snuggle & Stroll
-</footer>
-
-<script>
-document.getElementById("year").textContent=new Date().getFullYear();
-
-/* Testimonials rotation */
-const testimonials=document.querySelectorAll(".testimonial");
-let tIndex=0;
-setInterval(()=>{
-  testimonials.forEach(t=>t.classList.remove("active"));
-  testimonials[tIndex].classList.add("active");
-  tIndex=(tIndex+1)%testimonials.length;
-},4000);
-
-/* Questionnaire */
-const questions=[
-  {q:"Pet Name",type:"text"},
-  {q:"Species",type:"select",options:["Dog","Cat"]},
-  {q:"Service Needed",type:"text"}
-];
-
-let currentQ=0;
-const questionText=document.getElementById("question-text");
-const answerContainer=document.getElementById("answer-container");
-const progressFill=document.getElementById("progress-fill");
-const prevBtn=document.getElementById("prev-btn");
-
-function showQuestion(i){
-  const q=questions[i];
-  questionText.textContent=q.q;
-  answerContainer.innerHTML="";
-  if(q.type==="text"){
-    const input=document.createElement("input");
-    input.type="text";
-    answerContainer.appendChild(input);
-  }else{
-    const select=document.createElement("select");
-    q.options.forEach(opt=>{
-      const o=document.createElement("option");
-      o.textContent=opt;
-      select.appendChild(o);
-    });
-    answerContainer.appendChild(select);
-  }
-  progressFill.style.width=((i+1)/questions.length)*100+"%";
-  prevBtn.style.display=i===0?"none":"inline-block";
-}
-
-function nextQuestion(){
-  if(currentQ<questions.length-1){
-    currentQ++;
-    showQuestion(currentQ);
-  }else{
-    alert("Thank you! We'll be in touch.");
-  }
-}
-
-function prevQuestion(){
-  if(currentQ>0){
-    currentQ--;
-    showQuestion(currentQ);
-  }
-}
-
-showQuestion(currentQ);
-</script>
+  <footer>
+    © 2026 Paws & Play Pet Care | All Rights Reserved
+  </footer>
 
 </body>
 </html>
