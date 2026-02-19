@@ -14,20 +14,38 @@
   --cream:#faf5ec;
 }
 
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI',sans-serif;
+}
 
-body{background:var(--cream);color:var(--text);line-height:1.6;}
+body{
+  background:var(--cream);
+  color:var(--text);
+  line-height:1.6;
+}
 
+.container{
+  max-width:1100px;
+  margin:0 auto;
+  padding:0 20px;
+}
+
+/* HEADER */
 header{
   position:sticky;
   top:0;
   z-index:999;
   background:linear-gradient(90deg,var(--blue),var(--green));
+  padding:1rem 0;
+}
+
+.header-inner{
   display:flex;
-  align-items:center;
   justify-content:space-between;
-  padding:1rem 3rem;
-  box-shadow:0 6px 24px rgba(0,0,0,0.18);
+  align-items:center;
 }
 
 .brand{
@@ -35,458 +53,445 @@ header{
   align-items:center;
   gap:1rem;
 }
+
 .logo{
-  height:60px;
-  width:auto;
+  height:55px;
 }
+
 .brand-text h2{
   color:white;
-  font-size:1.3rem;
-  margin:0;
+  font-size:1.2rem;
 }
+
 .brand-text span{
+  color:white;
   font-size:.8rem;
-  color:var(--white);
 }
 
 nav a{
   color:white;
   text-decoration:none;
-  margin-left:2rem;
-  font-weight:500;
-  font-size:.95rem;
-  transition:.3s;
-}
-nav a:hover{opacity:.75;}
-
-.mypet-btn{
-  background:var(--blue);
-  color:var(--white);
-  padding:0.45rem 0.9rem;
-  border-radius:999px;
-  font-weight:600;
   margin-left:1.5rem;
-  display:none;
+  font-size:.9rem;
 }
 
+nav a:hover{
+  opacity:.75;
+}
+
+/* HERO */
 .hero{
   position:relative;
-  height:90vh;
+  height:85vh;
   overflow:hidden;
 }
+
 .hero video{
   width:100%;
   height:100%;
   object-fit:cover;
-  filter:brightness(0.7);
+  filter:brightness(.7);
 }
+
 .hero-content{
   position:absolute;
   top:50%;
   left:50%;
   transform:translate(-50%,-50%);
-  max-width:800px;
-  width:90%;
   text-align:center;
   color:white;
+  width:90%;
+  max-width:800px;
 }
-.hero-content h1{font-size:3rem;margin-bottom:1rem;}
-.hero-content p{font-size:1.2rem;margin-bottom:2rem;}
-.hero-buttons{display:flex;flex-wrap:wrap;justify-content:center;gap:1rem;}
-.btn-primary{background:var(--blue);color:white;padding:.8rem 1.6rem;border-radius:50px;text-decoration:none;font-weight:600;transition:.3s;}
-.btn-outline{border:2px solid white;color:white;padding:.8rem 1.6rem;border-radius:50px;text-decoration:none;font-weight:600;transition:.3s;}
-.btn-primary:hover{transform:translateY(-3px);}
-.btn-outline:hover{background:white;color:var(--blue);}
 
-section{padding:5rem 2rem;}
+.hero-content h1{
+  font-size:3rem;
+  margin-bottom:1rem;
+}
 
-section h2{text-align:center;margin-bottom:2rem;}
+.hero-content p{
+  margin-bottom:2rem;
+}
 
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem;justify-items:center;}
-.card{background:white;padding:2rem;border-radius:18px;border-top:6px solid var(--blue);box-shadow:0 10px 25px rgba(0,0,0,.08);transition:.3s;text-align:center;}
-.card:hover{transform:translateY(-5px);}
-.card h3{margin-bottom:1rem;}
-.price{font-size:1.5rem;font-weight:bold;color:var(--blue);}
+.hero-buttons{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:1rem;
+}
 
-.text-center{text-align:center;}
-.container{max-width:1200px;margin:0 auto;padding:0 2rem;}
+.btn{
+  padding:.8rem 1.6rem;
+  border-radius:50px;
+  text-decoration:none;
+  font-weight:600;
+}
 
-/* Questionnaire Wizard */
-#questionnaire-container{max-width:600px;margin:2rem auto;text-align:center;}
-.progress-bar{width:100%;height:10px;background:#e0e0e0;border-radius:5px;overflow:hidden;margin-bottom:1rem;}
-#progress-fill{height:100%;width:0%;background:var(--blue);transition:width 0.3s ease-in-out;}
-.question-card{background:var(--white);padding:2rem;border-radius:15px;box-shadow:0 5px 15px rgba(0,0,0,0.1);}
-#answer-container input,#answer-container select,#answer-container textarea{width:80%;padding:.7rem;margin-top:.5rem;border-radius:8px;border:1px solid #ccc;display:block;margin-left:auto;margin-right:auto;}
-.nav-buttons button{padding:.7rem 1.2rem;margin:.3rem;border-radius:30px;border:none;font-weight:600;cursor:pointer;background:var(--blue);color:white;}
+.btn-primary{
+  background:var(--blue);
+  color:white;
+}
 
-/* Testimonials */
-.testimonials-container{position:relative;max-width:900px;margin:2rem auto;height:140px;overflow:hidden;padding:1rem;display:flex;justify-content:center;align-items:center;text-align:center;}
-.testimonial{width:100%;position:absolute;opacity:0;transition:opacity 0.8s ease-in-out;}
-.testimonial.active{opacity:1;position:relative;}
-.testimonial-card{background:var(--blue);color:white;padding:1.5rem;border-radius:15px;max-width:600px;margin:0 auto;box-shadow:0 5px 15px rgba(0,0,0,0.1);}
+.btn-outline{
+  border:2px solid white;
+  color:white;
+}
 
-/* Contact */
-.contact-container{display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:2rem;max-width:900px;margin:0 auto;padding:0 1rem;}
-.contact-form,.contact-info{flex:1 1 300px;min-width:280px;}
-.contact-info{text-align:left;line-height:1.8;}
-@media(max-width:768px){.contact-container{flex-direction:column;align-items:center}.contact-info{text-align:center}}
-.contact-form input,.contact-form textarea{width:90%;padding:.7rem;margin:.5rem 0;border-radius:8px;border:1px solid #ccc;display:block;margin-left:auto;margin-right:auto;}
-.contact-form button{padding:.7rem 1.2rem;border:none;border-radius:30px;background:var(--blue);color:white;font-weight:600;cursor:pointer;}
-.message-sent{text-align:center;color:green;margin-top:1rem;font-weight:600;}
+/* SECTIONS */
+section{
+  padding:5rem 0;
+}
+
+section h2{
+  text-align:center;
+  margin-bottom:3rem;
+}
+
+/* PRICING */
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:2rem;
+}
+
+.card{
+  background:white;
+  padding:2rem;
+  border-radius:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,.08);
+  text-align:center;
+}
+
+.price{
+  color:var(--blue);
+  font-size:1.5rem;
+  font-weight:bold;
+  margin:1rem 0;
+}
+
+/* TESTIMONIALS */
+#testimonials{
+  background:white;
+}
+
+.testimonial-wrapper{
+  position:relative;
+  max-width:700px;
+  margin:0 auto;
+  min-height:180px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.testimonial{
+  position:absolute;
+  width:100%;
+  opacity:0;
+  transition:opacity .6s ease;
+}
+
+.testimonial.active{
+  opacity:1;
+  position:relative;
+}
+
+.testimonial-card{
+  background:var(--blue);
+  color:white;
+  padding:2rem;
+  border-radius:20px;
+  text-align:center;
+  box-shadow:0 15px 35px rgba(0,0,0,.15);
+}
+
+/* QUESTIONNAIRE */
+#pet-concierge{
+  background:var(--cream);
+}
+
+.questionnaire-card{
+  max-width:600px;
+  margin:0 auto;
+  background:white;
+  padding:2.5rem;
+  border-radius:25px;
+  box-shadow:0 20px 45px rgba(0,0,0,.1);
+  text-align:center;
+}
+
+.progress-bar{
+  height:8px;
+  background:#eee;
+  border-radius:20px;
+  margin-bottom:2rem;
+  overflow:hidden;
+}
+
+#progress-fill{
+  height:100%;
+  width:0%;
+  background:var(--blue);
+  transition:width .4s ease;
+}
+
+#question-text{
+  font-weight:600;
+  margin-bottom:1rem;
+}
+
+#answer-container input,
+#answer-container select{
+  width:100%;
+  padding:.8rem;
+  border-radius:10px;
+  border:1px solid #ccc;
+  margin-bottom:1.5rem;
+}
+
+.nav-buttons{
+  display:flex;
+  justify-content:center;
+  gap:1rem;
+}
+
+.nav-buttons button{
+  padding:.7rem 1.5rem;
+  border-radius:30px;
+  border:none;
+  background:var(--blue);
+  color:white;
+  font-weight:600;
+  cursor:pointer;
+}
+
+/* CONTACT */
+.contact-container{
+  display:flex;
+  flex-wrap:wrap;
+  gap:2rem;
+  justify-content:center;
+}
+
+.contact-form,
+.contact-info{
+  flex:1 1 300px;
+}
+
+.contact-form input,
+.contact-form textarea{
+  width:100%;
+  padding:.8rem;
+  border-radius:8px;
+  border:1px solid #ccc;
+  margin-bottom:1rem;
+}
+
+.contact-form button{
+  padding:.7rem 1.5rem;
+  border-radius:30px;
+  border:none;
+  background:var(--blue);
+  color:white;
+  font-weight:600;
+}
+
+footer{
+  background:var(--green);
+  color:white;
+  text-align:center;
+  padding:1rem 0;
+  margin-top:3rem;
+}
+
+@media(max-width:768px){
+  .hero-content h1{font-size:2rem;}
+}
 </style>
 </head>
+
 <body>
 
 <header>
-  <div class="brand">
-    <img src="sas-logo.png" class="logo" alt="Snuggle & Stroll Logo">
-    <div class="brand-text">
-      <h2>Snuggle & Stroll</h2>
-      <span>Premium In-Home Pet Care</span>
+  <div class="container header-inner">
+    <div class="brand">
+      <img src="sas-logo.png" class="logo">
+      <div class="brand-text">
+        <h2>Snuggle & Stroll</h2>
+        <span>Premium In-Home Pet Care</span>
+      </div>
     </div>
+    <nav>
+      <a href="#contact">Contact</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="meetsitters.html">Sitters</a>
+    </nav>
   </div>
-  <nav>
-    <a href="#contact">Contact</a>
-    <a href="about.html">About</a>
-    <a href="schedule.html">Scheduling</a>
-    <a href="pricing.html">Pricing</a>
-    <a href="meetsitters.html">Meet the Sitters</a>
-    <a href="mypet.html" class="mypet-btn" id="mypetNav">My Pet</a>
-  </nav>
 </header>
 
-<!-- HERO -->
 <section class="hero">
   <video src="videoofdog.mp4" autoplay muted loop></video>
   <div class="hero-content">
     <h1>Snuggle & Stroll</h1>
     <p>In-home pet sitting and dog walking that feels like a trusted friend—not a kennel.</p>
     <div class="hero-buttons">
-      <a href="schedule.html" class="btn-primary">Book a Visit</a>
-      <a href="pricing.html" class="btn-outline">View Pricing</a>
-      <a href="meetsitters.html" class="btn-outline">Meet the Sitters</a>
-      <a href="questionnaire.html" class="btn-outline">Pet Concierge</a>
+      <a href="#" class="btn btn-primary">Book a Visit</a>
+      <a href="#" class="btn btn-outline">View Pricing</a>
     </div>
   </div>
 </section>
 
-<!-- PRICING -->
 <section id="pricing">
-  <h2>Pricing</h2>
-  <div class="cards">
-    <div class="card"><h3>Quick Walk</h3><p class="price">$25</p><p>30-minute focused walk for exercise and enrichment.</p></div>
-    <div class="card"><h3>Standard Sit Visit</h3><p class="price">$40</p><p>Drop-in visit including feeding, playtime, and check-in update.</p></div>
-    <div class="card"><h3>Extended Stay</h3><p class="price">$95/night</p><p>Overnight in-home care with full routine support.</p></div>
-    <div class="card"><h3>Multi-Pet Add-On</h3><p class="price">$15</p><p>Additional pet added to any visit.</p></div>
+  <div class="container">
+    <h2>Pricing</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Quick Walk</h3>
+        <p class="price">$25</p>
+        <p>30-minute focused walk.</p>
+      </div>
+      <div class="card">
+        <h3>Standard Visit</h3>
+        <p class="price">$40</p>
+        <p>Drop-in visit and care.</p>
+      </div>
+      <div class="card">
+        <h3>Overnight</h3>
+        <p class="price">$95</p>
+        <p>Full overnight stay.</p>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
-<section-card id="testimonials">
-  <h2 class="text-center" style="margin-bottom:2rem;">What Pet Parents Say</h2>
-  <div class="testimonials-container">
-    <testimonial class="active">
-      <div class="testimonial-card">
-        <p>"Maya is amazing with our dog!"</p>
-        <strong>– Sarah L.</strong>
+<section id="testimonials">
+  <div class="container">
+    <h2>What Pet Parents Say</h2>
+    <div class="testimonial-wrapper">
+      <div class="testimonial active">
+        <div class="testimonial-card">
+          <p>"Amazing with our dog!"</p>
+          <strong>– Sarah L.</strong>
+        </div>
       </div>
-    </testimonial>
-    <testimonial>
-      <div class="testimonial-card">
-        <p>"Professional and loving care every time."</p>
-        <strong>– James T.</strong>
+      <div class="testimonial">
+        <div class="testimonial-card">
+          <p>"Professional and loving care."</p>
+          <strong>– James T.</strong>
+        </div>
       </div>
-    </testimonial>
-    <testimonial>
-      <div class="testimonial-card">
-        <p>"I never worry when Alex visits our cat."</p>
-        <strong>– Kelly M.</strong>
+      <div class="testimonial">
+        <div class="testimonial-card">
+          <p>"We trust them completely."</p>
+          <strong>– Kelly M.</strong>
+        </div>
       </div>
-    </testimonial>
+    </div>
   </div>
-</section-card>
+</section>
 
-<style>
-.testimonials-container{
-  position:relative;
-  max-width:900px;
-  margin:3rem auto;
-  height:160px;
-  overflow:hidden;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-}
-.testimonial{
-  width:100%;
-  position:absolute;
-  opacity:0;
-  transition:opacity 0.8s ease-in-out;
-  display:flex;
-  justify-content:center;
-}
-.testimonial.active{opacity:1;position:relative;}
-.testimonial-card{
-  background:var(--blue);
-  color:white;
-  padding:2rem;
-  border-radius:20px;
-  max-width:600px;
-  box-shadow:0 10px 25px rgba(0,0,0,0.15);
-  text-align:center;
-}
-</style>
+<section id="pet-concierge">
+  <div class="container">
+    <h2>Pet Concierge</h2>
+    <div class="questionnaire-card">
+      <div class="progress-bar">
+        <div id="progress-fill"></div>
+      </div>
+      <p id="question-text"></p>
+      <div id="answer-container"></div>
+      <div class="nav-buttons">
+        <button id="prev-btn" onclick="prevQuestion()">Back</button>
+        <button onclick="nextQuestion()">Next</button>
+      </div>
+    </div>
+  </div>
+</section>
 
-<script>
-const testimonials = document.querySelectorAll(".testimonial");
-let tIndex=0;
-setInterval(()=>{
-  testimonials.forEach(t=>t.classList.remove("active"));
-  testimonials[tIndex].classList.add("active");
-  tIndex=(tIndex+1)%testimonials.length;
-},5000);
-</script>
-
-
-<!-- CONTACT -->
 <section id="contact">
-  <h2 class="text-center">Contact Us</h2>
-  <div class="contact-container">
-    <div class="contact-form">
-      <input type="text" placeholder="Name" id="contactName">
-      <input type="email" placeholder="Email" id="contactEmail">
-      <input type="text" placeholder="Pet Name" id="contactPet">
-      <textarea placeholder="What do you need our help with?" id="contactMessage"></textarea>
-      <button onclick="sendMessage()">Send Message</button>
-      <p class="message-sent" id="messageSent" style="display:none;">Message Sent! Happy Trails!</p>
-    </div>
-    <div class="contact-info">
-      <p>ashleigh@SAS.com</p>
-      <p>706-551-7374</p>
+  <div class="container">
+    <h2>Contact Us</h2>
+    <div class="contact-container">
+      <div class="contact-form">
+        <input type="text" placeholder="Name">
+        <input type="email" placeholder="Email">
+        <textarea placeholder="How can we help?"></textarea>
+        <button>Send Message</button>
+      </div>
+      <div class="contact-info">
+        <p>ashleigh@SAS.com</p>
+        <p>706-551-7374</p>
+      </div>
     </div>
   </div>
 </section>
 
-<footer class="text-center">
-  © <span id="year"></span> Snuggle & Stroll. All rights reserved.
+<footer>
+  © <span id="year"></span> Snuggle & Stroll
 </footer>
 
 <script>
-// Auto year
-document.getElementById("year").textContent = new Date().getFullYear();
+document.getElementById("year").textContent=new Date().getFullYear();
 
-// My Pet button
-if(localStorage.getItem("snugglePetProfile")){
-  document.getElementById("mypetNav").style.display="inline-block";
-}
-
-// Testimonials rotation
-<section-card id="testimonials">
-  <h2 class="text-center" style="margin-bottom:2rem;">What Pet Parents Say</h2>
-  <div class="testimonials-container">
-    <testimonial class="active">
-      <div class="testimonial-card">
-        <p>"Maya is amazing with our dog!"</p>
-        <strong>– Sarah L.</strong>
-      </div>
-    </testimonial>
-    <testimonial>
-      <div class="testimonial-card">
-        <p>"Professional and loving care every time."</p>
-        <strong>– James T.</strong>
-      </div>
-    </testimonial>
-    <testimonial>
-      <div class="testimonial-card">
-        <p>"I never worry when Alex visits our cat."</p>
-        <strong>– Kelly M.</strong>
-      </div>
-    </testimonial>
-  </div>
-</section-card>
-
-<style>
-.testimonials-container{
-  position:relative;
-  max-width:900px;
-  margin:3rem auto;
-  height:160px;
-  overflow:hidden;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-}
-.testimonial{
-  width:100%;
-  position:absolute;
-  opacity:0;
-  transition:opacity 0.8s ease-in-out;
-  display:flex;
-  justify-content:center;
-}
-.testimonial.active{opacity:1;position:relative;}
-.testimonial-card{
-  background:var(--blue);
-  color:white;
-  padding:2rem;
-  border-radius:20px;
-  max-width:600px;
-  box-shadow:0 10px 25px rgba(0,0,0,0.15);
-  text-align:center;
-}
-</style>
-
-<script>
-const testimonials = document.querySelectorAll(".testimonial");
+/* Testimonials rotation */
+const testimonials=document.querySelectorAll(".testimonial");
 let tIndex=0;
 setInterval(()=>{
   testimonials.forEach(t=>t.classList.remove("active"));
   testimonials[tIndex].classList.add("active");
   tIndex=(tIndex+1)%testimonials.length;
-},5000);
-</script>
+},4000);
 
-<section-card id="pet-concierge">
-  <h2 class="text-center" style="margin-bottom:2rem;">Not sure what your furry friend needs? Let us help!</h2>
-  <div id="questionnaire-container">
-    <div class="progress-bar">
-      <div id="progress-fill"></div>
-    </div>
-    <div class="question-card">
-      <p id="question-text" style="font-weight:600;font-size:1.2rem;"></p>
-      <div id="answer-container"></div>
-    </div>
-    <div class="nav-buttons">
-      <button id="prev-btn" onclick="prevQuestion()" style="display:none;">Previous</button>
-      <button id="next-btn" onclick="nextQuestion()">Next</button>
-    </div>
-  </div>
-</section-card>
-
-<style>
-#questionnaire-container {
-  max-width: 600px;
-  margin: 3rem auto;
-  text-align: center;
-}
-.progress-bar {
-  width: 100%;
-  height: 12px;
-  background: #e0e0e0;
-  border-radius: 6px;
-  overflow: hidden;
-  margin-bottom: 1.5rem;
-}
-#progress-fill {
-  height: 100%;
-  width: 0%;
-  background: var(--blue);
-  transition: width 0.3s ease-in-out;
-}
-.question-card {
-  background: var(--white);
-  padding: 2rem;
-  border-radius: 20px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-}
-#answer-container input, #answer-container select, #answer-container textarea {
-  width: 80%;
-  padding: .8rem;
-  margin-top: 1rem;
-  border-radius:10px;
-  border:1px solid #ccc;
-  display:block;
-  margin-left:auto;
-  margin-right:auto;
-}
-.nav-buttons {
-  margin-top:1.5rem;
-}
-.nav-buttons button {
-  padding:.8rem 1.5rem;
-  margin:.3rem;
-  border-radius:30px;
-  border:none;
-  font-weight:600;
-  cursor:pointer;
-  background: var(--blue);
-  color:white;
-  transition:.3s;
-}
-.nav-buttons button:hover{opacity:.85;}
-</style>
-
-<script>
-const questions = [
-  {q:"Pet Name", type:"text"},
-  {q:"Species", type:"select", options:["Dog","Cat"]},
-  {q:"Breed", type:"text"},
-  {q:"Age", type:"text"},
-  {q:"Weight", type:"text"},
-  {q:"Energy Level", type:"text"},
-  {q:"Temperament", type:"text"},
-  {q:"Medical Conditions", type:"text"},
-  {q:"Medications", type:"text"},
-  {q:"Walks Per Day", type:"text"},
-  {q:"Walk Length (minutes)", type:"text"},
-  {q:"Alone Time Tolerance", type:"text"},
-  {q:"Home Type", type:"text"},
-  {q:"ZIP Code", type:"text"},
-  {q:"Service Needed", type:"text"}
+/* Questionnaire */
+const questions=[
+  {q:"Pet Name",type:"text"},
+  {q:"Species",type:"select",options:["Dog","Cat"]},
+  {q:"Service Needed",type:"text"}
 ];
 
-let currentQ = 0;
-const questionText = document.getElementById("question-text");
-const answerContainer = document.getElementById("answer-container");
-const progressFill = document.getElementById("progress-fill");
-const prevBtn = document.getElementById("prev-btn");
-const nextBtn = document.getElementById("next-btn");
+let currentQ=0;
+const questionText=document.getElementById("question-text");
+const answerContainer=document.getElementById("answer-container");
+const progressFill=document.getElementById("progress-fill");
+const prevBtn=document.getElementById("prev-btn");
 
-function showQuestion(index){
-  const q = questions[index];
-  questionText.textContent = q.q;
-  answerContainer.innerHTML = "";
+function showQuestion(i){
+  const q=questions[i];
+  questionText.textContent=q.q;
+  answerContainer.innerHTML="";
   if(q.type==="text"){
-    const input = document.createElement("input");
-    input.type = "text";
+    const input=document.createElement("input");
+    input.type="text";
     answerContainer.appendChild(input);
-  } else if(q.type==="select"){
-    const select = document.createElement("select");
+  }else{
+    const select=document.createElement("select");
     q.options.forEach(opt=>{
-      const option = document.createElement("option");
-      option.value=opt;
-      option.textContent=opt;
-      select.appendChild(option);
+      const o=document.createElement("option");
+      o.textContent=opt;
+      select.appendChild(o);
     });
     answerContainer.appendChild(select);
   }
-  progressFill.style.width = ((index+1)/questions.length*100) + "%";
-  prevBtn.style.display = index===0?"none":"inline-block";
-  nextBtn.textContent = index===questions.length-1?"Submit":"Next";
+  progressFill.style.width=((i+1)/questions.length)*100+"%";
+  prevBtn.style.display=i===0?"none":"inline-block";
 }
 
 function nextQuestion(){
-  if(currentQ<questions.length-1){currentQ++; showQuestion(currentQ);}
-  else{
-    alert("Questionnaire complete! Thank you.");
-    // Save logic and reveal My Pet button can go here
+  if(currentQ<questions.length-1){
+    currentQ++;
+    showQuestion(currentQ);
+  }else{
+    alert("Thank you! We'll be in touch.");
   }
 }
-function prevQuestion(){if(currentQ>0){currentQ--;showQuestion(currentQ);}}
+
+function prevQuestion(){
+  if(currentQ>0){
+    currentQ--;
+    showQuestion(currentQ);
+  }
+}
 
 showQuestion(currentQ);
-</script>
-
-// Contact form
-function sendMessage(){
-  document.getElementById("contactName").value="";
-  document.getElementById("contactEmail").value="";
-  document.getElementById("contactPet").value="";
-  document.getElementById("contactMessage").value="";
-  const msg = document.getElementById("messageSent");
-  msg.style.display="block";
-  setTimeout(()=>{msg.style.display="none";},3000);
-}
 </script>
 
 </body>
