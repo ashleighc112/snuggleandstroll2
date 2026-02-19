@@ -83,49 +83,55 @@ section-card{
   box-shadow:0 6px 18px rgba(0,0,0,.1);
 }
 
-.progress-container{
+.progress-bar{
   background:#e0e0e0;
-  border-radius:30px;
-  height:20px;
-  margin-bottom:1.5rem;
+  border-radius:20px;
   overflow:hidden;
+  margin-bottom:1.5rem;
+  height:12px;
 }
 
-.progress-bar{
+.progress{
   background:var(--blue);
-  height:100%;
   width:0%;
-  transition:width 0.3s;
-  border-radius:30px;
+  height:100%;
+  transition:width 0.3s ease;
 }
 
 .question{
-  margin-bottom:1rem;
+  display:none;
 }
 
-label{display:block;margin-bottom:.3rem;font-weight:500;}
-input, select, textarea{
+.question.active{
+  display:block;
+}
+
+label{
+  display:block;
+  margin:0.5rem 0 0.2rem;
+  font-weight:500;
+}
+
+input, select{
   width:100%;
   padding:.6rem;
-  margin-bottom:.8rem;
   border-radius:8px;
   border:1px solid #ccc;
-  font-family:'Segoe UI',sans-serif;
+  margin-bottom:1rem;
 }
 
 button{
   background:var(--blue);
   color:white;
-  border:none;
-  border-radius:30px;
   padding:.7rem 1.2rem;
+  border:none;
+  border-radius:8px;
   font-weight:600;
   cursor:pointer;
+  transition:.3s;
 }
 
-#results{
-  margin-top:2rem;
-}
+button:hover{background:var(--green);}
 </style>
 </head>
 <body>
@@ -148,189 +154,206 @@ button{
 
 <section-card>
   <h2>Pet Concierge Questionnaire</h2>
-  <div class="progress-container"><div class="progress-bar" id="progressBar"></div></div>
+
+  <div class="progress-bar">
+    <div class="progress" id="progress"></div>
+  </div>
 
   <form id="conciergeForm">
-
-    <!-- Step 1: Pet Basics -->
-    <div class="question-step">
-      <div class="question">
-        <label>Pet Name</label>
-        <input type="text" name="name" required>
-      </div>
-      <div class="question">
-        <label>Species</label>
-        <select name="species" required>
-          <option value="">Select</option>
-          <option>Dog</option>
-          <option>Cat</option>
-          <option>Bird</option>
-          <option>Other</option>
-        </select>
-      </div>
-      <div class="question">
-        <label>Breed</label>
-        <input type="text" name="breed" required>
-      </div>
-      <div class="question">
-        <label>Age</label>
-        <input type="number" name="age" required>
-      </div>
-      <div class="question">
-        <label>Weight (lbs)</label>
-        <input type="number" name="weight" required>
-      </div>
+    
+    <!-- Question 1: Pet Name -->
+    <div class="question active" data-step="1">
+      <label for="petName">Pet Name</label>
+      <input type="text" id="petName" required>
+      <button type="button" onclick="nextQuestion()">Next</button>
     </div>
 
-    <!-- Step 2: Temperament & Behavior -->
-    <div class="question-step" style="display:none">
-      <div class="question">
-        <label>Energy Level</label>
-        <select name="energy" required>
-          <option value="">Select</option>
-          <option>Low</option>
-          <option>Medium</option>
-          <option>High</option>
-        </select>
-      </div>
-      <div class="question">
-        <label>Temperament</label>
-        <textarea name="temperament" required></textarea>
-      </div>
+    <!-- Question 2: Species -->
+    <div class="question" data-step="2">
+      <label for="species">Species</label>
+      <select id="species" required>
+        <option value="">Select...</option>
+        <option value="Dog">Dog</option>
+        <option value="Cat">Cat</option>
+      </select>
+      <button type="button" onclick="nextQuestion()">Next</button>
     </div>
 
-    <!-- Step 3: Health -->
-    <div class="question-step" style="display:none">
-      <div class="question">
-        <label>Medical Conditions</label>
-        <textarea name="conditions"></textarea>
-      </div>
-      <div class="question">
-        <label>Medications</label>
-        <textarea name="medications"></textarea>
-      </div>
+    <!-- Question 3: Breed -->
+    <div class="question" data-step="3">
+      <label for="breed">Breed</label>
+      <input type="text" id="breed" required>
+      <button type="button" onclick="nextQuestion()">Next</button>
     </div>
 
-    <!-- Step 4: Daily Routine -->
-    <div class="question-step" style="display:none">
-      <div class="question">
-        <label>Walks per day</label>
-        <input type="number" name="walksPerDay" required>
-      </div>
-      <div class="question">
-        <label>Walk length (minutes)</label>
-        <input type="number" name="walkLength" required>
-      </div>
-      <div class="question">
-        <label>Alone time tolerance (hours)</label>
-        <input type="number" name="aloneTime" required>
-      </div>
+    <!-- Question 4: Age -->
+    <div class="question" data-step="4">
+      <label for="age">Age</label>
+      <input type="text" id="age" required>
+      <button type="button" onclick="nextQuestion()">Next</button>
     </div>
 
-    <!-- Step 5: Home & Preferences -->
-    <div class="question-step" style="display:none">
-      <div class="question">
-        <label>Home Type</label>
-        <select name="homeType" required>
-          <option value="">Select</option>
-          <option>House</option>
-          <option>Apartment</option>
-          <option>Condo</option>
-        </select>
-      </div>
-      <div class="question">
-        <label>ZIP Code</label>
-        <input type="text" name="zip" required>
-      </div>
-      <div class="question">
-        <label>Service Needed</label>
-        <select name="service" required>
-          <option value="">Select</option>
-          <option>Quick Walk</option>
-          <option>Standard Sit Visit</option>
-          <option>Extended Stay</option>
-        </select>
-      </div>
+    <!-- Question 5: Weight -->
+    <div class="question" data-step="5">
+      <label for="weight">Weight</label>
+      <input type="text" id="weight" required>
+      <button type="button" onclick="nextQuestion()">Next</button>
     </div>
 
-    <button type="button" id="nextBtn">Next</button>
+    <!-- Question 6: Energy Level -->
+    <div class="question" data-step="6">
+      <label for="energyLevel">Energy Level</label>
+      <select id="energyLevel" required>
+        <option value="">Select...</option>
+        <option value="Low">Low</option>
+        <option value="Medium">Medium</option>
+        <option value="High">High</option>
+      </select>
+      <button type="button" onclick="nextQuestion()">Next</button>
+    </div>
+
+    <!-- Question 7: Temperament -->
+    <div class="question" data-step="7">
+      <label for="temperament">Temperament Description</label>
+      <input type="text" id="temperament" required>
+      <button type="button" onclick="nextQuestion()">Next</button>
+    </div>
+
+    <!-- Question 8: Medical Conditions -->
+    <div class="question" data-step="8">
+      <label for="medicalConditions">Medical Conditions</label>
+      <input type="text" id="medicalConditions">
+      <button type="button" onclick="nextQuestion()">Next</button>
+    </div>
+
+    <!-- Question 9: Medications -->
+    <div class="question" data-step="9">
+      <label for="medications">Medications</label>
+      <input type="text" id="medications">
+      <button type="button" onclick="nextQuestion()">Next</button>
+    </div>
+
+    <!-- Question 10: Walks per Day -->
+    <div class="question" data-step="10">
+      <label for="walksPerDay">Walks per Day</label>
+      <input type="number" id="walksPerDay" required>
+      <button type="button" onclick="nextQuestion()">Next</button>
+    </div>
+
+    <!-- Question 11: Walk Length -->
+    <div class="question" data-step="11">
+      <label for="walkLength">Walk Length (minutes)</label>
+      <input type="number" id="walkLength" required>
+      <button type="button" onclick="nextQuestion()">Next</button>
+    </div>
+
+    <!-- Question 12: Alone Time -->
+    <div class="question" data-step="12">
+      <label for="aloneTime">Alone Time Tolerance</label>
+      <input type="text" id="aloneTime" required>
+      <button type="button" onclick="nextQuestion()">Next</button>
+    </div>
+
+    <!-- Question 13: Home Type -->
+    <div class="question" data-step="13">
+      <label for="homeType">Home Type</label>
+      <input type="text" id="homeType" required>
+      <button type="button" onclick="nextQuestion()">Next</button>
+    </div>
+
+    <!-- Question 14: ZIP Code -->
+    <div class="question" data-step="14">
+      <label for="zip">ZIP Code</label>
+      <input type="text" id="zip" required>
+      <button type="button" onclick="nextQuestion()">Next</button>
+    </div>
+
+    <!-- Question 15: Service Needed -->
+    <div class="question" data-step="15">
+      <label for="service">Service Needed</label>
+      <input type="text" id="service" required>
+      <button type="button" onclick="submitForm()">Submit</button>
+    </div>
+
   </form>
-
-  <div id="results"></div>
 </section-card>
 
 <script>
-// Step Wizard
-const steps = document.querySelectorAll('.question-step');
-const progressBar = document.getElementById('progressBar');
-let currentStep = 0;
-const formData = {};
+const questions=document.querySelectorAll(".question");
+const progress=document.getElementById("progress");
+let currentStep=0;
 
-function showStep(index){
-  steps.forEach((s,i)=> s.style.display = i===index ? 'block':'none');
-  progressBar.style.width = `${(index/steps.length)*100}%`;
+function nextQuestion(){
+  const input=questions[currentStep].querySelector("input, select");
+  if(!input.checkValidity()){
+    input.reportValidity();
+    return;
+  }
+  questions[currentStep].classList.remove("active");
+  currentStep++;
+  if(currentStep<questions.length){
+    questions[currentStep].classList.add("active");
+    updateProgress();
+  }
 }
 
-document.getElementById('nextBtn').addEventListener('click', ()=>{
-  const inputs = steps[currentStep].querySelectorAll('input,select,textarea');
-  let valid = true;
-  inputs.forEach(input=>{
-    if(!input.checkValidity()) valid=false;
-    formData[input.name]=input.value;
-  });
-  if(!valid) { alert('Please fill all required fields.'); return; }
+function updateProgress(){
+  const percent=Math.round((currentStep/questions.length)*100);
+  progress.style.width=percent+"%";
+}
 
-  if(currentStep<steps.length-1){
-    currentStep++;
-    showStep(currentStep);
-  } else {
-    progressBar.style.width='100%';
-    generateCarePlan();
-  }
-});
+// Care plan and sitter match generation (simplified)
+function generateCarePlan(pet){
+  return `<ul>
+    <li>Daily: ${pet.walksPerDay} walks of ${pet.walkLength} minutes</li>
+    <li>Weekly: Focus on playtime and socialization</li>
+    <li>Special: ${pet.medicalConditions || "None"}</li>
+  </ul>`;
+}
 
-showStep(currentStep);
-
-// Care plan & sitter matching
-function generateCarePlan(){
-  const results = document.getElementById('results');
-
-  // Basic care plan
-  const daily = `<section-card>
-    <h3>Daily Routine</h3>
-    <ul>
-      <li>${formData.walksPerDay} walks per day, each ${formData.walkLength} minutes</li>
-      <li>Alone time tolerance: ${formData.aloneTime} hours</li>
-    </ul>
+function generateSitterMatch(pet){
+  return `<section-card>
+    <h4>Recommended Sitter</h4>
+    <sitter>
+      <sitter-name>Alex Morgan</sitter-name>
+      <div class="specialties">${pet.energyLevel} energy ${pet.species}</div>
+    </sitter>
   </section-card>`;
+}
 
-  const weekly = `<section-card>
-    <h3>Weekly Focus</h3>
-    <ul>
-      <li>Monitor energy: ${formData.energy}</li>
-      <li>Temperament: ${formData.temperament}</li>
-    </ul>
-  </section-card>`;
+function submitForm(){
+  const pet={
+    name:document.getElementById("petName").value,
+    species:document.getElementById("species").value,
+    breed:document.getElementById("breed").value,
+    age:document.getElementById("age").value,
+    weight:document.getElementById("weight").value,
+    energyLevel:document.getElementById("energyLevel").value,
+    temperament:document.getElementById("temperament").value,
+    medicalConditions:document.getElementById("medicalConditions").value,
+    medications:document.getElementById("medications").value,
+    walksPerDay:document.getElementById("walksPerDay").value,
+    walkLength:document.getElementById("walkLength").value,
+    aloneTime:document.getElementById("aloneTime").value,
+    homeType:document.getElementById("homeType").value,
+    zip:document.getElementById("zip").value,
+    service:document.getElementById("service").value
+  };
 
-  const sitter = `<section-card>
-    <h3>Recommended Sitters</h3>
-    <sitter><sitter-name>Maya Thompson</sitter-name><time-slots>8 AM, 11 AM, 3 PM</time-slots></sitter>
-    <sitter><sitter-name>Jordan Lee</sitter-name><time-slots>10 AM, 1 PM, 6 PM</time-slots></sitter>
-    <sitter><sitter-name>Riley Chen</sitter-name><time-slots>9 AM, 12 PM, 4 PM</time-slots></sitter>
-  </section-card>`;
+  const carePlanHtml=generateCarePlan(pet);
+  const sitterHtml=generateSitterMatch(pet);
 
-  results.innerHTML = daily+weekly+sitter;
-
-  // Save to localStorage
-  localStorage.setItem('snugglePetProfile', JSON.stringify({
-    pet: formData,
-    carePlanHtml: daily+weekly,
-    sitterHtml: sitter,
-    createdAt: new Date().toISOString()
+  localStorage.setItem("snugglePetProfile", JSON.stringify({
+    pet, carePlanHtml, sitterHtml, createdAt:new Date()
   }));
 
-  alert('Profile saved! You can now view it on the My Pet page.');
+  // Show confirmation and reveal My Pet button
+  alert("Pet profile saved! You can now view it on the My Pet page.");
+  window.location.href="mypet.html";
 }
+
+// Initialize first progress
+updateProgress();
 </script>
 
 </body>
