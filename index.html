@@ -182,20 +182,71 @@ section h2{text-align:center;margin-bottom:2rem;}
 </section>
 
 <!-- TESTIMONIALS -->
-<section-card>
-  <h2 class="text-center">What Pet Parents Say</h2>
+<section-card id="testimonials">
+  <h2 class="text-center" style="margin-bottom:2rem;">What Pet Parents Say</h2>
   <div class="testimonials-container">
     <testimonial class="active">
-      <div class="testimonial-card"><p>"Maya is amazing with our dog!"</p><strong>– Sarah L.</strong></div>
+      <div class="testimonial-card">
+        <p>"Maya is amazing with our dog!"</p>
+        <strong>– Sarah L.</strong>
+      </div>
     </testimonial>
     <testimonial>
-      <div class="testimonial-card"><p>"Professional and loving care every time."</p><strong>– James T.</strong></div>
+      <div class="testimonial-card">
+        <p>"Professional and loving care every time."</p>
+        <strong>– James T.</strong>
+      </div>
     </testimonial>
     <testimonial>
-      <div class="testimonial-card"><p>"I never worry when Alex visits our cat."</p><strong>– Kelly M.</strong></div>
+      <div class="testimonial-card">
+        <p>"I never worry when Alex visits our cat."</p>
+        <strong>– Kelly M.</strong>
+      </div>
     </testimonial>
   </div>
 </section-card>
+
+<style>
+.testimonials-container{
+  position:relative;
+  max-width:900px;
+  margin:3rem auto;
+  height:160px;
+  overflow:hidden;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+.testimonial{
+  width:100%;
+  position:absolute;
+  opacity:0;
+  transition:opacity 0.8s ease-in-out;
+  display:flex;
+  justify-content:center;
+}
+.testimonial.active{opacity:1;position:relative;}
+.testimonial-card{
+  background:var(--blue);
+  color:white;
+  padding:2rem;
+  border-radius:20px;
+  max-width:600px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.15);
+  text-align:center;
+}
+</style>
+
+<script>
+const testimonials = document.querySelectorAll(".testimonial");
+let tIndex=0;
+setInterval(()=>{
+  testimonials.forEach(t=>t.classList.remove("active"));
+  testimonials[tIndex].classList.add("active");
+  tIndex=(tIndex+1)%testimonials.length;
+},5000);
+</script>
+
 
 <!-- CONTACT -->
 <section id="contact">
@@ -230,13 +281,201 @@ if(localStorage.getItem("snugglePetProfile")){
 }
 
 // Testimonials rotation
+<section-card id="testimonials">
+  <h2 class="text-center" style="margin-bottom:2rem;">What Pet Parents Say</h2>
+  <div class="testimonials-container">
+    <testimonial class="active">
+      <div class="testimonial-card">
+        <p>"Maya is amazing with our dog!"</p>
+        <strong>– Sarah L.</strong>
+      </div>
+    </testimonial>
+    <testimonial>
+      <div class="testimonial-card">
+        <p>"Professional and loving care every time."</p>
+        <strong>– James T.</strong>
+      </div>
+    </testimonial>
+    <testimonial>
+      <div class="testimonial-card">
+        <p>"I never worry when Alex visits our cat."</p>
+        <strong>– Kelly M.</strong>
+      </div>
+    </testimonial>
+  </div>
+</section-card>
+
+<style>
+.testimonials-container{
+  position:relative;
+  max-width:900px;
+  margin:3rem auto;
+  height:160px;
+  overflow:hidden;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+.testimonial{
+  width:100%;
+  position:absolute;
+  opacity:0;
+  transition:opacity 0.8s ease-in-out;
+  display:flex;
+  justify-content:center;
+}
+.testimonial.active{opacity:1;position:relative;}
+.testimonial-card{
+  background:var(--blue);
+  color:white;
+  padding:2rem;
+  border-radius:20px;
+  max-width:600px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.15);
+  text-align:center;
+}
+</style>
+
+<script>
 const testimonials = document.querySelectorAll(".testimonial");
 let tIndex=0;
 setInterval(()=>{
   testimonials.forEach(t=>t.classList.remove("active"));
   testimonials[tIndex].classList.add("active");
   tIndex=(tIndex+1)%testimonials.length;
-},4000);
+},5000);
+</script>
+
+<section-card id="pet-concierge">
+  <h2 class="text-center" style="margin-bottom:2rem;">Not sure what your furry friend needs? Let us help!</h2>
+  <div id="questionnaire-container">
+    <div class="progress-bar">
+      <div id="progress-fill"></div>
+    </div>
+    <div class="question-card">
+      <p id="question-text" style="font-weight:600;font-size:1.2rem;"></p>
+      <div id="answer-container"></div>
+    </div>
+    <div class="nav-buttons">
+      <button id="prev-btn" onclick="prevQuestion()" style="display:none;">Previous</button>
+      <button id="next-btn" onclick="nextQuestion()">Next</button>
+    </div>
+  </div>
+</section-card>
+
+<style>
+#questionnaire-container {
+  max-width: 600px;
+  margin: 3rem auto;
+  text-align: center;
+}
+.progress-bar {
+  width: 100%;
+  height: 12px;
+  background: #e0e0e0;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+#progress-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--blue);
+  transition: width 0.3s ease-in-out;
+}
+.question-card {
+  background: var(--white);
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+#answer-container input, #answer-container select, #answer-container textarea {
+  width: 80%;
+  padding: .8rem;
+  margin-top: 1rem;
+  border-radius:10px;
+  border:1px solid #ccc;
+  display:block;
+  margin-left:auto;
+  margin-right:auto;
+}
+.nav-buttons {
+  margin-top:1.5rem;
+}
+.nav-buttons button {
+  padding:.8rem 1.5rem;
+  margin:.3rem;
+  border-radius:30px;
+  border:none;
+  font-weight:600;
+  cursor:pointer;
+  background: var(--blue);
+  color:white;
+  transition:.3s;
+}
+.nav-buttons button:hover{opacity:.85;}
+</style>
+
+<script>
+const questions = [
+  {q:"Pet Name", type:"text"},
+  {q:"Species", type:"select", options:["Dog","Cat"]},
+  {q:"Breed", type:"text"},
+  {q:"Age", type:"text"},
+  {q:"Weight", type:"text"},
+  {q:"Energy Level", type:"text"},
+  {q:"Temperament", type:"text"},
+  {q:"Medical Conditions", type:"text"},
+  {q:"Medications", type:"text"},
+  {q:"Walks Per Day", type:"text"},
+  {q:"Walk Length (minutes)", type:"text"},
+  {q:"Alone Time Tolerance", type:"text"},
+  {q:"Home Type", type:"text"},
+  {q:"ZIP Code", type:"text"},
+  {q:"Service Needed", type:"text"}
+];
+
+let currentQ = 0;
+const questionText = document.getElementById("question-text");
+const answerContainer = document.getElementById("answer-container");
+const progressFill = document.getElementById("progress-fill");
+const prevBtn = document.getElementById("prev-btn");
+const nextBtn = document.getElementById("next-btn");
+
+function showQuestion(index){
+  const q = questions[index];
+  questionText.textContent = q.q;
+  answerContainer.innerHTML = "";
+  if(q.type==="text"){
+    const input = document.createElement("input");
+    input.type = "text";
+    answerContainer.appendChild(input);
+  } else if(q.type==="select"){
+    const select = document.createElement("select");
+    q.options.forEach(opt=>{
+      const option = document.createElement("option");
+      option.value=opt;
+      option.textContent=opt;
+      select.appendChild(option);
+    });
+    answerContainer.appendChild(select);
+  }
+  progressFill.style.width = ((index+1)/questions.length*100) + "%";
+  prevBtn.style.display = index===0?"none":"inline-block";
+  nextBtn.textContent = index===questions.length-1?"Submit":"Next";
+}
+
+function nextQuestion(){
+  if(currentQ<questions.length-1){currentQ++; showQuestion(currentQ);}
+  else{
+    alert("Questionnaire complete! Thank you.");
+    // Save logic and reveal My Pet button can go here
+  }
+}
+function prevQuestion(){if(currentQ>0){currentQ--;showQuestion(currentQ);}}
+
+showQuestion(currentQ);
+</script>
 
 // Contact form
 function sendMessage(){
