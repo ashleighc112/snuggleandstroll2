@@ -7,24 +7,23 @@
 
 <style>
 :root {
---brown: #5b3b2a;
---yellow: #f7d87c;
---green: #3f6b4a;
---teal: #1fa7a1;
---cream: #faf5ec;
---text: #2b241f;
+--brown:#5b3b2a;
+--yellow:#f7d87c;
+--green:#3f6b4a;
+--teal:#1fa7a1;
+--cream:#faf5ec;
+--text:#2b241f;
 }
 
-* { box-sizing: border-box; margin:0; padding:0; }
+*{box-sizing:border-box;margin:0;padding:0}
 
 body{
-font-family: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 background:var(--cream);
 color:var(--text);
 line-height:1.6;
 }
 
-/* ================= HEADER ================= */
 header{
 background:linear-gradient(90deg,var(--brown),var(--green));
 color:#fff;
@@ -40,38 +39,16 @@ z-index:100;
 .logo{
 display:flex;
 align-items:center;
-gap:0.5rem;
+gap:0.7rem;
+font-weight:700;
 }
 
-.logo-icon{
-width:40px;
-height:40px;
-border-radius:999px;
+.logo-badge{
 background:var(--yellow);
-position:relative;
-overflow:hidden;
-}
-
-.logo-icon::before{
-content:"";
-position:absolute;
-width:18px;
-height:18px;
-border-radius:50%;
-background:var(--brown);
-left:9px;
-bottom:8px;
-}
-
-.logo-icon::after{
-content:"";
-position:absolute;
-width:14px;
-height:14px;
-border-radius:50%;
-background:var(--green);
-right:7px;
-bottom:10px;
+color:var(--brown);
+padding:0.4rem 0.7rem;
+border-radius:999px;
+font-weight:800;
 }
 
 nav a{
@@ -79,21 +56,7 @@ color:#fff;
 text-decoration:none;
 margin-left:1.2rem;
 font-size:0.95rem;
-position:relative;
 }
-
-nav a::after{
-content:"";
-position:absolute;
-left:0;
-bottom:-4px;
-width:0;
-height:2px;
-background:var(--yellow);
-transition:width .2s ease;
-}
-
-nav a:hover::after{ width:100%; }
 
 #myPetNav{
 background:var(--yellow);
@@ -104,17 +67,15 @@ font-weight:600;
 margin-left:1.2rem;
 }
 
-/* ================= CUSTOM TAG ================= */
 section-card{
 display:block;
 background:#fff;
 border-radius:1rem;
-padding:1.5rem 1.7rem;
+padding:2rem;
 box-shadow:0 8px 20px rgba(0,0,0,0.06);
 margin-bottom:2rem;
 }
 
-/* ================= LAYOUT ================= */
 main{
 padding:3rem 8vw;
 max-width:900px;
@@ -135,7 +96,6 @@ font-size:3rem;
 .tagline{
 color:var(--green);
 font-weight:600;
-margin-top:0.5rem;
 }
 
 .clear-btn{
@@ -149,7 +109,6 @@ cursor:pointer;
 margin-top:1rem;
 }
 
-/* ================= FOOTER ================= */
 footer{
 padding:1.5rem 8vw;
 font-size:0.85rem;
@@ -158,6 +117,83 @@ text-align:center;
 border-top:1px solid #e2d7c7;
 margin-top:2rem;
 }
+
+/* Chatbot */
+.chatbot-toggle{
+position:fixed;
+bottom:1.5rem;
+right:1.5rem;
+background:var(--teal);
+color:#fff;
+border:none;
+border-radius:999px;
+padding:0.7rem 1rem;
+cursor:pointer;
+}
+
+.chatbot-window{
+position:fixed;
+bottom:4.5rem;
+right:1.5rem;
+width:300px;
+background:#fff;
+border-radius:1rem;
+display:none;
+flex-direction:column;
+box-shadow:0 10px 26px rgba(0,0,0,0.3);
+overflow:hidden;
+}
+
+.chatbot-header{
+background:var(--green);
+color:#fff;
+padding:0.6rem;
+display:flex;
+justify-content:space-between;
+}
+
+.chatbot-body{
+padding:0.6rem;
+flex:1;
+overflow-y:auto;
+background:#f7f3ea;
+}
+
+.chatbot-input{
+display:flex;
+border-top:1px solid #ddd;
+}
+
+.chatbot-input input{
+flex:1;
+border:none;
+padding:0.5rem;
+}
+
+.chatbot-input button{
+border:none;
+background:var(--teal);
+color:#fff;
+padding:0.5rem;
+cursor:pointer;
+}
+
+.msg{margin-bottom:0.4rem}
+.msg.user{text-align:right}
+.msg.user span{
+background:var(--teal);
+color:#fff;
+border-radius:12px 12px 0 12px;
+padding:0.3rem 0.6rem;
+display:inline-block;
+}
+.msg.bot span{
+background:#fff;
+border-radius:12px 12px 12px 0;
+padding:0.3rem 0.6rem;
+display:inline-block;
+border:1px solid #e0d4c3;
+}
 </style>
 </head>
 
@@ -165,7 +201,7 @@ margin-top:2rem;
 
 <header>
 <div class="logo">
-<div class="logo-icon"></div>
+<div class="logo-badge">SAS</div>
 <div>Snuggle & Stroll</div>
 </div>
 <nav>
@@ -173,55 +209,60 @@ margin-top:2rem;
 <a href="index.html#about">About</a>
 <a href="index.html#schedule">Scheduling</a>
 <a href="index.html#pricing">Pricing</a>
+<a href="meet-sitters.html">Meet The Sitters</a>
 <a href="mypet.html" id="myPetNav">My Pet</a>
 </nav>
 </header>
 
 <main>
-
 <div id="profileContainer"></div>
-
 </main>
 
 <footer>
 © <span id="year"></span> Snuggle & Stroll. All rights reserved.
 </footer>
 
-<script>
-document.getElementById('year').textContent = new Date().getFullYear();
+<button class="chatbot-toggle" id="chatbotToggle">Chat</button>
 
-const container = document.getElementById("profileContainer");
-const stored = localStorage.getItem("snugglePetProfile");
+<div class="chatbot-window" id="chatbotWindow">
+<div class="chatbot-header">
+<span>SnuggleBot</span>
+<button style="background:none;border:none;color:#fff;cursor:pointer" id="chatbotClose">×</button>
+</div>
+<div class="chatbot-body" id="chatbotBody">
+<div class="msg bot"><span>Need help? Ask me anything.</span></div>
+</div>
+<div class="chatbot-input">
+<input id="chatbotInput">
+<button id="chatbotSend">Send</button>
+</div>
+</div>
+
+<script>
+document.getElementById('year').textContent=new Date().getFullYear();
+
+const container=document.getElementById("profileContainer");
+const stored=localStorage.getItem("snugglePetProfile");
 
 if(!stored){
-container.innerHTML = `
+container.innerHTML=`
 <section-card>
 <h2>No Pet Profile Found</h2>
-<p>Please complete the Pet Concierge questionnaire on the homepage.</p>
-<a href="index.html#pet-concierge" class="clear-btn">Create Pet Profile</a>
+<a href="index.html#pet-concierge" class="clear-btn">Create One</a>
 </section-card>
 `;
-} else {
+}else{
 
-const data = JSON.parse(stored);
+const data=JSON.parse(stored);
+const pet=data.pet;
+const emoji=pet.species?.toLowerCase().includes("cat")?"🐱":"🐶";
 
-const pet = data.pet;
+let tagline="";
+if(pet.energy==="High") tagline="Full of zoomies and big adventures.";
+else if(pet.energy==="Moderate") tagline="Balanced, playful, and easygoing.";
+else tagline="Calm, cozy, and happiest at home.";
 
-const emoji = pet.species === "Cat" ? "🐱" : "🐶";
-
-let tagline = "";
-
-if(pet.energy === "High"){
-tagline = "Full of zoomies and big adventures.";
-}
-else if(pet.energy === "Moderate"){
-tagline = "Balanced, playful, and easygoing.";
-}
-else{
-tagline = "Calm, cozy, and happiest at home.";
-}
-
-container.innerHTML = `
+container.innerHTML=`
 <section-card>
 <div class="pet-header">
 <div class="pet-emoji">${emoji}</div>
@@ -230,26 +271,51 @@ container.innerHTML = `
 <div class="tagline">${tagline}</div>
 </div>
 </div>
-
-<p><strong>Breed:</strong> ${pet.breed}</p>
-<p><strong>Age:</strong> ${pet.age}</p>
-<p><strong>Energy Level:</strong> ${pet.energy}</p>
-<p><strong>Temperament:</strong> ${pet.temperament}</p>
-<p><strong>Service Selected:</strong> ${pet.service}</p>
-
-</section-card>
-
 ${data.carePlanHtml}
-
 <button class="clear-btn" id="clearProfile">Clear Profile</button>
+</section-card>
 `;
 
-document.getElementById("clearProfile").addEventListener("click",()=>{
+document.getElementById("clearProfile").onclick=()=>{
 localStorage.removeItem("snugglePetProfile");
 location.reload();
-});
-
+};
 }
+
+/* Chatbot */
+const toggle=document.getElementById("chatbotToggle");
+const win=document.getElementById("chatbotWindow");
+const close=document.getElementById("chatbotClose");
+const body=document.getElementById("chatbotBody");
+const input=document.getElementById("chatbotInput");
+const send=document.getElementById("chatbotSend");
+
+function addMsg(t,f){
+const d=document.createElement("div");
+d.className="msg "+f;
+d.innerHTML="<span>"+t+"</span>";
+body.appendChild(d);
+body.scrollTop=body.scrollHeight;
+}
+
+function reply(t){
+t=t.toLowerCase();
+if(t.includes("price"))return"Walks start at $22, sits $38, overnights $95.";
+if(t.includes("schedule"))return"You can check scheduling on the homepage.";
+if(t.includes("kennel")||t.includes("home"))return"We specialize in in-home care.";
+return"A human from Snuggle & Stroll will follow up!";
+}
+
+send.onclick=()=>{
+const t=input.value.trim();
+if(!t)return;
+addMsg(t,"user");
+input.value="";
+setTimeout(()=>addMsg(reply(t),"bot"),400);
+};
+
+toggle.onclick=()=>win.style.display=win.style.display==="flex"?"none":"flex";
+close.onclick=()=>win.style.display="none";
 </script>
 
 </body>
