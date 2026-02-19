@@ -1,247 +1,336 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Pet Care Concierge | Snuggle & Stroll</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 2rem;
-      background: #fafafa;
-    }
-    h1, h2, h3 {
-      color: #333;
-    }
-    form label {
-      display: block;
-      margin: 0.5rem 0;
-    }
-    input, select, textarea {
-      width: 100%;
-      padding: 0.5rem;
-      margin-top: 0.25rem;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-    button {
-      margin-top: 1rem;
-      padding: 0.75rem 1.5rem;
-      background: #ff7f50;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 1rem;
-    }
-    button:hover {
-      background: #ff5722;
-    }
-    #results {
-      background: white;
-      padding: 1.5rem;
-      margin-top: 2rem;
-      border-radius: 6px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-    .sitter-card {
-      background: #f0f8ff;
-      padding: 1rem;
-      margin: 1rem 0;
-      border-radius: 6px;
-    }
-  </style>
-</head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pet Concierge | Snuggle & Stroll</title>
 
+<style>
+:root{
+  --blue:#1fa7a1;
+  --green:#3f6b4a;
+  --white:#ffffff;
+  --text:#2b241f;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
+
+body{
+  background:var(--white);
+  color:var(--text);
+  line-height:1.6;
+  padding:2rem;
+  max-width:900px;
+  margin:auto;
+}
+
+header{
+  position:sticky;
+  top:0;
+  z-index:999;
+  background:linear-gradient(90deg,var(--blue),var(--green));
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:1rem 2rem;
+  box-shadow:0 6px 24px rgba(0,0,0,0.18);
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:1rem;
+}
+
+.logo{
+  height:60px;
+  width:auto;
+}
+
+.brand-text h2{
+  color:white;
+  font-size:1.3rem;
+  margin:0;
+}
+
+.brand-text span{
+  font-size:.8rem;
+  color:white;
+  opacity:0.85;
+}
+
+nav{
+  display:flex;
+  align-items:center;
+}
+
+nav a{
+  color:white;
+  text-decoration:none;
+  margin-left:2rem;
+  font-weight:500;
+  font-size:.95rem;
+  transition:.3s;
+}
+
+nav a:hover{opacity:.75;}
+
+section-card{
+  background:white;
+  padding:2rem;
+  border-radius:15px;
+  margin-bottom:2rem;
+  box-shadow:0 6px 18px rgba(0,0,0,.1);
+}
+
+.progress-container{
+  background:#e0e0e0;
+  border-radius:30px;
+  height:20px;
+  margin-bottom:1.5rem;
+  overflow:hidden;
+}
+
+.progress-bar{
+  background:var(--blue);
+  height:100%;
+  width:0%;
+  transition:width 0.3s;
+  border-radius:30px;
+}
+
+.question{
+  margin-bottom:1rem;
+}
+
+label{display:block;margin-bottom:.3rem;font-weight:500;}
+input, select, textarea{
+  width:100%;
+  padding:.6rem;
+  margin-bottom:.8rem;
+  border-radius:8px;
+  border:1px solid #ccc;
+  font-family:'Segoe UI',sans-serif;
+}
+
+button{
+  background:var(--blue);
+  color:white;
+  border:none;
+  border-radius:30px;
+  padding:.7rem 1.2rem;
+  font-weight:600;
+  cursor:pointer;
+}
+
+#results{
+  margin-top:2rem;
+}
+</style>
+</head>
 <body>
 
-<h1>Pet Care Concierge</h1>
-<p>Answer a few questions and we’ll build a personalized daily plan and match you with the right sitter.</p>
+<header>
+  <div class="brand">
+    <img src="sas-logo.png" alt="Snuggle & Stroll Logo" class="logo">
+    <div class="brand-text">
+      <h2>Snuggle & Stroll</h2>
+      <span>Premium In-Home Pet Care</span>
+    </div>
+  </div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="schedule.html">Scheduling</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="mypet.html">My Pet</a>
+  </nav>
+</header>
 
-<form id="pet-form">
+<section-card>
+  <h2>Pet Concierge Questionnaire</h2>
+  <div class="progress-container"><div class="progress-bar" id="progressBar"></div></div>
 
-  <h2>Pet Basics</h2>
-  <label>Pet name:
-    <input type="text" name="name" required>
-  </label>
+  <form id="conciergeForm">
 
-  <label>Species:
-    <select name="species">
-      <option value="dog">Dog</option>
-      <option value="cat">Cat</option>
-      <option value="other">Other</option>
-    </select>
-  </label>
+    <!-- Step 1: Pet Basics -->
+    <div class="question-step">
+      <div class="question">
+        <label>Pet Name</label>
+        <input type="text" name="name" required>
+      </div>
+      <div class="question">
+        <label>Species</label>
+        <select name="species" required>
+          <option value="">Select</option>
+          <option>Dog</option>
+          <option>Cat</option>
+          <option>Bird</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="question">
+        <label>Breed</label>
+        <input type="text" name="breed" required>
+      </div>
+      <div class="question">
+        <label>Age</label>
+        <input type="number" name="age" required>
+      </div>
+      <div class="question">
+        <label>Weight (lbs)</label>
+        <input type="number" name="weight" required>
+      </div>
+    </div>
 
-  <label>Breed:
-    <input type="text" name="breed" placeholder="e.g., Dachshund">
-  </label>
+    <!-- Step 2: Temperament & Behavior -->
+    <div class="question-step" style="display:none">
+      <div class="question">
+        <label>Energy Level</label>
+        <select name="energy" required>
+          <option value="">Select</option>
+          <option>Low</option>
+          <option>Medium</option>
+          <option>High</option>
+        </select>
+      </div>
+      <div class="question">
+        <label>Temperament</label>
+        <textarea name="temperament" required></textarea>
+      </div>
+    </div>
 
-  <label>Age (years):
-    <input type="number" name="age" min="0" step="0.5">
-  </label>
+    <!-- Step 3: Health -->
+    <div class="question-step" style="display:none">
+      <div class="question">
+        <label>Medical Conditions</label>
+        <textarea name="conditions"></textarea>
+      </div>
+      <div class="question">
+        <label>Medications</label>
+        <textarea name="medications"></textarea>
+      </div>
+    </div>
 
-  <label>Weight (lbs):
-    <input type="number" name="weight" min="0">
-  </label>
+    <!-- Step 4: Daily Routine -->
+    <div class="question-step" style="display:none">
+      <div class="question">
+        <label>Walks per day</label>
+        <input type="number" name="walksPerDay" required>
+      </div>
+      <div class="question">
+        <label>Walk length (minutes)</label>
+        <input type="number" name="walkLength" required>
+      </div>
+      <div class="question">
+        <label>Alone time tolerance (hours)</label>
+        <input type="number" name="aloneTime" required>
+      </div>
+    </div>
 
-  <h2>Temperament & Behavior</h2>
-  <label>Energy level:
-    <select name="energy">
-      <option value="low">Low</option>
-      <option value="medium">Medium</option>
-      <option value="high">High</option>
-    </select>
-  </label>
+    <!-- Step 5: Home & Preferences -->
+    <div class="question-step" style="display:none">
+      <div class="question">
+        <label>Home Type</label>
+        <select name="homeType" required>
+          <option value="">Select</option>
+          <option>House</option>
+          <option>Apartment</option>
+          <option>Condo</option>
+        </select>
+      </div>
+      <div class="question">
+        <label>ZIP Code</label>
+        <input type="text" name="zip" required>
+      </div>
+      <div class="question">
+        <label>Service Needed</label>
+        <select name="service" required>
+          <option value="">Select</option>
+          <option>Quick Walk</option>
+          <option>Standard Sit Visit</option>
+          <option>Extended Stay</option>
+        </select>
+      </div>
+    </div>
 
-  <label>Temperament (describe):
-    <textarea name="temperament" rows="3" placeholder="Anxious, shy, friendly, reactive..."></textarea>
-  </label>
+    <button type="button" id="nextBtn">Next</button>
+  </form>
 
-  <h2>Health & Special Needs</h2>
-  <label>Medical conditions:
-    <textarea name="medical" rows="2"></textarea>
-  </label>
-
-  <label>Medications:
-    <textarea name="medications" rows="2"></textarea>
-  </label>
-
-  <h2>Daily Routine</h2>
-  <label>Number of walks per day:
-    <input type="number" name="walks_per_day" min="0" max="6">
-  </label>
-
-  <label>Typical walk length:
-    <select name="walk_length">
-      <option>15 minutes</option>
-      <option>30 minutes</option>
-      <option>45 minutes</option>
-      <option>60+ minutes</option>
-    </select>
-  </label>
-
-  <label>Alone time tolerance:
-    <select name="alone_time">
-      <option>0–1 hour</option>
-      <option>1–3 hours</option>
-      <option>3–6 hours</option>
-      <option>6+ hours</option>
-    </select>
-  </label>
-
-  <h2>Home & Preferences</h2>
-  <label>Home type:
-    <select name="home_type">
-      <option>Apartment</option>
-      <option>House (no yard)</option>
-      <option>House with yard</option>
-    </select>
-  </label>
-
-  <label>ZIP code:
-    <input type="text" name="zip">
-  </label>
-
-  <label>Service needed:
-    <select name="service_type">
-      <option>Walks</option>
-      <option>Drop-in visits</option>
-      <option>Overnights</option>
-      <option>Daycare</option>
-      <option>Boarding</option>
-    </select>
-  </label>
-
-  <button type="submit">Generate care plan & sitter match</button>
-</form>
-
-<div id="results" style="display:none;">
-  <h2>Your Personalized Care Plan</h2>
-  <div id="care-plan"></div>
-
-  <h2>Your Sitter Match</h2>
-  <div id="sitter-match"></div>
-</div>
+  <div id="results"></div>
+</section-card>
 
 <script>
-  async function loadCareGuides() {
-    try {
-      const response = await fetch('data/care_guides.json');
-      return await response.json();
-    } catch (e) {
-      console.error("Error loading care guides:", e);
-      return [];
-    }
-  }
+// Step Wizard
+const steps = document.querySelectorAll('.question-step');
+const progressBar = document.getElementById('progressBar');
+let currentStep = 0;
+const formData = {};
 
-  function pickRelevantGuides(careGuides, pet) {
-    const species = pet.species.toLowerCase();
-    const breed = (pet.breed || "").toLowerCase();
-    const temperament = (pet.temperament || "").toLowerCase();
-    const energy = pet.energy.toLowerCase();
+function showStep(index){
+  steps.forEach((s,i)=> s.style.display = i===index ? 'block':'none');
+  progressBar.style.width = `${(index/steps.length)*100}%`;
+}
 
-    return careGuides.filter(g => {
-      if (g.species !== species) return false;
-      if (g.breed && breed.includes(g.breed)) return true;
-      if (energy === "high" && g.tags.includes("high_energy")) return true;
-      if (temperament.includes("anxious") && g.tags.includes("anxious")) return true;
-      return g.tags.includes("daily") || g.tags.includes("routine");
-    });
-  }
-
-  function buildCarePlanHtml(pet, guides) {
-    let html = `
-      <p><strong>Overview for ${pet.name}:</strong> Based on your answers, here is a suggested daily and weekly routine.</p>
-      <h3>Daily Routine</h3>
-      <ul>
-        <li>Feed on a consistent schedule (morning & evening).</li>
-        <li>${pet.walks_per_day || 1} walk(s) per day, around ${pet.walk_length} each.</li>
-        <li>At least one mental enrichment session daily (sniff walk, puzzle toy, training).</li>
-      </ul>
-
-      <h3>Weekly Focus</h3>
-      <ul>
-        <li>Grooming or brushing based on coat type.</li>
-        <li>1–2 special enrichment activities (new walking route, scent game).</li>
-      </ul>
-    `;
-
-    if (guides.length > 0) {
-      html += `<h3>Special Considerations</h3>`;
-      guides.forEach(g => {
-        html += `<h4>${g.title}</h4><p>${g.content}</p>`;
-      });
-    }
-
-    html += `<p><em>This is general care guidance, not medical advice.</em></p>`;
-    return html;
-  }
-
-  function buildSitterMatchHtml(pet) {
-    return `
-      <div class="sitter-card">
-        <h3>Example Sitter Match</h3>
-        <p>For a ${pet.energy}-energy dog with temperament described as "${pet.temperament}", we recommend a sitter experienced with similar dogs.</p>
-        <p>In the full pilot, this section will show real sitter profiles from your RAG database.</p>
-      </div>
-    `;
-  }
-
-  document.getElementById('pet-form').addEventListener('submit', async function (e) {
-    e.preventDefault();
-
-    const formData = new FormData(e.target);
-    const pet = Object.fromEntries(formData.entries());
-
-    const guides = await loadCareGuides();
-    const relevant = pickRelevantGuides(guides, pet);
-
-    document.getElementById('care-plan').innerHTML = buildCarePlanHtml(pet, relevant);
-    document.getElementById('sitter-match').innerHTML = buildSitterMatchHtml(pet);
-    document.getElementById('results').style.display = 'block';
+document.getElementById('nextBtn').addEventListener('click', ()=>{
+  const inputs = steps[currentStep].querySelectorAll('input,select,textarea');
+  let valid = true;
+  inputs.forEach(input=>{
+    if(!input.checkValidity()) valid=false;
+    formData[input.name]=input.value;
   });
+  if(!valid) { alert('Please fill all required fields.'); return; }
+
+  if(currentStep<steps.length-1){
+    currentStep++;
+    showStep(currentStep);
+  } else {
+    progressBar.style.width='100%';
+    generateCarePlan();
+  }
+});
+
+showStep(currentStep);
+
+// Care plan & sitter matching
+function generateCarePlan(){
+  const results = document.getElementById('results');
+
+  // Basic care plan
+  const daily = `<section-card>
+    <h3>Daily Routine</h3>
+    <ul>
+      <li>${formData.walksPerDay} walks per day, each ${formData.walkLength} minutes</li>
+      <li>Alone time tolerance: ${formData.aloneTime} hours</li>
+    </ul>
+  </section-card>`;
+
+  const weekly = `<section-card>
+    <h3>Weekly Focus</h3>
+    <ul>
+      <li>Monitor energy: ${formData.energy}</li>
+      <li>Temperament: ${formData.temperament}</li>
+    </ul>
+  </section-card>`;
+
+  const sitter = `<section-card>
+    <h3>Recommended Sitters</h3>
+    <sitter><sitter-name>Maya Thompson</sitter-name><time-slots>8 AM, 11 AM, 3 PM</time-slots></sitter>
+    <sitter><sitter-name>Jordan Lee</sitter-name><time-slots>10 AM, 1 PM, 6 PM</time-slots></sitter>
+    <sitter><sitter-name>Riley Chen</sitter-name><time-slots>9 AM, 12 PM, 4 PM</time-slots></sitter>
+  </section-card>`;
+
+  results.innerHTML = daily+weekly+sitter;
+
+  // Save to localStorage
+  localStorage.setItem('snugglePetProfile', JSON.stringify({
+    pet: formData,
+    carePlanHtml: daily+weekly,
+    sitterHtml: sitter,
+    createdAt: new Date().toISOString()
+  }));
+
+  alert('Profile saved! You can now view it on the My Pet page.');
+}
 </script>
 
 </body>
