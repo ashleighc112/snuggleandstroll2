@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Meet The Sitters – Snuggle & Stroll</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<style>
+:root {
+--brown:#5b3b2a;
+--yellow:#f7d87c;
+--green:#3f6b4a;
+--teal:#1fa7a1;
+--cream:#faf5ec;
+--text:#2b241f;
+}
+
+body{
+font-family:system-ui;
+background:var(--cream);
+color:var(--text);
+margin:0;
+}
+
+header{
+background:linear-gradient(90deg,var(--brown),var(--green));
+color:#fff;
+padding:0.6rem 6vw;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo-badge{
+background:var(--yellow);
+color:var(--brown);
+padding:0.4rem 0.7rem;
+border-radius:999px;
+font-weight:800;
+}
+
+main{
+padding:3rem 8vw;
+max-width:1100px;
+margin:auto;
+}
+
+section-card{
+display:block;
+background:#fff;
+border-radius:1rem;
+padding:2rem;
+box-shadow:0 8px 20px rgba(0,0,0,0.06);
+margin-bottom:2rem;
+}
+
+h2{color:var(--brown);margin-bottom:1.5rem}
+h3{color:var(--green)}
+
+footer{
+padding:1.5rem;
+text-align:center;
+font-size:0.85rem;
+border-top:1px solid #e2d7c7;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div style="display:flex;gap:0.7rem;align-items:center">
+<div class="logo-badge">SAS</div>
+<div>Snuggle & Stroll</div>
+</div>
+<a href="index.html" style="color:#fff;text-decoration:none">Home</a>
+</header>
+
+<main>
+
+<h2>Meet The Sitters</h2>
+
+<section-card>
+<h3>Maya Thompson</h3>
+<p>Maya is an avid dog lover with 4 dogs! She meshes the best with calm, senior, or low-energy dogs and loves cozy cuddle sessions and relaxed neighborhood walks. She is certified medicine giver and will make sure your dog gets lots of cuddles and stays healthy as can be!</p>
+</section-card>
+
+<section-card>
+<h3>Jordan Lee</h3>
+<p>Jordan thrives with moderate-energy dogs who enjoy structured play and enrichment. Loves combining training refreshers with daily walks and keeping pups mentally stimulated.</p>
+</section-card>
+
+<section-card>
+<h3>Riley Chen</h3>
+<p>Riley is perfect for high-energy dogs who love long runs, advanced games, and adventure outings. Riley ensures active dogs are fully exercised and happy.</p>
+</section-card>
+
+</main>
+
+<footer>
+© <span id="year"></span> Snuggle & Stroll. All rights reserved.
+</footer>
+
+<script>
+document.getElementById('year').textContent=new Date().getFullYear();
+</script>
+
+</body>
+</html>
