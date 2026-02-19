@@ -7,31 +7,31 @@
 
 <style>
 :root{
---brown:#5b3b2a;
---yellow:#f7d87c;
---green:#3f6b4a;
---teal:#1fa7a1;
---cream:#faf5ec;
---text:#2b241f;
+  --blue:#1fa7a1;
+  --green:#3f6b4a;
+  --white:#ffffff;
+  --cream:#faf5ec;
+  --text:#2b241f;
 }
 
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
 
 body{
-background:var(--cream);
-color:var(--text);
-line-height:1.6;
+  background:var(--white);
+  color:var(--text);
+  line-height:1.6;
 }
 
-hheader{
+/* Header */
+header{
   position:sticky;
   top:0;
   z-index:999;
-  background:linear-gradient(90deg,var(--brown),var(--green));
+  background:linear-gradient(90deg,var(--blue),var(--green));
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:1rem 3rem;
+  padding:1rem 2rem;
   box-shadow:0 6px 24px rgba(0,0,0,0.18);
 }
 
@@ -55,8 +55,8 @@ hheader{
 
 .brand-text span{
   font-size:.8rem;
-  color:var(--yellow);
-  letter-spacing:.5px;
+  color:var(--white);
+  opacity:0.85;
 }
 
 nav{
@@ -78,8 +78,8 @@ nav a:hover{
 }
 
 .mypet-btn{
-  background:var(--yellow);
-  color:var(--brown);
+  background:var(--blue);
+  color:var(--white);
   padding:0.45rem 0.9rem;
   border-radius:999px;
   font-weight:600;
@@ -87,130 +87,238 @@ nav a:hover{
   display:none;
 }
 
-header nav a{
-color:white;
-text-decoration:none;
-margin-left:2rem;
-font-weight:500;
-transition:.3s;
-}
-
-header nav a:hover{opacity:.8;}
-
-.logo{
-height:60px;
-}
-
-.mypet-btn{
-background:var(--yellow);
-color:var(--brown);
-padding:0.45rem 0.9rem;
-border-radius:999px;
-font-weight:600;
-margin-left:1.2rem;
-display:none;
-}
-
+/* Hero */
 .hero{
-position:relative;
-height:90vh;
-overflow:hidden;
+  position:relative;
+  height:90vh;
+  overflow:hidden;
 }
 
 .hero video{
-width:100%;
-height:100%;
-object-fit:cover;
-filter:brightness(.7);
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:brightness(0.7);
 }
 
 .hero-content{
-position:absolute;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-text-align:center;
-color:white;
-max-width:800px;
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  text-align:center;
+  color:white;
+  max-width:800px;
 }
 
 .hero-content h1{
-font-size:3.5rem;
-margin-bottom:1rem;
+  font-size:3.5rem;
+  margin-bottom:1rem;
 }
 
 .hero-content p{
-font-size:1.2rem;
-margin-bottom:2rem;
+  font-size:1.2rem;
+  margin-bottom:2rem;
 }
 
 .hero-buttons a{
-display:inline-block;
-padding:.8rem 1.6rem;
-margin:.5rem;
-border-radius:50px;
-text-decoration:none;
-font-weight:600;
-transition:.3s;
+  display:inline-block;
+  padding:.8rem 1.6rem;
+  margin:.5rem;
+  border-radius:50px;
+  text-decoration:none;
+  font-weight:600;
+  transition:.3s;
 }
 
 .btn-primary{
-background:var(--yellow);
-color:var(--brown);
+  background:var(--blue);
+  color:white;
 }
 
 .btn-outline{
-border:2px solid white;
-color:white;
+  border:2px solid white;
+  color:white;
 }
 
 .btn-primary:hover{transform:translateY(-3px);}
-.btn-outline:hover{background:white;color:var(--brown);}
+.btn-outline:hover{background:white;color:var(--blue);}
 
+/* Sections */
 section{
-padding:5rem 3rem;
-max-width:1200px;
-margin:auto;
+  padding:5rem 2rem;
+  max-width:1200px;
+  margin:auto;
 }
 
 section h2{
-font-size:2rem;
-margin-bottom:2rem;
-color:var(--brown);
+  font-size:2rem;
+  margin-bottom:2rem;
+  color:var(--green);
 }
 
+/* Pricing cards */
 .cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:2rem;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:2rem;
 }
 
 .card{
-background:white;
-padding:2rem;
-border-radius:18px;
-border-top:6px solid var(--teal);
-box-shadow:0 10px 25px rgba(0,0,0,.08);
-transition:.3s;
+  background:white;
+  padding:2rem;
+  border-radius:18px;
+  border-top:6px solid var(--blue);
+  box-shadow:0 10px 25px rgba(0,0,0,.08);
+  transition:.3s;
 }
 
 .card:hover{
-transform:translateY(-5px);
+  transform:translateY(-5px);
 }
 
-.card h3{color:var(--brown);margin-bottom:1rem;}
-.price{font-size:1.5rem;font-weight:bold;color:var(--brown);}
+.card h3{color:var(--green);margin-bottom:1rem;}
+.price{font-size:1.5rem;font-weight:bold;color:var(--green);}
 
+/* Custom tags */
+section-card, testimonials, testimonial, availability-results, sitter, sitter-name, time-slots{
+  display:block;
+}
+
+section-card{
+  background:white;
+  padding:2rem;
+  border-radius:15px;
+  margin-bottom:2rem;
+  box-shadow:0 6px 18px rgba(0,0,0,.1);
+}
+
+.testimonials{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:1.5rem;
+}
+
+.testimonial{
+  background:var(--white);
+  padding:1.5rem;
+  border-radius:12px;
+  box-shadow:0 6px 18px rgba(0,0,0,.08);
+}
+
+/* Progress bar */
+.progress-container{
+  background:#ddd;
+  border-radius:10px;
+  height:10px;
+  width:100%;
+  margin-bottom:1rem;
+}
+
+.progress-bar{
+  background:var(--blue);
+  height:10px;
+  width:0%;
+  border-radius:10px;
+  transition:width 0.3s ease-in-out;
+}
+
+/* Wizard */
+.question-step{
+  display:none;
+}
+
+.question-step.active{
+  display:block;
+}
+
+/* Footer */
 footer{
-background:var(--brown);
-color:white;
-text-align:center;
-padding:2rem;
-margin-top:4rem;
+  background:var(--green);
+  color:white;
+  text-align:center;
+  padding:2rem;
+  margin-top:4rem;
 }
+
+/* Availability calendar */
+#results{
+  margin-top:2rem;
+  display:grid;
+  gap:1rem;
+}
+
+.sitter-card{
+  background:white;
+  padding:1.5rem;
+  border-radius:15px;
+  box-shadow:0 6px 18px rgba(0,0,0,.1);
+}
+
+/* Chatbot */
+#chatbot{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  width:300px;
+  max-height:400px;
+  background:white;
+  border-radius:15px;
+  box-shadow:0 6px 20px rgba(0,0,0,0.2);
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  z-index:1000;
+}
+
+#chatbot-header{
+  background:var(--blue);
+  color:white;
+  padding:0.5rem 1rem;
+  cursor:pointer;
+}
+
+#chatbot-messages{
+  flex:1;
+  padding:0.5rem;
+  overflow-y:auto;
+}
+
+.message{
+  margin:0.5rem 0;
+  padding:0.5rem 1rem;
+  border-radius:12px;
+  max-width:80%;
+}
+
+.user-message{
+  background:#e0f7f7;
+  align-self:flex-end;
+}
+
+.bot-message{
+  background:#f1f1f1;
+  align-self:flex-start;
+}
+
+/* Buttons inside wizard */
+.wizard-buttons{
+  margin-top:1rem;
+}
+
+.wizard-buttons button{
+  background:var(--blue);
+  color:white;
+  border:none;
+  border-radius:30px;
+  padding:.7rem 1.2rem;
+  font-weight:600;
+  cursor:pointer;
+  margin-right:.5rem;
+}
+
 </style>
 </head>
-
 <body>
 
 <header>
@@ -223,36 +331,293 @@ margin-top:4rem;
   </div>
 
   <nav>
+    <a href="#contact">Contact</a>
     <a href="about.html">About</a>
     <a href="schedule.html">Scheduling</a>
     <a href="#pricing">Pricing</a>
-    <a href="meetsitters.html">Meet The Sitters</a>
     <a href="mypet.html" class="mypet-btn" id="mypetNav">My Pet</a>
   </nav>
 </header>
 
+<!-- HERO -->
 <section class="hero">
-<video src="videoofdog.mp4" autoplay muted loop></video>
-<div class="hero-content">
-<h1>Snuggle & Stroll</h1>
-<p>In-home pet sitting and dog walking that feels like a trusted friend—not a kennel.</p>
-<div class="hero-buttons">
-<a href="schedule.html" class="btn-primary">Book a Visit</a>
-<a href="#pricing" class="btn-outline">View Pricing</a>
-<a href="about.html" class="btn-outline">Learn About the Project</a>
-</div>
-</div>
+  <video src="videoofdog.mp4" autoplay muted loop></video>
+  <div class="hero-content">
+    <h1>Snuggle & Stroll</h1>
+    <p>In-home pet sitting and dog walking that feels like a trusted friend—not a kennel.</p>
+    <div class="hero-buttons">
+      <a href="schedule.html" class="btn-primary">Book a Visit</a>
+      <a href="#pricing" class="btn-outline">View Pricing</a>
+      <a href="about.html" class="btn-outline">Learn About the Project</a>
+    </div>
+  </div>
 </section>
 
+<!-- PRICING -->
 <section id="pricing">
-<h2>Pricing</h2>
-<div class="cards">
-<div class="card">
-<h3>Quick Walk</h3>
-<p class="price">$25</p>
-<p>30-minute focused walk for exercise and enrichment.</p>
+  <h2>Pricing</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>Quick Walk</h3>
+      <p class="price">$25</p>
+      <p>30-minute focused walk for exercise and enrichment.</p>
+    </div>
+    <div class="card">
+      <h3>Standard Sit Visit</h3>
+      <p class="price">$40</p>
+      <p>Drop-in visit including feeding, playtime, and check-in update.</p>
+    </div>
+    <div class="card">
+      <h3>Extended Stay</h3>
+      <p class="price">$95/night</p>
+      <p>Overnight in-home care with full routine support.</p>
+    </div>
+    <div class="card">
+      <h3>Multi-Pet Add-On</h3>
+      <p class="price">$15</p>
+      <p>Additional pet added to any visit.</p>
+    </div>
+  </div>
+</section>
+
+<!-- QUESTIONNAIRE -->
+<section id="pet-concierge">
+  <h2>Pet Concierge</h2>
+  <p>Not sure what service to choose? Fill out the questionnaire below to get a custom care plan.</p>
+
+  <div class="progress-container">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+
+  <form id="petWizard">
+    <!-- Step 1 -->
+    <section-card class="question-step active" data-step="1">
+      <h3>Pet Basics</h3>
+      <label>Name: <input type="text" name="name" required></label><br><br>
+      <label>Species: <input type="text" name="species" required></label><br><br>
+      <label>Breed: <input type="text" name="breed"></label><br><br>
+      <label>Age: <input type="number" name="age"></label><br><br>
+      <label>Weight (lbs): <input type="number" name="weight"></label>
+      <div class="wizard-buttons">
+        <button type="button" id="next1">Next</button>
+      </div>
+    </section-card>
+
+    <!-- Step 2 -->
+    <section-card class="question-step" data-step="2">
+      <h3>Temperament & Behavior</h3>
+      <label>Energy Level: 
+        <select name="energy">
+          <option value="">Select</option>
+          <option value="Low">Low</option>
+          <option value="Medium">Medium</option>
+          <option value="High">High</option>
+        </select>
+      </label><br><br>
+      <label>Temperament Description: <input type="text" name="temperament"></label>
+      <div class="wizard-buttons">
+        <button type="button" id="prev2">Back</button>
+        <button type="button" id="next2">Next</button>
+      </div>
+    </section-card>
+
+    <!-- Step 3 -->
+    <section-card class="question-step" data-step="3">
+      <h3>Health</h3>
+      <label>Medical Conditions: <input type="text" name="conditions"></label><br><br>
+      <label>Medications: <input type="text" name="medications"></label>
+      <div class="wizard-buttons">
+        <button type="button" id="prev3">Back</button>
+        <button type="button" id="next3">Next</button>
+      </div>
+    </section-card>
+
+    <!-- Step 4 -->
+    <section-card class="question-step" data-step="4">
+      <h3>Daily Routine</h3>
+      <label>Walks per day: <input type="number" name="walksPerDay"></label><br><br>
+      <label>Walk length (minutes): <input type="number" name="walkLength"></label><br><br>
+      <label>Alone time tolerance (hours): <input type="number" name="aloneTime"></label>
+      <div class="wizard-buttons">
+        <button type="button" id="prev4">Back</button>
+        <button type="button" id="next4">Next</button>
+      </div>
+    </section-card>
+
+    <!-- Step 5 -->
+    <section-card class="question-step" data-step="5">
+      <h3>Home & Preferences</h3>
+      <label>Home Type: <input type="text" name="homeType"></label><br><br>
+      <label>ZIP Code: <input type="text" name="zip"></label><br><br>
+      <label>Service Needed: 
+        <select name="service">
+          <option value="">Select</option>
+          <option value="Quick Walk">Quick Walk</option>
+          <option value="Standard Sit Visit">Standard Sit Visit</option>
+          <option value="Extended Stay">Extended Stay</option>
+        </select>
+      </label>
+      <div class="wizard-buttons">
+        <button type="button" id="prev5">Back</button>
+        <button type="submit">Submit</button>
+      </div>
+    </section-card>
+  </form>
+</section>
+
+<!-- Care Plan & Sitter Match will be dynamically inserted here -->
+<section id="carePlan"></section>
+<section id="sitterMatch"></section>
+
+<!-- Availability Calendar -->
+<section id="availability">
+  <h2>Check Sitter Availability</h2>
+  <label>Select Date: <input type="date" id="singleDate"></label>
+  <button onclick="checkAvailability()">Check Availability</button>
+  <availability-results id="results"></availability-results>
+</section>
+
+<!-- Testimonials -->
+<section id="testimonials">
+  <h2>What Our Clients Say</h2>
+  <testimonials>
+    <testimonial>"Amazing service, my dog loves them!" – Jane D.</testimonial>
+    <testimonial>"Professional and caring sitters every time." – Mark T.</testimonial>
+  </testimonials>
+</section>
+
+<!-- Footer -->
+<footer>
+  © <span id="year"></span> Snuggle & Stroll. All rights reserved.
+</footer>
+
+<!-- Chatbot -->
+<div id="chatbot">
+  <div id="chatbot-header">Chat with us</div>
+  <div id="chatbot-messages"></div>
+  <input type="text" id="chatInput" placeholder="Type a message..." style="padding:.5rem;border:none;border-top:1px solid #ccc;">
 </div>
-<div class="card">
-<h3>Standard Sit Visit</h3>
-<p class="price">$40</p>
-<p>Drop-in
+
+<script>
+// Footer year
+document.getElementById("year").textContent = new Date().getFullYear();
+
+// My Pet button display logic
+if(localStorage.getItem("snugglePetProfile")){
+  document.getElementById("mypetNav").style.display="inline-block";
+}
+
+/* Questionnaire Wizard */
+let currentStep = 1;
+const totalSteps = 5;
+const steps = document.querySelectorAll('.question-step');
+const progressBar = document.getElementById('progressBar');
+
+function showStep(step){
+  steps.forEach(s => s.classList.remove('active'));
+  document.querySelector(`.question-step[data-step="${step}"]`).classList.add('active');
+  progressBar.style.width = ((step-1)/(totalSteps))*100+'%';
+}
+
+document.getElementById('next1').onclick = ()=>{currentStep++; showStep(currentStep);}
+document.getElementById('next2').onclick = ()=>{currentStep++; showStep(currentStep);}
+document.getElementById('next3').onclick = ()=>{currentStep++; showStep(currentStep);}
+document.getElementById('next4').onclick = ()=>{currentStep++; showStep(currentStep);}
+document.getElementById('prev2').onclick = ()=>{currentStep--; showStep(currentStep);}
+document.getElementById('prev3').onclick = ()=>{currentStep--; showStep(currentStep);}
+document.getElementById('prev4').onclick = ()=>{currentStep--; showStep(currentStep);}
+document.getElementById('prev5').onclick = ()=>{currentStep--; showStep(currentStep);}
+
+document.getElementById('petWizard').onsubmit = function(e){
+  e.preventDefault();
+  progressBar.style.width = '100%';
+
+  const formData = new FormData(this);
+  const petProfile = {};
+  formData.forEach((v,k)=>petProfile[k]=v);
+
+  // Generate care plan (simple example)
+  const carePlanHtml = `<section-card>
+    <h3>Daily Care Plan for ${petProfile.name}</h3>
+    <ul>
+      <li>Walks per day: ${petProfile.walksPerDay || 'N/A'}</li>
+      <li>Walk length: ${petProfile.walkLength || 'N/A'} min</li>
+      <li>Alone time tolerance: ${petProfile.aloneTime || 'N/A'} hrs</li>
+    </ul>
+  </section-card>`;
+  document.getElementById('carePlan').innerHTML = carePlanHtml;
+
+  // Sitter match (dummy example)
+  const sitterHtml = `<section-card>
+    <h3>Recommended Sitter</h3>
+    <p>Name: Alex Johnson</p>
+    <p>Bio: Experienced dog walker and pet lover.</p>
+    <p>Specialties: Energy level matching, senior pets, multi-pet households.</p>
+  </section-card>`;
+  document.getElementById('sitterMatch').innerHTML = sitterHtml;
+
+  localStorage.setItem('snugglePetProfile', JSON.stringify({
+    pet: petProfile,
+    carePlanHtml,
+    sitterHtml,
+    createdAt: new Date()
+  }));
+
+  document.getElementById('mypetNav').style.display='inline-block';
+  alert('Pet profile saved! You can view it on My Pet page.');
+}
+
+// Availability calendar
+const sitterData={
+  "2026-02-16":[
+    { name:"Maya Thompson", times:"8 AM, 11 AM, 3 PM" },
+    { name:"Jordan Lee", times:"10 AM, 1 PM, 6 PM" },
+    { name:"Riley Chen", times:"9 AM, 12 PM, 4 PM" }
+  ],
+  "2026-02-17":[
+    { name:"Avery Collins", times:"9 AM, 2 PM, 5 PM" },
+    { name:"Sofia Martinez", times:"8 AM, 12 PM, 4 PM" },
+    { name:"Ethan Brooks", times:"11 AM, 3 PM, 7 PM" }
+  ]
+};
+
+function checkAvailability(){
+  const date = document.getElementById("singleDate").value;
+  const results=document.getElementById("results");
+  results.innerHTML='';
+  if(!sitterData[date]){
+    results.innerHTML=`<p>No sitters available on ${date}.</p>`;
+    return;
+  }
+  sitterData[date].forEach(sitter=>{
+    results.innerHTML+=`<sitter class="sitter-card"><sitter-name>${sitter.name}</sitter-name><time-slots>Times: ${sitter.times}</time-slots></sitter>`;
+  });
+}
+
+// Chatbot
+const chatbotHeader = document.getElementById('chatbot-header');
+const chatbotMessages = document.getElementById('chatbot-messages');
+const chatInput = document.getElementById('chatInput');
+let chatOpen=true;
+chatbotHeader.onclick = ()=>{chatOpen=!chatOpen; chatbotMessages.parentElement.style.height=chatOpen?'400px':'40px';}
+
+chatInput.addEventListener('keypress',function(e){
+  if(e.key==='Enter'){
+    const msg = chatInput.value.trim();
+    if(!msg) return;
+    chatbotMessages.innerHTML+=`<div class="message user-message">${msg}</div>`;
+    chatInput.value='';
+    let response='A human from Snuggle & Stroll will follow up shortly.';
+    const lower = msg.toLowerCase();
+    if(lower.includes('price') || lower.includes('cost')) response='Our pricing ranges from $25 Quick Walks to $95 Extended Stay.';
+    else if(lower.includes('schedule') || lower.includes('book')) response='You can schedule a visit via our Scheduling page.';
+    else if(lower.includes('where') || lower.includes('area') || lower.includes('location')) response='We provide in-home care in your local area.';
+    else if(lower.includes('kennel') || lower.includes('home')) response='All our services are in-home pet care, no kennels.';
+    chatbotMessages.innerHTML+=`<div class="message bot-message">${response}</div>`;
+    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+  }
+});
+</script>
+
+</body>
+</html>
