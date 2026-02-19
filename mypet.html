@@ -1,321 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<title>My Pet – Snuggle & Stroll</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Pet | Snuggle & Stroll</title>
 
 <style>
-:root {
---brown:#5b3b2a;
---yellow:#f7d87c;
---green:#3f6b4a;
---teal:#1fa7a1;
---cream:#faf5ec;
---text:#2b241f;
+:root{
+  --blue:#1fa7a1;
+  --green:#3f6b4a;
+  --white:#ffffff;
+  --text:#2b241f;
 }
 
-*{box-sizing:border-box;margin:0;padding:0}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
 
 body{
-font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-background:var(--cream);
-color:var(--text);
-line-height:1.6;
+  background:var(--white);
+  color:var(--text);
+  line-height:1.6;
+  padding:2rem;
+  max-width:900px;
+  margin:auto;
 }
 
 header{
-background:linear-gradient(90deg,var(--brown),var(--green));
-color:#fff;
-padding:0.6rem 6vw;
-display:flex;
-justify-content:space-between;
-align-items:center;
-position:sticky;
-top:0;
-z-index:100;
+  position:sticky;
+  top:0;
+  z-index:999;
+  background:linear-gradient(90deg,var(--blue),var(--green));
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:1rem 2rem;
+  box-shadow:0 6px 24px rgba(0,0,0,0.18);
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:1rem;
 }
 
 .logo{
-display:flex;
-align-items:center;
-gap:0.7rem;
-font-weight:700;
+  height:60px;
+  width:auto;
 }
 
-.logo-badge{
-background:var(--yellow);
-color:var(--brown);
-padding:0.4rem 0.7rem;
-border-radius:999px;
-font-weight:800;
+.brand-text h2{
+  color:white;
+  font-size:1.3rem;
+  margin:0;
+}
+
+.brand-text span{
+  font-size:.8rem;
+  color:white;
+  opacity:0.85;
+}
+
+nav{
+  display:flex;
+  align-items:center;
 }
 
 nav a{
-color:#fff;
-text-decoration:none;
-margin-left:1.2rem;
-font-size:0.95rem;
+  color:white;
+  text-decoration:none;
+  margin-left:2rem;
+  font-weight:500;
+  font-size:.95rem;
+  transition:.3s;
 }
 
-#myPetNav{
-background:var(--yellow);
-color:var(--brown);
-padding:0.45rem 0.9rem;
-border-radius:999px;
-font-weight:600;
-margin-left:1.2rem;
-}
+nav a:hover{opacity:.75;}
 
 section-card{
-display:block;
-background:#fff;
-border-radius:1rem;
-padding:2rem;
-box-shadow:0 8px 20px rgba(0,0,0,0.06);
-margin-bottom:2rem;
-}
-
-main{
-padding:3rem 8vw;
-max-width:900px;
-margin:auto;
+  background:white;
+  padding:2rem;
+  border-radius:15px;
+  margin-bottom:2rem;
+  box-shadow:0 6px 18px rgba(0,0,0,.1);
 }
 
 .pet-header{
-display:flex;
-align-items:center;
-gap:1rem;
-margin-bottom:1.5rem;
+  display:flex;
+  align-items:center;
+  gap:1rem;
+  margin-bottom:1rem;
 }
 
 .pet-emoji{
-font-size:3rem;
+  font-size:3rem;
 }
 
-.tagline{
-color:var(--green);
-font-weight:600;
+button{
+  background:var(--blue);
+  color:white;
+  border:none;
+  border-radius:30px;
+  padding:.7rem 1.2rem;
+  font-weight:600;
+  cursor:pointer;
 }
 
-.clear-btn{
-background:var(--yellow);
-color:var(--brown);
-border:none;
-padding:0.6rem 1rem;
-border-radius:999px;
-font-weight:600;
-cursor:pointer;
-margin-top:1rem;
-}
-
-footer{
-padding:1.5rem 8vw;
-font-size:0.85rem;
-color:#777;
-text-align:center;
-border-top:1px solid #e2d7c7;
-margin-top:2rem;
-}
-
-/* Chatbot */
-.chatbot-toggle{
-position:fixed;
-bottom:1.5rem;
-right:1.5rem;
-background:var(--teal);
-color:#fff;
-border:none;
-border-radius:999px;
-padding:0.7rem 1rem;
-cursor:pointer;
-}
-
-.chatbot-window{
-position:fixed;
-bottom:4.5rem;
-right:1.5rem;
-width:300px;
-background:#fff;
-border-radius:1rem;
-display:none;
-flex-direction:column;
-box-shadow:0 10px 26px rgba(0,0,0,0.3);
-overflow:hidden;
-}
-
-.chatbot-header{
-background:var(--green);
-color:#fff;
-padding:0.6rem;
-display:flex;
-justify-content:space-between;
-}
-
-.chatbot-body{
-padding:0.6rem;
-flex:1;
-overflow-y:auto;
-background:#f7f3ea;
-}
-
-.chatbot-input{
-display:flex;
-border-top:1px solid #ddd;
-}
-
-.chatbot-input input{
-flex:1;
-border:none;
-padding:0.5rem;
-}
-
-.chatbot-input button{
-border:none;
-background:var(--teal);
-color:#fff;
-padding:0.5rem;
-cursor:pointer;
-}
-
-.msg{margin-bottom:0.4rem}
-.msg.user{text-align:right}
-.msg.user span{
-background:var(--teal);
-color:#fff;
-border-radius:12px 12px 0 12px;
-padding:0.3rem 0.6rem;
-display:inline-block;
-}
-.msg.bot span{
-background:#fff;
-border-radius:12px 12px 12px 0;
-padding:0.3rem 0.6rem;
-display:inline-block;
-border:1px solid #e0d4c3;
-}
 </style>
 </head>
-
 <body>
 
 <header>
-<div class="logo">
-<div class="logo-badge">SAS</div>
-<div>Snuggle & Stroll</div>
-</div>
-<nav>
-<a href="index.html#contact">Contact</a>
-<a href="index.html#about">About</a>
-<a href="index.html#schedule">Scheduling</a>
-<a href="index.html#pricing">Pricing</a>
-<a href="meet-sitters.html">Meet The Sitters</a>
-<a href="mypet.html" id="myPetNav">My Pet</a>
-</nav>
+  <div class="brand">
+    <img src="sas-logo.png" alt="Snuggle & Stroll Logo" class="logo">
+    <div class="brand-text">
+      <h2>Snuggle & Stroll</h2>
+      <span>Premium In-Home Pet Care</span>
+    </div>
+  </div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="schedule.html">Scheduling</a>
+    <a href="pricing.html">Pricing</a>
+  </nav>
 </header>
 
-<main>
-<div id="profileContainer"></div>
-</main>
+<section-card id="petProfile">
+  <!-- Pet profile will be dynamically inserted here -->
+</section-card>
 
-<footer>
-© <span id="year"></span> Snuggle & Stroll. All rights reserved.
-</footer>
-
-<button class="chatbot-toggle" id="chatbotToggle">Chat</button>
-
-<div class="chatbot-window" id="chatbotWindow">
-<div class="chatbot-header">
-<span>SnuggleBot</span>
-<button style="background:none;border:none;color:#fff;cursor:pointer" id="chatbotClose">×</button>
-</div>
-<div class="chatbot-body" id="chatbotBody">
-<div class="msg bot"><span>Need help? Ask me anything.</span></div>
-</div>
-<div class="chatbot-input">
-<input id="chatbotInput">
-<button id="chatbotSend">Send</button>
-</div>
-</div>
+<button id="clearProfile">Clear Profile</button>
 
 <script>
-document.getElementById('year').textContent=new Date().getFullYear();
-
-const container=document.getElementById("profileContainer");
-const stored=localStorage.getItem("snugglePetProfile");
-
-if(!stored){
-container.innerHTML=`
-<section-card>
-<h2>No Pet Profile Found</h2>
-<a href="index.html#pet-concierge" class="clear-btn">Create One</a>
-</section-card>
-`;
-}else{
-
-const data=JSON.parse(stored);
-const pet=data.pet;
-const emoji=pet.species?.toLowerCase().includes("cat")?"🐱":"🐶";
-
-let tagline="";
-if(pet.energy==="High") tagline="Full of zoomies and big adventures.";
-else if(pet.energy==="Moderate") tagline="Balanced, playful, and easygoing.";
-else tagline="Calm, cozy, and happiest at home.";
-
-container.innerHTML=`
-<section-card>
-<div class="pet-header">
-<div class="pet-emoji">${emoji}</div>
-<div>
-<h2>${pet.petName}</h2>
-<div class="tagline">${tagline}</div>
-</div>
-</div>
-${data.carePlanHtml}
-<button class="clear-btn" id="clearProfile">Clear Profile</button>
-</section-card>
-`;
-
-document.getElementById("clearProfile").onclick=()=>{
-localStorage.removeItem("snugglePetProfile");
-location.reload();
-};
+// Load pet profile from localStorage
+function getPetEmoji(species){
+  species = species.toLowerCase();
+  if(species.includes('dog')) return '🐶';
+  if(species.includes('cat')) return '🐱';
+  if(species.includes('bird')) return '🐦';
+  return '🐾';
 }
 
-/* Chatbot */
-const toggle=document.getElementById("chatbotToggle");
-const win=document.getElementById("chatbotWindow");
-const close=document.getElementById("chatbotClose");
-const body=document.getElementById("chatbotBody");
-const input=document.getElementById("chatbotInput");
-const send=document.getElementById("chatbotSend");
+function loadProfile(){
+  const data = localStorage.getItem('snugglePetProfile');
+  const container = document.getElementById('petProfile');
+  if(!data){
+    container.innerHTML = '<p>No pet profile found. Please complete the questionnaire on the <a href="index.html">home page</a>.</p>';
+    return;
+  }
+  const profile = JSON.parse(data);
+  const pet = profile.pet;
+  const carePlan = profile.carePlanHtml;
+  const sitterMatch = profile.sitterHtml;
 
-function addMsg(t,f){
-const d=document.createElement("div");
-d.className="msg "+f;
-d.innerHTML="<span>"+t+"</span>";
-body.appendChild(d);
-body.scrollTop=body.scrollHeight;
+  const emoji = getPetEmoji(pet.species);
+
+  container.innerHTML = `
+    <div class="pet-header">
+      <div class="pet-emoji">${emoji}</div>
+      <div>
+        <h2>${pet.name}</h2>
+        <p><em>${pet.temperament ? pet.temperament : ''}, ${pet.energy ? pet.energy : ''} energy</em></p>
+      </div>
+    </div>
+    <p><strong>Species:</strong> ${pet.species || 'N/A'}</p>
+    <p><strong>Breed:</strong> ${pet.breed || 'N/A'}</p>
+    <p><strong>Age:</strong> ${pet.age || 'N/A'} years</p>
+    <p><strong>Weight:</strong> ${pet.weight || 'N/A'} lbs</p>
+    <p><strong>Home Type:</strong> ${pet.homeType || 'N/A'}</p>
+    <p><strong>ZIP Code:</strong> ${pet.zip || 'N/A'}</p>
+    <p><strong>Service Needed:</strong> ${pet.service || 'N/A'}</p>
+    <hr>
+    ${carePlan}
+    ${sitterMatch}
+  `;
 }
 
-function reply(t){
-t=t.toLowerCase();
-if(t.includes("price"))return"Walks start at $22, sits $38, overnights $95.";
-if(t.includes("schedule"))return"You can check scheduling on the homepage.";
-if(t.includes("kennel")||t.includes("home"))return"We specialize in in-home care.";
-return"A human from Snuggle & Stroll will follow up!";
+// Clear profile
+document.getElementById('clearProfile').onclick = function(){
+  if(confirm('Are you sure you want to clear your pet profile?')){
+    localStorage.removeItem('snugglePetProfile');
+    loadProfile();
+    alert('Profile cleared.');
+  }
 }
 
-send.onclick=()=>{
-const t=input.value.trim();
-if(!t)return;
-addMsg(t,"user");
-input.value="";
-setTimeout(()=>addMsg(reply(t),"bot"),400);
-};
-
-toggle.onclick=()=>win.style.display=win.style.display==="flex"?"none":"flex";
-close.onclick=()=>win.style.display="none";
+// Initialize
+loadProfile();
 </script>
 
 </body>
