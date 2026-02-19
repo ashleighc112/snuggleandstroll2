@@ -1,109 +1,270 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<title>Meet The Sitters – Snuggle & Stroll</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meet The Sitters | Snuggle & Stroll</title>
 
 <style>
-:root {
---brown:#5b3b2a;
---yellow:#f7d87c;
---green:#3f6b4a;
---teal:#1fa7a1;
---cream:#faf5ec;
---text:#2b241f;
+:root{
+  --blue:#1fa7a1;
+  --green:#3f6b4a;
+  --white:#ffffff;
+  --text:#2b241f;
 }
 
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
+
 body{
-font-family:system-ui;
-background:var(--cream);
-color:var(--text);
-margin:0;
+  background:var(--white);
+  color:var(--text);
+  line-height:1.6;
+  padding:2rem;
+  max-width:1200px;
+  margin:auto;
 }
 
 header{
-background:linear-gradient(90deg,var(--brown),var(--green));
-color:#fff;
-padding:0.6rem 6vw;
-display:flex;
-justify-content:space-between;
-align-items:center;
+  position:sticky;
+  top:0;
+  z-index:999;
+  background:linear-gradient(90deg,var(--blue),var(--green));
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:1rem 2rem;
+  box-shadow:0 6px 24px rgba(0,0,0,0.18);
 }
 
-.logo-badge{
-background:var(--yellow);
-color:var(--brown);
-padding:0.4rem 0.7rem;
-border-radius:999px;
-font-weight:800;
+.brand{
+  display:flex;
+  align-items:center;
+  gap:1rem;
 }
 
-main{
-padding:3rem 8vw;
-max-width:1100px;
-margin:auto;
+.logo{
+  height:60px;
+  width:auto;
 }
+
+.brand-text h2{
+  color:white;
+  font-size:1.3rem;
+  margin:0;
+}
+
+.brand-text span{
+  font-size:.8rem;
+  color:white;
+  opacity:0.85;
+}
+
+nav{
+  display:flex;
+  align-items:center;
+}
+
+nav a{
+  color:white;
+  text-decoration:none;
+  margin-left:2rem;
+  font-weight:500;
+  font-size:.95rem;
+  transition:.3s;
+}
+
+nav a:hover{opacity:.75;}
 
 section-card{
-display:block;
-background:#fff;
-border-radius:1rem;
-padding:2rem;
-box-shadow:0 8px 20px rgba(0,0,0,0.06);
-margin-bottom:2rem;
+  background:white;
+  padding:2rem;
+  border-radius:15px;
+  margin-bottom:2rem;
+  box-shadow:0 6px 18px rgba(0,0,0,.1);
 }
 
-h2{color:var(--brown);margin-bottom:1.5rem}
-h3{color:var(--green)}
+.sitter-container{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:1.5rem;
+}
 
-footer{
-padding:1.5rem;
-text-align:center;
-font-size:0.85rem;
-border-top:1px solid #e2d7c7;
+sitter{
+  background:#f9f9f9;
+  border-radius:15px;
+  padding:1rem;
+  text-align:center;
+  box-shadow:0 6px 15px rgba(0,0,0,0.1);
+  transition:.3s;
+}
+
+sitter:hover{transform:translateY(-3px);}
+
+sitter img{
+  width:100%;
+  height:200px;
+  object-fit:cover;
+  border-radius:15px;
+  margin-bottom:.8rem;
+}
+
+sitter-name{
+  font-weight:600;
+  font-size:1.1rem;
+  display:block;
+  margin-bottom:.3rem;
+}
+
+.specialties{
+  font-size:.9rem;
+  color:var(--green);
 }
 </style>
 </head>
-
 <body>
 
 <header>
-<div style="display:flex;gap:0.7rem;align-items:center">
-<div class="logo-badge">SAS</div>
-<div>Snuggle & Stroll</div>
-</div>
-<a href="index.html" style="color:#fff;text-decoration:none">Home</a>
+  <div class="brand">
+    <img src="sas-logo.png" alt="Snuggle & Stroll Logo" class="logo">
+    <div class="brand-text">
+      <h2>Snuggle & Stroll</h2>
+      <span>Premium In-Home Pet Care</span>
+    </div>
+  </div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="schedule.html">Scheduling</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="mypet.html">My Pet</a>
+  </nav>
 </header>
 
-<main>
-
-<h2>Meet The Sitters</h2>
-
 <section-card>
-<h3>Maya Thompson</h3>
-<p>Maya is an avid dog lover with 4 dogs! She meshes the best with calm, senior, or low-energy dogs and loves cozy cuddle sessions and relaxed neighborhood walks. She is certified medicine giver and will make sure your dog gets lots of cuddles and stays healthy as can be!</p>
+  <h2>Meet Our Sitters</h2>
+  <div class="sitter-container">
+
+    <sitter>
+      <img src="sitters/sitter1.jpg" alt="Maya Thompson">
+      <sitter-name>Maya Thompson</sitter-name>
+      <div class="specialties">Dogs, Cats, High Energy Pets</div>
+    </sitter>
+
+    <sitter>
+      <img src="sitters/sitter2.jpg" alt="Jordan Lee">
+      <sitter-name>Jordan Lee</sitter-name>
+      <div class="specialties">Dogs, Seniors, Medical Care</div>
+    </sitter>
+
+    <sitter>
+      <img src="sitters/sitter3.jpg" alt="Riley Chen">
+      <sitter-name>Riley Chen</sitter-name>
+      <div class="specialties">Small Dogs, Puppies, Training</div>
+    </sitter>
+
+    <sitter>
+      <img src="sitters/sitter4.jpg" alt="Avery Collins">
+      <sitter-name>Avery Collins</sitter-name>
+      <div class="specialties">Cats, Exotic Pets</div>
+    </sitter>
+
+    <sitter>
+      <img src="sitters/sitter5.jpg" alt="Sofia Martinez">
+      <sitter-name>Sofia Martinez</sitter-name>
+      <div class="specialties">Dogs, Active Walks, Playtime</div>
+    </sitter>
+
+    <sitter>
+      <img src="sitters/sitter6.jpg" alt="Ethan Brooks">
+      <sitter-name>Ethan Brooks</sitter-name>
+      <div class="specialties">Dogs, Overnight Care</div>
+    </sitter>
+
+    <sitter>
+      <img src="sitters/sitter7.jpg" alt="Olivia Smith">
+      <sitter-name>Olivia Smith</sitter-name>
+      <div class="specialties">Dogs, Cats, Special Needs</div>
+    </sitter>
+
+    <sitter>
+      <img src="sitters/sitter8.jpg" alt="Liam Johnson">
+      <sitter-name>Liam Johnson</sitter-name>
+      <div class="specialties">Large Dogs, Active Walks</div>
+    </sitter>
+
+    <sitter>
+      <img src="sitters/sitter9.jpg" alt="Emma Davis">
+      <sitter-name>Emma Davis</sitter-name>
+      <div class="specialties">Cats, Low Energy Pets</div>
+    </sitter>
+
+    <sitter>
+      <img src="sitters/sitter10.jpg" alt="Noah Wilson">
+      <sitter-name>Noah Wilson</sitter-name>
+      <div class="specialties">Dogs, Puppies, Playtime</div>
+    </sitter>
+
+    <sitter>
+      <img src="sitters/sitter11.jpg" alt="Ava Brown">
+      <sitter-name>Ava Brown</sitter-name>
+      <div class="specialties">Dogs, Cats, Grooming Support</div>
+    </sitter>
+
+    <sitter>
+      <img src="sitters/sitter12.jpg" alt="Mason Garcia">
+      <sitter-name>Mason Garcia</sitter-name>
+      <div class="specialties">Active Dogs, Outdoor Walks</div>
+    </sitter>
+
+    <sitter>
+      <img src="sitters/sitter13.jpg" alt="Isabella Martinez">
+      <sitter-name>Isabella Martinez</sitter-name>
+      <div class="specialties">Cats, Special Diets</div>
+    </sitter>
+
+    <sitter>
+      <img src="sitters/sitter14.jpg" alt="Lucas Anderson">
+      <sitter-name>Lucas Anderson</sitter-name>
+      <div class="specialties">Dogs, Training, Playtime</div>
+    </sitter>
+
+    <sitter>
+      <img src="sitters/sitter15.jpg" alt="Mia Thomas">
+      <sitter-name>Mia Thomas</sitter-name>
+      <div class="specialties">Puppies, Small Dogs, Walks</div>
+    </sitter>
+
+    <sitter>
+      <img src="sitters/sitter16.jpg" alt="Elijah Jackson">
+      <sitter-name>Elijah Jackson</sitter-name>
+      <div class="specialties">Large Dogs, Active Care</div>
+    </sitter>
+
+    <sitter>
+      <img src="sitters/sitter17.jpg" alt="Charlotte White">
+      <sitter-name>Charlotte White</sitter-name>
+      <div class="specialties">Cats, Low Stress Pets</div>
+    </sitter>
+
+    <sitter>
+      <img src="sitters/sitter18.jpg" alt="Benjamin Harris">
+      <sitter-name>Benjamin Harris</sitter-name>
+      <div class="specialties">Dogs, Overnight, Medical</div>
+    </sitter>
+
+    <sitter>
+      <img src="sitters/sitter19.jpg" alt="Amelia Lewis">
+      <sitter-name>Amelia Lewis</sitter-name>
+      <div class="specialties">Dogs, Playtime, Walks</div>
+    </sitter>
+
+    <sitter>
+      <img src="sitters/sitter20.jpg" alt="James Robinson">
+      <sitter-name>James Robinson</sitter-name>
+      <div class="specialties">Dogs, Training, Active Care</div>
+    </sitter>
+
+  </div>
 </section-card>
-
-<section-card>
-<h3>Jordan Lee</h3>
-<p>Jordan thrives with moderate-energy dogs who enjoy structured play and enrichment. Loves combining training refreshers with daily walks and keeping pups mentally stimulated.</p>
-</section-card>
-
-<section-card>
-<h3>Riley Chen</h3>
-<p>Riley is perfect for high-energy dogs who love long runs, advanced games, and adventure outings. Riley ensures active dogs are fully exercised and happy.</p>
-</section-card>
-
-</main>
-
-<footer>
-© <span id="year"></span> Snuggle & Stroll. All rights reserved.
-</footer>
-
-<script>
-document.getElementById('year').textContent=new Date().getFullYear();
-</script>
 
 </body>
 </html>
