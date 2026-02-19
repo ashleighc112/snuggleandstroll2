@@ -94,16 +94,33 @@ section-card{
   font-size:3rem;
 }
 
+.pet-name{
+  font-size:2rem;
+  font-weight:600;
+}
+
+.pet-tagline{
+  font-size:1rem;
+  color:var(--green);
+  margin-bottom:1.5rem;
+}
+
+.care-plan, .sitter-match{
+  margin-bottom:1.5rem;
+}
+
 button{
   background:var(--blue);
   color:white;
-  border:none;
-  border-radius:30px;
   padding:.7rem 1.2rem;
+  border:none;
+  border-radius:8px;
   font-weight:600;
   cursor:pointer;
+  transition:.3s;
 }
 
+button:hover{background:var(--green);}
 </style>
 </head>
 <body>
@@ -120,68 +137,77 @@ button{
     <a href="index.html">Home</a>
     <a href="schedule.html">Scheduling</a>
     <a href="pricing.html">Pricing</a>
+    <a href="concierge.html">Pet Concierge</a>
   </nav>
 </header>
 
-<section-card id="petProfile">
-  <!-- Pet profile will be dynamically inserted here -->
+<section-card>
+  <h2>My Pet Profile</h2>
+  <div id="petProfile">
+    <p>Loading your pet's information...</p>
+  </div>
+  <button id="clearProfile">Clear Profile</button>
 </section-card>
 
-<button id="clearProfile">Clear Profile</button>
-
 <script>
-// Load pet profile from localStorage
-function getPetEmoji(species){
-  species = species.toLowerCase();
-  if(species.includes('dog')) return '🐶';
-  if(species.includes('cat')) return '🐱';
-  if(species.includes('bird')) return '🐦';
-  return '🐾';
-}
-
+// Load profile from localStorage
 function loadProfile(){
-  const data = localStorage.getItem('snugglePetProfile');
-  const container = document.getElementById('petProfile');
-  if(!data){
-    container.innerHTML = '<p>No pet profile found. Please complete the questionnaire on the <a href="index.html">home page</a>.</p>';
+  const container=document.getElementById("petProfile");
+  const profile=JSON.parse(localStorage.getItem("snugglePetProfile"));
+  
+  if(!profile){
+    container.innerHTML="<p>No profile found. Please complete the Pet Concierge questionnaire on the homepage.</p>";
     return;
   }
-  const profile = JSON.parse(data);
-  const pet = profile.pet;
-  const carePlan = profile.carePlanHtml;
-  const sitterMatch = profile.sitterHtml;
-
-  const emoji = getPetEmoji(pet.species);
-
-  container.innerHTML = `
+  
+  const pet=profile.pet;
+  const carePlanHtml=profile.carePlanHtml;
+  const sitterHtml=profile.sitterHtml;
+  
+  // Pet emoji based on species
+  let emoji="🐾";
+  if(pet.species.toLowerCase().includes("dog")) emoji="🐶";
+  else if(pet.species.toLowerCase().includes("cat")) emoji="🐱";
+  
+  container.innerHTML=`
     <div class="pet-header">
       <div class="pet-emoji">${emoji}</div>
       <div>
-        <h2>${pet.name}</h2>
-        <p><em>${pet.temperament ? pet.temperament : ''}, ${pet.energy ? pet.energy : ''} energy</em></p>
+        <div class="pet-name">${pet.name}</div>
+        <div class="pet-tagline">${pet.temperament} • ${pet.energyLevel}</div>
       </div>
     </div>
-    <p><strong>Species:</strong> ${pet.species || 'N/A'}</p>
-    <p><strong>Breed:</strong> ${pet.breed || 'N/A'}</p>
-    <p><strong>Age:</strong> ${pet.age || 'N/A'} years</p>
-    <p><strong>Weight:</strong> ${pet.weight || 'N/A'} lbs</p>
-    <p><strong>Home Type:</strong> ${pet.homeType || 'N/A'}</p>
-    <p><strong>ZIP Code:</strong> ${pet.zip || 'N/A'}</p>
-    <p><strong>Service Needed:</strong> ${pet.service || 'N/A'}</p>
-    <hr>
-    ${carePlan}
-    ${sitterMatch}
+    <div class="pet-details">
+      <p><strong>Species:</strong> ${pet.species}</p>
+      <p><strong>Breed:</strong> ${pet.breed}</p>
+      <p><strong>Age:</strong> ${pet.age}</p>
+      <p><strong>Weight:</strong> ${pet.weight}</p>
+      <p><strong>Medical Conditions:</strong> ${pet.medicalConditions}</p>
+      <p><strong>Medications:</strong> ${pet.medications}</p>
+      <p><strong>Walks per day:</strong> ${pet.walksPerDay}</p>
+      <p><strong>Walk length:</strong> ${pet.walkLength}</p>
+      <p><strong>Alone time tolerance:</strong> ${pet.aloneTime}</p>
+      <p><strong>Home type:</strong> ${pet.homeType}</p>
+      <p><strong>ZIP code:</strong> ${pet.zip}</p>
+      <p><strong>Service needed:</strong> ${pet.service}</p>
+    </div>
+    <div class="care-plan">
+      <h3>Care Plan</h3>
+      ${carePlanHtml}
+    </div>
+    <div class="sitter-match">
+      <h3>Matched Sitter</h3>
+      ${sitterHtml}
+    </div>
   `;
 }
 
-// Clear profile
-document.getElementById('clearProfile').onclick = function(){
-  if(confirm('Are you sure you want to clear your pet profile?')){
-    localStorage.removeItem('snugglePetProfile');
+document.getElementById("clearProfile").addEventListener("click",()=>{
+  if(confirm("Are you sure you want to clear your pet profile?")){
+    localStorage.removeItem("snugglePetProfile");
     loadProfile();
-    alert('Profile cleared.');
   }
-}
+});
 
 // Initialize
 loadProfile();
